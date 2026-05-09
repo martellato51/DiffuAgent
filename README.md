@@ -83,6 +83,55 @@ For detailed installation and setup instructions:
 
 > **Note:** We used Claude Code for automatic code optimization, which passed preliminary testing. If you encounter any issues during use, please contact us.
 
+## Local BFCL Reproduction Notes
+
+This checkout keeps BFCL work in a separate nested Gorilla repository rather
+than in the top-level DiffuAgent git history:
+
+```text
+DiffuAgent/
+└── unified_envs/
+    └── gorilla/                         # separate git repo
+        └── berkeley-function-call-leaderboard/
+```
+
+The reproducible BFCL backbone setup is maintained on the fork branch below:
+
+```bash
+cd unified_envs/gorilla
+git remote -v
+# origin   git@github.com:martellato51/gorilla.git
+# upstream https://github.com/ShishirPatil/gorilla
+
+git checkout diffuagent-bfcl
+```
+
+That branch adds BFCL v4 handlers for:
+
+- `backbone/qwen3-8b`: Qwen3-8B served through vLLM's OpenAI-compatible API.
+- `backbone/llada`: LLaDA-8B-Instruct loaded locally through Fast-dLLM v1.
+
+The main entry documents are:
+
+- `unified_envs/gorilla/berkeley-function-call-leaderboard/installation.md`
+- `unified_envs/gorilla/berkeley-function-call-leaderboard/README_BFCL_BACKBONE.md`
+- `unified_envs/gorilla/berkeley-function-call-leaderboard/bfcl_eval/model_handler/api_inference/diffuagent/ENV_CONFIG.md`
+
+On this server, the latest successful jobs are launched from
+`/data/home/martellato41/research/run_bfcl_*.job` and use the shared `qwen3`
+and `llada8b` conda environments. The Gorilla fork also contains portable
+Slurm templates under `berkeley-function-call-leaderboard/jobs/`; those are the
+starting point for bringing the setup up on another server.
+
+If VS Code shows "Publish Branch" for the top-level `DiffuAgent` checkout, that
+usually refers to the local top-level branch, not the nested Gorilla branch.
+Check both repositories separately:
+
+```bash
+git status --branch --short
+git -C unified_envs/gorilla status --branch --short
+```
+
 ## Analysis of Agentic Behaviors in dLLMs
 
 ### Memory Augmentation
