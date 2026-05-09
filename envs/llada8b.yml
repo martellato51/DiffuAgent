@@ -1,0 +1,25 @@
+name: llada8b
+channels:
+  - defaults
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      # LLaDA-8B-Instruct local inference uses Fast-dLLM v1 code. The torch
+      # wheel is installed from the cu118 index by the bootstrap script because
+      # conda environment files cannot reliably express that index per package.
+      - transformers==4.49.0
+      - tokenizers==0.21.4
+      - huggingface-hub==0.36.2
+      - accelerate==0.34.2
+      - numpy==1.26.4
+      - openai==2.34.0
+      - litellm==1.82.6
+      - pyyaml==6.0.3
+      - safetensors==0.7.0
+      - sentencepiece==0.2.1
+      - protobuf==4.25.9
+      - docstring-parser==0.18.0
+      - loguru==0.7.3
+      - datasets==4.8.5
+      - rank-bm25==0.2.2

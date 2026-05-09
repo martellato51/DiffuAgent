@@ -1,0 +1,21 @@
+name: llada2.1
+channels:
+  - defaults
+dependencies:
+  - python=3.12
+  - pip
+  - setuptools
+  - wheel
+  - pip:
+      # LLaDA2.1-mini legacy smoke/eval stack.
+      - --extra-index-url https://download.pytorch.org/whl/cu121
+      - torch==2.5.1+cu121
+      - transformers==5.7.0
+      - tokenizers==0.22.2
+      - huggingface-hub==1.13.0
+      - accelerate==1.13.0
+      - numpy==2.4.4
+      - openai==2.34.0
+      - litellm==1.82.6
+      - pyyaml==6.0.3
+      - safetensors==0.7.0

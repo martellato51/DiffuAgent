@@ -107,6 +107,24 @@ export LLADA_MODEL_PATH=$RESEARCH_ROOT/model/LLaDA-8B-Instruct
 export FAST_DLLM_LLADA_PATH=$RESEARCH_ROOT/Fast-dLLM/v1/llada
 ```
 
+## Conda 환경
+
+재현용 conda yml은 이 repo의 [`envs/`](envs/)에 복사해 두었습니다.
+
+- `envs/qwen3.yml`: Qwen3-8B + vLLM 환경.
+- `envs/llada8b.yml`: LLaDA-8B-Instruct + Fast-dLLM v1 환경.
+- `envs/llada2.1.yml`: LLaDA2.1-mini legacy 환경. BFCL 기본 경로에는 사용하지 않습니다.
+
+새 서버에서는 먼저 필요한 env를 만듭니다.
+
+```bash
+conda env create -f envs/qwen3.yml
+conda env create -f envs/llada8b.yml
+```
+
+이후 BFCL submodule 안의 setup job이 BFCL editable install, Fast-dLLM requirements,
+`register_backbone.py` 실행을 마무리합니다.
+
 ## 설치와 실행
 
 portable Slurm template은 Gorilla submodule 안에 있습니다.
