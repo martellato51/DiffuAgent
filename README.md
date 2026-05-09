@@ -24,6 +24,9 @@ git clone --branch my-change --recurse-submodules git@github.com:martellato51/Di
 cd DiffuAgent
 ```
 
+위 명령은 SSH key가 있는 서버 기준입니다. 새 서버에 GitHub SSH key가 없다면 먼저
+key를 등록하거나, clone 후 submodule URL을 HTTPS/인증 가능한 URL로 바꿔야 합니다.
+
 이미 clone한 뒤라면:
 
 ```bash
@@ -41,7 +44,15 @@ git -C unified_envs/gorilla status --branch --short
 
 ```text
 DiffuAgent: my-change
-unified_envs/gorilla: diffuagent-bfcl
+unified_envs/gorilla: 0d2b55d 근처 commit
+```
+
+submodule은 기본적으로 특정 commit에 고정되므로 `HEAD (no branch)`로 보일 수
+있습니다. submodule 안에서 코드를 수정할 때만 아래처럼 branch를 checkout합니다.
+
+```bash
+cd unified_envs/gorilla
+git checkout diffuagent-bfcl
 ```
 
 ## 포함된 BFCL 내용
