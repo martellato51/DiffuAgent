@@ -117,7 +117,7 @@ sbatch jobs/setup_bfcl_env.sbatch
 TEST_CATEGORY=simple_python sbatch jobs/run_backbone_eval.sbatch
 ```
 
-현재 서버에서 실제로 사용한 job은 repo 밖 `/data/home/martellato41/research/run_bfcl_*.job`입니다. 다른 서버로 옮길 때는 submodule 안의 `jobs/*.sbatch`를 기준으로 경로와 conda env 이름만 맞추면 됩니다.
+현재 서버에서 실제로 사용한 job은 repo 밖 `/data/home/martellato41/research/jobs_bfcl/`에 모아 두었습니다. 다른 서버로 옮길 때는 submodule 안의 `jobs/*.sbatch`를 기준으로 경로와 conda env 이름만 맞추면 됩니다.
 
 ## 결과물 관리
 
