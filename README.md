@@ -1,177 +1,145 @@
-<div align="center">
+# DiffuAgent BFCL 재현용 정리
 
-  
+이 브랜치는 원본 DiffuAgent 설명 문서가 아니라, 현재 서버에서 만든 BFCL 재현 세팅만 기록합니다. 목적은 다른 서버에서 지금 서버의 핵심 폴더 구조와 코드를 다시 받아서 Qwen3-8B와 LLaDA-8B BFCL backbone 평가를 재현하는 것입니다.
 
-  # <img src="assets/images/diffuagent_icon.png" alt="DiffuAgent Icon" width="30"> DiffuAgent
+## 저장소 구조
 
-  ### The Bitter Lesson of Diffusion Language Models for Agentic Workflows: A Comprehensive Reality Check
-
-  **Qingyu Lu<sup>1,3</sup>, Liang Ding<sup>2</sup>, Kanjian Zhang<sup>2</sup>, Jinxia Zhang<sup>1</sup>, Dacheng Tao<sup>3</sup>**
-
-  <sup>1</sup>Southeast University, China &nbsp;|&nbsp;
-  <sup>2</sup>Alibaba &nbsp;|&nbsp;
-  <sup>3</sup>Nanyang Technological University, Singapore
-
-  [![Paper](https://img.shields.io/badge/PDF-Paper-red)](https://arxiv.org/pdf/2601.12979)
-  [![Code](https://img.shields.io/badge/GitHub-Pages-blue)](https://coldmist-lu.github.io/DiffuAgent/)
-
-</div>
-
-## TL;DR
-
-- **Efficiency ≠ Agentic Effectiveness.** Despite low latency, diffusion-based LLMs (**dLLMs**) fail to serve as reliable agent backbones in both long-horizon **embodied** tasks and precision-critical **tool-calling** scenarios.
-
-- **Systematic Agentic Failures.** dLLMs exhibit characteristic failure modes, including retry loops under temporal feedback and loss of symbolic precision (e.g., malformed JSON) under diffusion noise.
-
-- **DiffuAgent Framework.** We introduce **DiffuAgent**, a unified and modular framework for evaluating dLLMs across embodied and tool-calling agentic workflows.
-
-- **Where dLLMs Work.** dLLMs remain effective in non-causal auxiliary roles (e.g., memory summarization and tool selection), but require causal and logically grounded mechanisms to function as full agent backbones.
-
-## Failure Cases of dLLMs in Agentic Workflows
-
-<p align="center">
-  <img src="assets/images/dllm_failure_mode.png" alt="DLLM Failure Modes" width="80%">
-</p>
-
-- **In Embodied settings**, dLLMs suffer repeated attempts (**retry loops**), failing to branch under temporal feedback.
-- **In Tool-Calling settings**, dLLMs fail to maintain **symbolic precision** (e.g., strict JSON schemas) under diffusion noise.
-
-## Failure of dLLMs as Agent Backbones
-
-<p align="center">
-  <img src="assets/images/failure_tables.png" alt="Failure Tables" width="80%">
-</p>
-
-We compare dLLMs and autoregressive LLMs on embodied (AgentBoard) and tool-calling (BFCL) benchmarks.
-The results show that dLLMs lag behind on both success/progress and tool-calling accuracy.
-
-## Systematic Failure Modes of dLLMs
-
-<p align="center">
-  <img src="assets/images/failure_figs.png" alt="Failure Analysis" width="100%">
-</p>
-
-**(a) Failure of Replan for embodied agents**: dLLMs exhibit significantly more frequent retry loops than LLMs.
-
-**(b) Failure of Precision for tool-calling agents**: dLLMs are more prone to produce malformed JSON schemas.
-
-**(c) Performance-Efficiency Trade-offs**: despite higher inference efficiency, dLLMs do not guarantee comparable agentic performance to autoregressive LLMs.
-
-## DiffuAgent: Framework on Analyzing Agentic Behaviors in dLLMs
-
-<p align="center">
-  <img src="assets/images/diffuagent.png" alt="DiffuAgent Framework" width="100%">
-</p>
-
-To better understand the agentic potential of dLLMs, we introduce DiffuAgent, a novel evaluation framework that treats dLLMs as plug-and-play cognitive modules for augmenting LLM agents.
-
-### Framework Components
-
-- **For embodied agents**, we introduce a memory-augmented module for history compression and an early-exit verifier for global trajectory checking.
-
-- **For tool-calling agents**, we include a tool selector over the library of available tools, and a JSON format editor.
-
-### Quick Start
-
-For detailed installation and setup instructions:
-- **AgentBoard**: [`installation.md`](DiffuAgent/Agentboard/installation.md) | [`Original Repo`](https://github.com/hkust-nlp/AgentBoard)
-- **BFCL**: [`installation.md`](DiffuAgent/BFCL/installation.md) | [`Original Repo`](https://github.com/ShishirPatil/gorilla/blob/main/berkeley-function-call-leaderboard/)
-
-> **Note:** Please refer to the original repositories for detailed environment requirements.
-
-> **Note:** Our BFCL experiments have been extended to v4. To reproduce v3 experiments, please use the v3 codebase.
-
-> **Note:** We used Claude Code for automatic code optimization, which passed preliminary testing. If you encounter any issues during use, please contact us.
-
-## Local BFCL Reproduction Notes
-
-This checkout keeps BFCL work in a separate nested Gorilla repository rather
-than in the top-level DiffuAgent git history:
+중요한 코드는 top-level `DiffuAgent` repo 안에 직접 들어 있지 않고, 아래 nested Gorilla repo에 있습니다.
 
 ```text
 DiffuAgent/
 └── unified_envs/
-    └── gorilla/                         # separate git repo
+    └── gorilla/                         # git submodule
         └── berkeley-function-call-leaderboard/
 ```
 
-The reproducible BFCL backbone setup is maintained on the fork branch below:
+`unified_envs/gorilla`는 `martellato51/gorilla` fork의 `diffuagent-bfcl` 브랜치를 가리킵니다. 이 브랜치에 BFCL v4 기반 DiffuAgent backbone 평가 코드가 들어 있습니다.
+
+## 다른 서버에서 받는 방법
+
+submodule까지 같이 받습니다.
 
 ```bash
-cd unified_envs/gorilla
-git remote -v
-# origin   git@github.com:martellato51/gorilla.git
-# upstream https://github.com/ShishirPatil/gorilla
-
-git checkout diffuagent-bfcl
+git clone --branch my-change --recurse-submodules git@github.com:martellato51/DiffuAgent.git
+cd DiffuAgent
 ```
 
-That branch adds BFCL v4 handlers for:
+이미 clone한 뒤라면:
 
-- `backbone/qwen3-8b`: Qwen3-8B served through vLLM's OpenAI-compatible API.
-- `backbone/llada`: LLaDA-8B-Instruct loaded locally through Fast-dLLM v1.
+```bash
+git submodule update --init --recursive
+```
 
-The main entry documents are:
-
-- `unified_envs/gorilla/berkeley-function-call-leaderboard/installation.md`
-- `unified_envs/gorilla/berkeley-function-call-leaderboard/README_BFCL_BACKBONE.md`
-- `unified_envs/gorilla/berkeley-function-call-leaderboard/bfcl_eval/model_handler/api_inference/diffuagent/ENV_CONFIG.md`
-
-On this server, the latest successful jobs are launched from
-`/data/home/martellato41/research/run_bfcl_*.job` and use the shared `qwen3`
-and `llada8b` conda environments. The Gorilla fork also contains portable
-Slurm templates under `berkeley-function-call-leaderboard/jobs/`; those are the
-starting point for bringing the setup up on another server.
-
-If VS Code shows "Publish Branch" for the top-level `DiffuAgent` checkout, that
-usually refers to the local top-level branch, not the nested Gorilla branch.
-Check both repositories separately:
+확인:
 
 ```bash
 git status --branch --short
 git -C unified_envs/gorilla status --branch --short
 ```
 
-## Analysis of Agentic Behaviors in dLLMs
+기대 상태:
 
-### Memory Augmentation
-
-<p align="center">
-  <img src="assets/images/analysis_memory.png" alt="Memory Analysis" width="70%">
-</p>
-
-**dLLMs are competitive memory modules** for memory-augmented agents.
-
-### Early Exit Verification
-
-<p align="center">
-  <img src="assets/images/analysis_earlyexit.png" alt="Early Exit Analysis" width="40%">
-</p>
-
-LLM Verifiers tend to trigger premature early exits, whereas **dLLMs terminate more reliably**.
-
-### Tool-Calling Analysis
-
-<p align="center">
-  <img src="assets/images/analysis_tool.png" alt="Tool Calling Analysis" width="80%">
-</p>
-
-dLLMs are **effective tool selectors** but **struggle as tool-call editors**.
-
-## Citation
-
-```bibtex
-@article{lu2026diffuagent,
-  title   = {The Bitter Lesson of Diffusion Language Models for Agentic Workflows: A Comprehensive Reality Check},
-  author  = {Lu, Qingyu and Ding, Liang and Zhang, Kanjian and Zhang, Jinxia and Tao, Dacheng},
-  journal = {arXiv preprint},
-  year    = {2026},
-  url     = {https://arxiv.org/pdf/2601.12979}
-}
+```text
+DiffuAgent: my-change
+unified_envs/gorilla: diffuagent-bfcl
 ```
 
-<div align="center">
+## 포함된 BFCL 내용
 
-  © 2026 DiffuAgent
+Gorilla submodule 안의 주요 파일:
 
-</div>
+```text
+unified_envs/gorilla/berkeley-function-call-leaderboard/
+├── README_BFCL_BACKBONE.md
+├── installation.md
+├── register_backbone.py
+├── run_backbone_eval.sh
+├── jobs/
+│   ├── setup_bfcl_env.sbatch
+│   └── run_backbone_eval.sbatch
+├── bfcl_eval/
+│   ├── build_handlers_backbone.py
+│   └── model_handler/api_inference/diffuagent/
+│       ├── handlers.py
+│       ├── handlers_backbone.py
+│       └── ENV_CONFIG.md
+└── experiments/
+    └── think_parallel/
+```
+
+등록되는 backbone 모델은 두 개입니다.
+
+- `backbone/qwen3-8b`: Qwen3-8B를 vLLM OpenAI-compatible server로 띄워 BFCL 평가.
+- `backbone/llada`: LLaDA-8B-Instruct를 Fast-dLLM v1 코드로 Python 프로세스 안에서 직접 로드해 BFCL 평가.
+
+## 필요한 외부 폴더
+
+repo에 포함되지 않는 모델 snapshot과 외부 checkout은 서버별로 준비해야 합니다.
+
+```text
+research/
+├── DiffuAgent/
+├── Fast-dLLM/
+│   └── v1/llada/
+└── model/
+    ├── Qwen3-8B/
+    └── LLaDA-8B-Instruct/
+```
+
+환경 변수로 경로를 바꿀 수 있습니다.
+
+```bash
+export RESEARCH_ROOT=/path/to/research
+export BFCL_ROOT=$RESEARCH_ROOT/DiffuAgent/unified_envs/gorilla/berkeley-function-call-leaderboard
+export QWEN_MODEL_PATH=$RESEARCH_ROOT/model/Qwen3-8B
+export LLADA_MODEL_PATH=$RESEARCH_ROOT/model/LLaDA-8B-Instruct
+export FAST_DLLM_LLADA_PATH=$RESEARCH_ROOT/Fast-dLLM/v1/llada
+```
+
+## 설치와 실행
+
+portable Slurm template은 Gorilla submodule 안에 있습니다.
+
+```bash
+cd unified_envs/gorilla/berkeley-function-call-leaderboard
+sbatch jobs/setup_bfcl_env.sbatch
+TEST_CATEGORY=simple_python sbatch jobs/run_backbone_eval.sbatch
+```
+
+현재 서버에서 실제로 사용한 job은 repo 밖 `/data/home/martellato41/research/run_bfcl_*.job`입니다. 다른 서버로 옮길 때는 submodule 안의 `jobs/*.sbatch`를 기준으로 경로와 conda env 이름만 맞추면 됩니다.
+
+## 결과물 관리
+
+BFCL 실행 산출물은 git에 넣지 않습니다.
+
+```text
+logs/
+logger/
+result/
+score/
+result_runs/
+subset/
+subset_runs/
+experiments/**/outputs/
+```
+
+재현에 필요한 코드는 submodule에 포함하고, 모델 weight와 실행 결과는 서버 로컬에 둡니다.
+
+## 원격 저장소 확인
+
+top-level DiffuAgent:
+
+```bash
+git remote -v
+# origin git@github.com:martellato51/DiffuAgent.git
+```
+
+Gorilla submodule:
+
+```bash
+git -C unified_envs/gorilla remote -v
+# origin   git@github.com:martellato51/gorilla.git
+# upstream https://github.com/ShishirPatil/gorilla
+```
+
+`ShishirPatil/gorilla`는 upstream 원본입니다. push 대상은 `origin`, 즉 `martellato51/gorilla`입니다.
