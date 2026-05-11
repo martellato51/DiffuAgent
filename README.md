@@ -24,8 +24,7 @@ git clone --branch my-change --recurse-submodules git@github.com:martellato51/Di
 cd DiffuAgent
 ```
 
-위 명령은 SSH key가 있는 서버 기준입니다. 새 서버에 GitHub SSH key가 없다면 먼저
-key를 등록하거나, clone 후 submodule URL을 HTTPS/인증 가능한 URL로 바꿔야 합니다.
+위 명령은 SSH key가 있는 서버 기준입니다. 새 서버에 GitHub SSH key가 없다면 먼저 key를 등록하거나, clone 후 submodule URL을 HTTPS/인증 가능한 URL로 바꿔야 합니다.
 
 이미 clone한 뒤라면:
 
@@ -40,15 +39,7 @@ git status --branch --short
 git -C unified_envs/gorilla status --branch --short
 ```
 
-기대 상태:
-
-```text
-DiffuAgent: my-change
-unified_envs/gorilla: 0d2b55d 근처 commit
-```
-
-submodule은 기본적으로 특정 commit에 고정되므로 `HEAD (no branch)`로 보일 수
-있습니다. submodule 안에서 코드를 수정할 때만 아래처럼 branch를 checkout합니다.
+submodule은 기본적으로 특정 commit에 고정되므로 `HEAD (no branch)`로 보일 수 있습니다. submodule 안에서 코드를 수정할 때만 아래처럼 branch를 checkout합니다.
 
 ```bash
 cd unified_envs/gorilla
@@ -62,20 +53,19 @@ Gorilla submodule 안의 주요 파일:
 ```text
 unified_envs/gorilla/berkeley-function-call-leaderboard/
 ├── README_BFCL_BACKBONE.md
-├── installation.md
 ├── register_backbone.py
-├── run_backbone_eval.sh
 ├── jobs/
-│   ├── setup_bfcl_env.sbatch
-│   └── run_backbone_eval.sbatch
+│   ├── setup_bfcl_env.sbatch       # 환경 설치 진입점
+│   ├── run_bfcl_qwen3.job          # Qwen3-8B 평가
+│   ├── run_bfcl_llada.job          # LLaDA-8B 평가
+│   └── run_bfcl_singleturn_eval.job  # 평가만 (generate 없이)
 ├── bfcl_eval/
 │   ├── build_handlers_backbone.py
 │   └── model_handler/api_inference/diffuagent/
-│       ├── handlers.py
 │       ├── handlers_backbone.py
 │       └── ENV_CONFIG.md
-└── experiments/
-    └── think_parallel/
+└── bfcl_eval/scripts/
+    └── make_bfcl_subsets_ids.py
 ```
 
 등록되는 backbone 모델은 두 개입니다.
@@ -88,54 +78,53 @@ unified_envs/gorilla/berkeley-function-call-leaderboard/
 repo에 포함되지 않는 모델 snapshot과 외부 checkout은 서버별로 준비해야 합니다.
 
 ```text
-research/
+<research>/
 ├── DiffuAgent/
 ├── Fast-dLLM/
 │   └── v1/llada/
-└── model/
-    ├── Qwen3-8B/
-    └── LLaDA-8B-Instruct/
+<model_root>/
+├── Qwen3-8B/
+└── LLaDA-8B-Instruct/
 ```
 
-환경 변수로 경로를 바꿀 수 있습니다.
+## 새 서버 설정
 
-```bash
-export RESEARCH_ROOT=/path/to/research
-export BFCL_ROOT=$RESEARCH_ROOT/DiffuAgent/unified_envs/gorilla/berkeley-function-call-leaderboard
-export QWEN_MODEL_PATH=$RESEARCH_ROOT/model/Qwen3-8B
-export LLADA_MODEL_PATH=$RESEARCH_ROOT/model/LLaDA-8B-Instruct
-export FAST_DLLM_LLADA_PATH=$RESEARCH_ROOT/Fast-dLLM/v1/llada
-```
-
-## Conda 환경
-
-재현용 conda yml은 이 repo의 [`envs/`](envs/)에 복사해 두었습니다.
-
-- `envs/qwen3.yml`: Qwen3-8B + vLLM 환경.
-- `envs/llada8b.yml`: LLaDA-8B-Instruct + Fast-dLLM v1 환경.
-- `envs/llada2.1.yml`: LLaDA2.1-mini legacy 환경. BFCL 기본 경로에는 사용하지 않습니다.
-
-새 서버에서는 먼저 필요한 env를 만듭니다.
-
-```bash
-conda env create -f envs/qwen3.yml
-conda env create -f envs/llada8b.yml
-```
-
-이후 BFCL submodule 안의 setup job이 BFCL editable install, Fast-dLLM requirements,
-`register_backbone.py` 실행을 마무리합니다.
-
-## 설치와 실행
-
-portable Slurm template은 Gorilla submodule 안에 있습니다.
+**`jobs/env.sh` 파일 하나만 수정하면 됩니다.** 이 파일에 서버별 경로가 모두 모여 있고, 모든 job 파일이 이를 source합니다.
 
 ```bash
 cd unified_envs/gorilla/berkeley-function-call-leaderboard
-sbatch jobs/setup_bfcl_env.sbatch
-TEST_CATEGORY=simple_python sbatch jobs/run_backbone_eval.sbatch
+vi jobs/env.sh   # 아래 8개 항목을 본인 서버에 맞게 수정
 ```
 
-현재 서버에서 실제로 사용한 job은 repo 밖 `/data/home/martellato41/research/jobs_bfcl/`에 모아 두었습니다. 다른 서버로 옮길 때는 submodule 안의 `jobs/*.sbatch`를 기준으로 경로와 conda env 이름만 맞추면 됩니다.
+수정할 항목:
+
+```bash
+BFCL_ROOT            # 이 repo의 berkeley-function-call-leaderboard 경로
+CONDA_SH             # miniconda 또는 anaconda의 conda.sh 경로
+QWEN_PYTHON          # qwen3 conda env의 python 바이너리 경로
+LLADA_PYTHON         # llada8b conda env의 python 바이너리 경로
+MAIN_AGENT_MODEL_PATH  # Qwen3-8B 모델 weight 디렉터리
+LLADA_MODEL_PATH       # LLaDA-8B-Instruct 모델 weight 디렉터리
+FAST_DLLM_LLADA_PATH   # Fast-dLLM v1/llada 코드 디렉터리
+CUDA_VISIBLE_DEVICES   # 사용할 GPU 번호 (예: "0,1" 또는 "1,2,3")
+```
+
+수정 후 설치와 실행:
+
+```bash
+# 환경 설치 (qwen3, llada8b conda env 모두 세팅)
+bash jobs/setup_bfcl_env.sbatch
+
+# Qwen3-8B 싱글턴 평가
+export TEST_CATEGORIES="simple_python,multiple,parallel,parallel_multiple,simple_java,simple_javascript,live_simple,live_multiple,live_parallel,live_parallel_multiple"
+runlog bash jobs/run_bfcl_qwen3.job
+
+# LLaDA-8B 멀티턴 평가
+export TEST_CATEGORIES="multi_turn_base"
+runlog bash jobs/run_bfcl_llada.job
+```
+
+자세한 내용은 `README_BFCL_BACKBONE.md`를 참고합니다.
 
 ## 결과물 관리
 
@@ -145,11 +134,10 @@ BFCL 실행 산출물은 git에 넣지 않습니다.
 logs/
 logger/
 result/
-score/
 result_runs/
+score/
 subset/
 subset_runs/
-experiments/**/outputs/
 ```
 
 재현에 필요한 코드는 submodule에 포함하고, 모델 weight와 실행 결과는 서버 로컬에 둡니다.
