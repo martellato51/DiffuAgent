@@ -7,7 +7,6 @@ dependencies:
   - setuptools
   - wheel
   - pip:
-      # LLaDA2.1-mini legacy smoke/eval stack.
       - --extra-index-url https://download.pytorch.org/whl/cu121
       - torch==2.5.1+cu121
       - transformers==5.7.0

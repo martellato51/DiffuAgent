@@ -5,9 +5,8 @@ dependencies:
   - python=3.12
   - pip
   - pip:
-      # LLaDA-8B-Instruct local inference uses Fast-dLLM v1 code. The torch
-      # wheel is installed from the cu118 index by the bootstrap script because
-      # conda environment files cannot reliably express that index per package.
+      - --extra-index-url https://download.pytorch.org/whl/cu118
+      - torch==2.7.0+cu118
       - transformers==4.49.0
       - tokenizers==0.21.4
       - huggingface-hub==0.36.2
