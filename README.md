@@ -84,7 +84,7 @@ runner에서 `TEST_CATEGORIES=multi_turn_base`를 명시하는 형태로 정리�
 SSH key가 설정된 서버 기준:
 
 ```bash
-git clone --branch my-change --recurse-submodules git@github.com:martellato51/DiffuAgent.git
+git clone --branch bfcl-repro --recurse-submodules git@github.com:martellato51/DiffuAgent.git
 cd DiffuAgent
 ```
 
