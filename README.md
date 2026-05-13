@@ -24,7 +24,7 @@ submodule 포인터:
 | Path | Branch | 현재 commit | 용도 |
 |---|---|---|---|
 | `unified_envs/gorilla` | `diffuagent-bfcl` | `658f347` | BFCL v4 기반 DiffuAgent backbone 평가 |
-| `unified_envs/gorilla_bfcl_v3` | `diffuagent-bfcl-v3` | `6f6a16f` | 원본 Gorilla/BFCL의 BFCL v3 stable 기준 커밋 `ea13468`에서 분기한 v3 재현 및 v3/v4 prompt/decoder 비교 |
+| `unified_envs/gorilla_bfcl_v3` | `diffuagent-bfcl-v3` | `d0fea0a` | 원본 Gorilla/BFCL의 BFCL v3 stable 기준 커밋 `ea13468`에서 분기한 v3 재현, v3/v4 prompt/decoder 비교, LLaDA OOM 분석용 device-map 옵션 |
 
 최근 관련 커밋:
 
@@ -32,7 +32,7 @@ submodule 포인터:
 |---|---|---|
 | DiffuAgent parent | `c040d39` | BFCL v3/v4 Gorilla submodule을 동시에 추적 |
 | Gorilla v4 submodule | `658f347` | v4 실험 job 정리, LLaDA 기본값 보정 |
-| Gorilla v3 submodule | `6f6a16f` | BFCL v3 재현용 DiffuAgent handler, jobs, whitelist, prompt/decoder 실험 옵션 추가 |
+| Gorilla v3 submodule | `d0fea0a` | BFCL v3 재현용 DiffuAgent handler, jobs, whitelist, prompt/decoder 실험 옵션과 LLaDA device-map 옵션 추가 |
 
 v3 branch의 기준점:
 
@@ -42,8 +42,8 @@ ea13468e4423454d0c213704fb87cf7cb3990433
 ```
 
 `diffuagent-bfcl-v3`는 위 원본 Gorilla/BFCL의 BFCL v3 stable 기준 커밋에서
-새 branch를 만든 뒤, DiffuAgent 재현용 변경사항을 한 commit
-`6f6a16ff5ebb6c191f69c72ab6155dc30ad9d0b1`로 얹은 상태입니다.
+새 branch를 만든 뒤, DiffuAgent 재현용 변경사항과 LLaDA multi-turn OOM
+분석용 handler 옵션을 얹은 상태입니다.
 
 ## 현재 재현 진행상황
 
@@ -78,6 +78,36 @@ category 이름은 BFCL 버전에 따라 다릅니다. v3는 `simple`, `java`,
 multi-turn은 보조적으로 `multi_turn_base` 50개를 실행해 확인했습니다. 현재
 README의 실행 명령도 single-turn wrapper를 우선 제시하고, multi-turn은 공통
 runner에서 `TEST_CATEGORIES=multi_turn_base`를 명시하는 형태로 정리되어 있습니다.
+
+### LLaDA multi-turn OOM 확인
+
+BFCL v3 `multi_turn_base` 50개 재현 중 LLaDA는 일부 case에서 generation 중
+OOM이 발생했습니다. 확인된 OOM 위치는 Fast-dLLM LLaDA generation의
+`F.softmax(logits.to(torch.float64), dim=-1)` 경로였습니다. 입력 truncate는
+기본값에서 켜지지 않습니다.
+
+재현 및 분석을 위해 v3 submodule의 LLaDA handler는 다음 env를 지원합니다.
+
+```bash
+LLADA_DEVICE_MAP=auto
+LLADA_MAX_MEMORY=0:6GiB,1:18GiB
+```
+
+`LLADA_MAX_MEMORY`를 비우면 기존과 같이 `device_map="auto"`만 사용합니다.
+handler는 로딩된 `hf_device_map`과 device별 parameter allocation을 출력하므로,
+다른 서버에서는 먼저 이 로그로 실제 weight placement를 확인합니다.
+
+현재 서버에서 `llada_mt_23443`의 OOM case를 재실행해 채운 결과는
+`multi_turn_base` 50개 전체에 대해 평가되었습니다.
+
+```text
+result entries: 50
+score total_count: 50
+accuracy: 0.0
+```
+
+accuracy가 0인 것은 result 누락이 아니라 모델 응답 format/decode 실패 문제로
+해석해야 합니다.
 
 ## Clone 및 submodule 받기
 
