@@ -25,6 +25,7 @@ logger/
 
 # Environment
 .env
+env.local.sh
 .venv
 venv/
 ENV/

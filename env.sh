@@ -2,6 +2,11 @@
 # Shared server-specific paths and environment settings for DiffuAgent jobs.
 # Per-checkout jobs should set BFCL_ROOT before sourcing this file.
 
+DIFFUAGENT_ENV_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [[ -f "${DIFFUAGENT_ENV_DIR}/env.local.sh" ]]; then
+    source "${DIFFUAGENT_ENV_DIR}/env.local.sh"
+fi
+
 export RESEARCH_ROOT="${RESEARCH_ROOT:-/home/ilju/research}"
 export DIFFUAGENT_ROOT="${DIFFUAGENT_ROOT:-${RESEARCH_ROOT}/DiffuAgent}"
 export FAST_DLLM_LLADA_PATH="${FAST_DLLM_LLADA_PATH:-${RESEARCH_ROOT}/Fast-dLLM/v1/llada}"
