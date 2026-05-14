@@ -32,6 +32,8 @@ ENV/
 # Results and outputs
 result/
 score/
+think_parallel_v0/logs/
+think_parallel_v0/outputs/
 
 # Temporary files
 *.backup
