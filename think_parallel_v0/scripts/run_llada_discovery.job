@@ -7,13 +7,18 @@
 #SBATCH --gres=gpu:2
 #SBATCH --mem=64G
 #SBATCH --time=24:00:00
-#SBATCH --output=/home/ilju/research/DiffuAgent/think_parallel_v0/logs/bfcl_think_parallel.%j.log
-#SBATCH --error=/home/ilju/research/DiffuAgent/think_parallel_v0/logs/bfcl_think_parallel.%j.log
+#SBATCH --output=think_parallel_v0/logs/bfcl_think_parallel.%j.log
+#SBATCH --error=think_parallel_v0/logs/bfcl_think_parallel.%j.log
 
 set -euo pipefail
 
-EXPERIMENT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-DIFFUAGENT_ROOT="$(cd "${EXPERIMENT_ROOT}/.." && pwd)"
+if [[ -n "${SLURM_SUBMIT_DIR:-}" && -f "${SLURM_SUBMIT_DIR}/env.sh" ]]; then
+  DIFFUAGENT_ROOT="$(cd "${SLURM_SUBMIT_DIR}" && pwd)"
+  EXPERIMENT_ROOT="${DIFFUAGENT_ROOT}/think_parallel_v0"
+else
+  EXPERIMENT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+  DIFFUAGENT_ROOT="$(cd "${EXPERIMENT_ROOT}/.." && pwd)"
+fi
 RESEARCH_ROOT="${RESEARCH_ROOT:-$(cd "${DIFFUAGENT_ROOT}/.." && pwd)}"
 BFCL_ROOT="${BFCL_ROOT:-${DIFFUAGENT_ROOT}/unified_envs/gorilla_bfcl_v3/berkeley-function-call-leaderboard}"
 
