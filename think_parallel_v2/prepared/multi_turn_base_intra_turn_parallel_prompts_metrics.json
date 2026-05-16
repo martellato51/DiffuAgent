@@ -1,0 +1,12 @@
+{
+  "prepared_prompts_path": "/home/ilju/research/DiffuAgent/think_parallel_v2/prepared/multi_turn_base_intra_turn_parallel_prompts.jsonl",
+  "manifest_path": "/home/ilju/research/DiffuAgent/think_parallel_v2/prepared/multi_turn_base_intra_turn_parallel_prompts_manifest.jsonl",
+  "category": "multi_turn_base",
+  "mode": "llmcompiler_plan",
+  "graphs_path": "/home/ilju/research/ParallelAgent/data/annotations/bfcl_v3_think_parallel_multi_turn_base_graphs.jsonl",
+  "episode_filter": "intra_turn_parallel",
+  "n_episodes": 73,
+  "n_turn_prompts": 240,
+  "n_gold_calls": 499,
+  "has_replay_error_observation": false
+}

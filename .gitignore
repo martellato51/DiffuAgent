@@ -35,6 +35,7 @@ result/
 score/
 think_parallel_v0/logs/
 think_parallel_v0/outputs/
+**/.codex_judge_cache/
 
 # Temporary files
 *.backup
