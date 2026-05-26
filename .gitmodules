@@ -1,0 +1,8 @@
+[submodule "unified_envs/gorilla"]
+	path = unified_envs/gorilla
+	url = git@github.com:martellato51/gorilla.git
+	branch = diffuagent-bfcl
+[submodule "unified_envs/gorilla_bfcl_v3"]
+	path = unified_envs/gorilla_bfcl_v3
+	url = git@github.com:martellato51/gorilla.git
+	branch = diffuagent-bfcl-v3

@@ -1,0 +1,7931 @@
+{
+  "run": {
+    "category": "multi_turn_base",
+    "mode": "llmcompiler_plan",
+    "ids": [
+      "multi_turn_base_105",
+      "multi_turn_base_113",
+      "multi_turn_base_123",
+      "multi_turn_base_128",
+      "multi_turn_base_132",
+      "multi_turn_base_134",
+      "multi_turn_base_135",
+      "multi_turn_base_143",
+      "multi_turn_base_15",
+      "multi_turn_base_151",
+      "multi_turn_base_155",
+      "multi_turn_base_171",
+      "multi_turn_base_173",
+      "multi_turn_base_174",
+      "multi_turn_base_175",
+      "multi_turn_base_18",
+      "multi_turn_base_183",
+      "multi_turn_base_185",
+      "multi_turn_base_192",
+      "multi_turn_base_198",
+      "multi_turn_base_3",
+      "multi_turn_base_31",
+      "multi_turn_base_32",
+      "multi_turn_base_34",
+      "multi_turn_base_35",
+      "multi_turn_base_39",
+      "multi_turn_base_41",
+      "multi_turn_base_44",
+      "multi_turn_base_48",
+      "multi_turn_base_5",
+      "multi_turn_base_50",
+      "multi_turn_base_53",
+      "multi_turn_base_54",
+      "multi_turn_base_55",
+      "multi_turn_base_56",
+      "multi_turn_base_57",
+      "multi_turn_base_58",
+      "multi_turn_base_59",
+      "multi_turn_base_60",
+      "multi_turn_base_61",
+      "multi_turn_base_62",
+      "multi_turn_base_63",
+      "multi_turn_base_64",
+      "multi_turn_base_65",
+      "multi_turn_base_66",
+      "multi_turn_base_67",
+      "multi_turn_base_68",
+      "multi_turn_base_69",
+      "multi_turn_base_70",
+      "multi_turn_base_71",
+      "multi_turn_base_72",
+      "multi_turn_base_73",
+      "multi_turn_base_74",
+      "multi_turn_base_76",
+      "multi_turn_base_77",
+      "multi_turn_base_79",
+      "multi_turn_base_80",
+      "multi_turn_base_81",
+      "multi_turn_base_82",
+      "multi_turn_base_83",
+      "multi_turn_base_84",
+      "multi_turn_base_85",
+      "multi_turn_base_86",
+      "multi_turn_base_87",
+      "multi_turn_base_88",
+      "multi_turn_base_89",
+      "multi_turn_base_90",
+      "multi_turn_base_91",
+      "multi_turn_base_92",
+      "multi_turn_base_93",
+      "multi_turn_base_96",
+      "multi_turn_base_97",
+      "multi_turn_base_98"
+    ],
+    "prepared_prompts_path": "/home/ilju/research/DiffuAgent/think_parallel_v2/prepared/multi_turn_base_intra_turn_parallel_prompts.jsonl",
+    "ids_file": null,
+    "graphs_path": null,
+    "episode_filter": "prepared",
+    "bfcl_root": "/home/ilju/research/DiffuAgent/unified_envs/gorilla_bfcl_v3/berkeley-function-call-leaderboard",
+    "output_dir": "/home/ilju/research/DiffuAgent/think_parallel_v2/outputs/llada_multiturn_base",
+    "dry_run": false,
+    "allow_gold_replay_errors": false,
+    "n_episodes": 73,
+    "n_turn_generations": 240,
+    "note": "Gold graph hops are not used during generation. Graph data is for post-hoc analysis."
+  },
+  "parse": {
+    "total_generations": 240,
+    "parsed_generations": 240,
+    "format_parse_rate": 1.0,
+    "total_units": 1316,
+    "mean_units_per_generation": 5.483333333333333,
+    "records": [
+      {
+        "question_id": "multi_turn_base_3",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 12,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_3",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 10,
+        "gold_n_calls": 4,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h2",
+            "h3",
+            "h4",
+            "h5"
+          ],
+          "n_gold_hops": 4,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h4",
+              "h5"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h2"
+            ],
+            [
+              "h3"
+            ],
+            [
+              "h4",
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_5",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 13,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ],
+            [
+              "h2"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_5",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h3",
+            "h4"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h3",
+              "h4"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h3",
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_5",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: authenticate",
+        "n_units": 6,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h5",
+            "h6"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ],
+            [
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_5",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 3,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h7"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h7"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_15",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "missing <END_PLAN>",
+        "n_units": 13,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_15",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 5,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h2"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h2"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_15",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 1,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h3"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h3"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_15",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 3,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h4",
+            "h5",
+            "h6"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 3,
+          "intra_turn_antichain_pairs": [
+            [
+              "h4",
+              "h5"
+            ],
+            [
+              "h4",
+              "h6"
+            ],
+            [
+              "h5",
+              "h6"
+            ]
+          ],
+          "turn_width": 3,
+          "turn_layers": [
+            [
+              "h4",
+              "h5",
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_15",
+        "turn_index": 4,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 4,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 4,
+          "gold_hop_ids": [
+            "h7"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h7"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_18",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 3,
+        "gold_n_calls": 5,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5"
+          ],
+          "n_gold_hops": 5,
+          "n_intra_turn_antichain_pairs": 6,
+          "intra_turn_antichain_pairs": [
+            [
+              "h2",
+              "h3"
+            ],
+            [
+              "h2",
+              "h4"
+            ],
+            [
+              "h2",
+              "h5"
+            ],
+            [
+              "h3",
+              "h4"
+            ],
+            [
+              "h3",
+              "h5"
+            ],
+            [
+              "h4",
+              "h5"
+            ]
+          ],
+          "turn_width": 4,
+          "turn_layers": [
+            [
+              "h1"
+            ],
+            [
+              "h2",
+              "h3",
+              "h4",
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_18",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h6",
+            "h7"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h6",
+              "h7"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h6",
+              "h7"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_18",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 6,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h8",
+            "h9"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h8"
+            ],
+            [
+              "h9"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_31",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 6,
+        "gold_n_calls": 5,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5"
+          ],
+          "n_gold_hops": 5,
+          "n_intra_turn_antichain_pairs": 9,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h3"
+            ],
+            [
+              "h1",
+              "h4"
+            ],
+            [
+              "h1",
+              "h5"
+            ],
+            [
+              "h2",
+              "h3"
+            ],
+            [
+              "h2",
+              "h4"
+            ],
+            [
+              "h2",
+              "h5"
+            ],
+            [
+              "h3",
+              "h4"
+            ],
+            [
+              "h3",
+              "h5"
+            ],
+            [
+              "h4",
+              "h5"
+            ]
+          ],
+          "turn_width": 4,
+          "turn_layers": [
+            [
+              "h1",
+              "h3",
+              "h4",
+              "h5"
+            ],
+            [
+              "h2"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_31",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 6,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h6",
+            "h7",
+            "h8"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h6"
+            ],
+            [
+              "h7"
+            ],
+            [
+              "h8"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_32",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_32",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 12,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h3",
+            "h4",
+            "h5"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h3",
+              "h4"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h3",
+              "h4"
+            ],
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_34",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_34",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 14,
+        "gold_n_calls": 4,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h2",
+            "h3",
+            "h4",
+            "h5"
+          ],
+          "n_gold_hops": 4,
+          "n_intra_turn_antichain_pairs": 2,
+          "intra_turn_antichain_pairs": [
+            [
+              "h2",
+              "h4"
+            ],
+            [
+              "h3",
+              "h4"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h2",
+              "h4"
+            ],
+            [
+              "h3"
+            ],
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_35",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 27,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ],
+            [
+              "h2"
+            ],
+            [
+              "h3"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_35",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 7,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h4"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_35",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 6,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h5",
+            "h6",
+            "h7"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h5",
+              "h6"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h5",
+              "h6"
+            ],
+            [
+              "h7"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_39",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 0,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_39",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 17,
+        "gold_n_calls": 7,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6",
+            "h7",
+            "h8"
+          ],
+          "n_gold_hops": 7,
+          "n_intra_turn_antichain_pairs": 12,
+          "intra_turn_antichain_pairs": [
+            [
+              "h3",
+              "h5"
+            ],
+            [
+              "h3",
+              "h6"
+            ],
+            [
+              "h3",
+              "h7"
+            ],
+            [
+              "h3",
+              "h8"
+            ],
+            [
+              "h4",
+              "h5"
+            ],
+            [
+              "h4",
+              "h6"
+            ],
+            [
+              "h4",
+              "h7"
+            ],
+            [
+              "h4",
+              "h8"
+            ],
+            [
+              "h5",
+              "h7"
+            ],
+            [
+              "h5",
+              "h8"
+            ],
+            [
+              "h6",
+              "h7"
+            ],
+            [
+              "h6",
+              "h8"
+            ]
+          ],
+          "turn_width": 3,
+          "turn_layers": [
+            [
+              "h2"
+            ],
+            [
+              "h3",
+              "h5",
+              "h7"
+            ],
+            [
+              "h4",
+              "h6",
+              "h8"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_39",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 4,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h9"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h9"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_39",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h10"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h10"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_41",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 0,
+        "gold_n_calls": 5,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5"
+          ],
+          "n_gold_hops": 5,
+          "n_intra_turn_antichain_pairs": 5,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h3"
+            ],
+            [
+              "h1",
+              "h4"
+            ],
+            [
+              "h2",
+              "h3"
+            ],
+            [
+              "h2",
+              "h4"
+            ],
+            [
+              "h3",
+              "h4"
+            ]
+          ],
+          "turn_width": 3,
+          "turn_layers": [
+            [
+              "h1",
+              "h3",
+              "h4"
+            ],
+            [
+              "h2"
+            ],
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_41",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 7,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h6"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_44",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "action ids are not increasing; action ids are not unique; action 2 references non-preceding dependency $5000; action 2 references non-preceding dependency $6000; action 2 references non-preceding dependency $7000; action 2 references non-preceding dependency $8000; action 2 references non-preceding dependency $5000; action 2 references non-preceding dependency $6000; action 2 references non-preceding dependency $7000; action 2 references non-preceding dependency $8000",
+        "n_units": 4,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ],
+            [
+              "h2"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_44",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "action 3 references non-preceding dependency $5000; action 3 references non-preceding dependency $6000; action 3 references non-preceding dependency $7000; action 3 references non-preceding dependency $8000; action 4 references non-preceding dependency $5000; action 4 references non-preceding dependency $6000; action 4 references non-preceding dependency $7000; action 4 references non-preceding dependency $8000; invalid tool names: split",
+        "n_units": 5,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h3"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h3"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_44",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "action 2 references non-preceding dependency $5000; action 2 references non-preceding dependency $6000; action 2 references non-preceding dependency $7000; action 2 references non-preceding dependency $8000",
+        "n_units": 6,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h4",
+            "h5"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h4",
+              "h5"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h4",
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_48",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 11,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ],
+            [
+              "h2"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_48",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 6,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h3",
+            "h4"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h3",
+              "h4"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h3",
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_48",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 6,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h5"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_50",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 6,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_53",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_53",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: checkBatteryVoltage, checkEngineStatus, checkFuelLevel",
+        "n_units": 28,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h2",
+            "h3",
+            "h4"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 2,
+          "intra_turn_antichain_pairs": [
+            [
+              "h2",
+              "h3"
+            ],
+            [
+              "h2",
+              "h4"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h2",
+              "h3"
+            ],
+            [
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_53",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: checkTireCondition; missing <END_PLAN>",
+        "n_units": 4,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h5"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_53",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 5,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h6"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_54",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 4,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3",
+            "h4"
+          ],
+          "n_gold_hops": 4,
+          "n_intra_turn_antichain_pairs": 5,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h1",
+              "h3"
+            ],
+            [
+              "h1",
+              "h4"
+            ],
+            [
+              "h2",
+              "h3"
+            ],
+            [
+              "h2",
+              "h4"
+            ]
+          ],
+          "turn_width": 3,
+          "turn_layers": [
+            [
+              "h1",
+              "h2",
+              "h3"
+            ],
+            [
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_54",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: share_tire_pressure_status",
+        "n_units": 5,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h5",
+            "h6"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ],
+            [
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_54",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 3,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h7"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h7"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_55",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: checkFuelLevel",
+        "n_units": 3,
+        "gold_n_calls": 5,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5"
+          ],
+          "n_gold_hops": 5,
+          "n_intra_turn_antichain_pairs": 8,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h3"
+            ],
+            [
+              "h1",
+              "h4"
+            ],
+            [
+              "h1",
+              "h5"
+            ],
+            [
+              "h2",
+              "h3"
+            ],
+            [
+              "h2",
+              "h4"
+            ],
+            [
+              "h2",
+              "h5"
+            ],
+            [
+              "h3",
+              "h4"
+            ],
+            [
+              "h3",
+              "h5"
+            ]
+          ],
+          "turn_width": 3,
+          "turn_layers": [
+            [
+              "h1",
+              "h3",
+              "h4"
+            ],
+            [
+              "h2",
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_55",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 5,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h6"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_55",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 5,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h7"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h7"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_55",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: update_ticket",
+        "n_units": 3,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h8"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h8"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_55",
+        "turn_index": 4,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: update_ticket",
+        "n_units": 3,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 4,
+          "gold_hop_ids": [
+            "h9"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h9"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_56",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 7,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h3"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_56",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: getCarStatus",
+        "n_units": 12,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h4",
+            "h5"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h4"
+            ],
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_56",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 7,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h6",
+            "h7",
+            "h8"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h6",
+              "h7"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h6",
+              "h7"
+            ],
+            [
+              "h8"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_57",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 8,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h3"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_57",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 6,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h4"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_58",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 8,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h3"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_58",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 7,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h4",
+            "h5"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h4",
+              "h5"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h4",
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_58",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 8,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h6",
+            "h7",
+            "h8"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 2,
+          "intra_turn_antichain_pairs": [
+            [
+              "h6",
+              "h7"
+            ],
+            [
+              "h6",
+              "h8"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h6",
+              "h7"
+            ],
+            [
+              "h8"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_58",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 5,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h9"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h9"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_59",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 8,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h3"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_59",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: convert_imperial_si_conversion, get_fuel_level",
+        "n_units": 5,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h4",
+            "h5"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h4"
+            ],
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_59",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: calculateFuelNeeded",
+        "n_units": 5,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h6"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_59",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 7,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h7",
+            "h8",
+            "h9"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 2,
+          "intra_turn_antichain_pairs": [
+            [
+              "h7",
+              "h8"
+            ],
+            [
+              "h7",
+              "h9"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h7",
+              "h8"
+            ],
+            [
+              "h9"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_59",
+        "turn_index": 4,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 6,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 4,
+          "gold_hop_ids": [
+            "h10"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h10"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_60",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 2,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h1",
+              "h3"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h3"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_60",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 4,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h4"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_60",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: send_ticket_to_service_team",
+        "n_units": 5,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h5"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_60",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: get_ticket_details",
+        "n_units": 4,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h6"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_60",
+        "turn_index": 4,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 4,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 4,
+          "gold_hop_ids": [
+            "h7"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h7"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_61",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: get_current_fuel_level",
+        "n_units": 10,
+        "gold_n_calls": 4,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3",
+            "h4"
+          ],
+          "n_gold_hops": 4,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h3"
+            ],
+            [
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_61",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 7,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h5"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_61",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: getBatteryStatus, getEngineStatus",
+        "n_units": 11,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h6",
+            "h7",
+            "h8"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 2,
+          "intra_turn_antichain_pairs": [
+            [
+              "h6",
+              "h7"
+            ],
+            [
+              "h6",
+              "h8"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h6",
+              "h7"
+            ],
+            [
+              "h8"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_61",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 4,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h9"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h9"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_62",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 4,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3",
+            "h4"
+          ],
+          "n_gold_hops": 4,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h3"
+            ],
+            [
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_62",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 4,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h5"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_62",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: checkFuelLevel",
+        "n_units": 2,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h6",
+            "h7"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h6"
+            ],
+            [
+              "h7"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_62",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "missing <END_PLAN>",
+        "n_units": 5,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h8"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h8"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_63",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 12,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_63",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 4,
+        "gold_n_calls": 5,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6"
+          ],
+          "n_gold_hops": 5,
+          "n_intra_turn_antichain_pairs": 7,
+          "intra_turn_antichain_pairs": [
+            [
+              "h2",
+              "h3"
+            ],
+            [
+              "h2",
+              "h4"
+            ],
+            [
+              "h2",
+              "h5"
+            ],
+            [
+              "h2",
+              "h6"
+            ],
+            [
+              "h3",
+              "h4"
+            ],
+            [
+              "h3",
+              "h5"
+            ],
+            [
+              "h4",
+              "h5"
+            ]
+          ],
+          "turn_width": 4,
+          "turn_layers": [
+            [
+              "h2",
+              "h3",
+              "h4",
+              "h5"
+            ],
+            [
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_63",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 1,
+        "gold_n_calls": 4,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h7",
+            "h8",
+            "h9",
+            "h10"
+          ],
+          "n_gold_hops": 4,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h7",
+              "h8"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h7",
+              "h8"
+            ],
+            [
+              "h9"
+            ],
+            [
+              "h10"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_64",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 4,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h3"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_64",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h4",
+            "h5"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h4"
+            ],
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_65",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: checkTirePressure, checkTirePressures, getBatteryVoltage, getFuelLevel, postTweet",
+        "n_units": 15,
+        "gold_n_calls": 7,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6",
+            "h7"
+          ],
+          "n_gold_hops": 7,
+          "n_intra_turn_antichain_pairs": 14,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h3"
+            ],
+            [
+              "h1",
+              "h5"
+            ],
+            [
+              "h1",
+              "h6"
+            ],
+            [
+              "h2",
+              "h3"
+            ],
+            [
+              "h2",
+              "h5"
+            ],
+            [
+              "h2",
+              "h6"
+            ],
+            [
+              "h3",
+              "h5"
+            ],
+            [
+              "h3",
+              "h6"
+            ],
+            [
+              "h3",
+              "h7"
+            ],
+            [
+              "h4",
+              "h5"
+            ],
+            [
+              "h4",
+              "h6"
+            ],
+            [
+              "h4",
+              "h7"
+            ],
+            [
+              "h5",
+              "h6"
+            ],
+            [
+              "h5",
+              "h7"
+            ]
+          ],
+          "turn_width": 4,
+          "turn_layers": [
+            [
+              "h1",
+              "h3",
+              "h5",
+              "h6"
+            ],
+            [
+              "h2"
+            ],
+            [
+              "h4",
+              "h7"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_65",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "missing <END_PLAN>",
+        "n_units": 2,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h8",
+            "h9"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h8",
+              "h9"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h8",
+              "h9"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_66",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 10,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_66",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 9,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h2"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h2"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_66",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 4,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h3",
+            "h4",
+            "h5"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h3",
+              "h4"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h3",
+              "h4"
+            ],
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_66",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: navigateToDestination",
+        "n_units": 5,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h6"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_67",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 6,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h3"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_67",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: calculate_fuel_needed, calculate_fuel_required, get_fuel_efficiency, get_fuel_level",
+        "n_units": 7,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h4"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_67",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 14,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h5"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_67",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: checkBatteryStatus, checkBrakeStatus, checkCruiseStatus, checkCurrentSpeed, checkEngineStatus, checkFuelLevel, checkHeadlightStatus",
+        "n_units": 8,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h6",
+            "h7",
+            "h8"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 2,
+          "intra_turn_antichain_pairs": [
+            [
+              "h6",
+              "h7"
+            ],
+            [
+              "h6",
+              "h8"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h6",
+              "h7"
+            ],
+            [
+              "h8"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_68",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 13,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_68",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: checkEngineStatus",
+        "n_units": 15,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h2",
+            "h3",
+            "h4"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 2,
+          "intra_turn_antichain_pairs": [
+            [
+              "h2",
+              "h3"
+            ],
+            [
+              "h2",
+              "h4"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h2",
+              "h3"
+            ],
+            [
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_68",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: checkTirePressure",
+        "n_units": 5,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h5",
+            "h6"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ],
+            [
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_68",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 7,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h7"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h7"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_68",
+        "turn_index": 4,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: create_tweet",
+        "n_units": 4,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 4,
+          "gold_hop_ids": [
+            "h8"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h8"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_69",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 12,
+        "gold_n_calls": 5,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5"
+          ],
+          "n_gold_hops": 5,
+          "n_intra_turn_antichain_pairs": 7,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h1",
+              "h4"
+            ],
+            [
+              "h1",
+              "h5"
+            ],
+            [
+              "h2",
+              "h4"
+            ],
+            [
+              "h2",
+              "h5"
+            ],
+            [
+              "h3",
+              "h4"
+            ],
+            [
+              "h3",
+              "h5"
+            ]
+          ],
+          "turn_width": 3,
+          "turn_layers": [
+            [
+              "h1",
+              "h2",
+              "h4"
+            ],
+            [
+              "h3",
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_69",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 4,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h6",
+            "h7",
+            "h8",
+            "h9"
+          ],
+          "n_gold_hops": 4,
+          "n_intra_turn_antichain_pairs": 5,
+          "intra_turn_antichain_pairs": [
+            [
+              "h6",
+              "h7"
+            ],
+            [
+              "h6",
+              "h8"
+            ],
+            [
+              "h6",
+              "h9"
+            ],
+            [
+              "h7",
+              "h9"
+            ],
+            [
+              "h8",
+              "h9"
+            ]
+          ],
+          "turn_width": 3,
+          "turn_layers": [
+            [
+              "h6",
+              "h7",
+              "h9"
+            ],
+            [
+              "h8"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_70",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 10,
+        "gold_n_calls": 6,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6"
+          ],
+          "n_gold_hops": 6,
+          "n_intra_turn_antichain_pairs": 11,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h3"
+            ],
+            [
+              "h1",
+              "h4"
+            ],
+            [
+              "h1",
+              "h5"
+            ],
+            [
+              "h2",
+              "h3"
+            ],
+            [
+              "h2",
+              "h4"
+            ],
+            [
+              "h2",
+              "h5"
+            ],
+            [
+              "h3",
+              "h4"
+            ],
+            [
+              "h3",
+              "h5"
+            ],
+            [
+              "h3",
+              "h6"
+            ],
+            [
+              "h4",
+              "h5"
+            ],
+            [
+              "h4",
+              "h6"
+            ]
+          ],
+          "turn_width": 4,
+          "turn_layers": [
+            [
+              "h1",
+              "h3",
+              "h4",
+              "h5"
+            ],
+            [
+              "h2"
+            ],
+            [
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_70",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: navigate_to_nearest_tire_service_center",
+        "n_units": 2,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h7",
+            "h8",
+            "h9"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h7"
+            ],
+            [
+              "h8"
+            ],
+            [
+              "h9"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_71",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 7,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h3"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_71",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: get_current_mileage",
+        "n_units": 7,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h4"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_71",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: fill_fuel_tank, get_fuel_level, get_tank_capacity",
+        "n_units": 5,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h5"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_71",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 5,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h6",
+            "h7",
+            "h8"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h6",
+              "h7"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h6",
+              "h7"
+            ],
+            [
+              "h8"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_71",
+        "turn_index": 4,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 7,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 4,
+          "gold_hop_ids": [
+            "h9"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h9"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_72",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: getFuelLevel",
+        "n_units": 2,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_72",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: checkBatteryStatus",
+        "n_units": 2,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h2",
+            "h3",
+            "h4"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 2,
+          "intra_turn_antichain_pairs": [
+            [
+              "h2",
+              "h3"
+            ],
+            [
+              "h2",
+              "h4"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h2",
+              "h3"
+            ],
+            [
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_72",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 5,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h5"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_72",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 4,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h6",
+            "h7"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h6"
+            ],
+            [
+              "h7"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_72",
+        "turn_index": 4,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: get_messages, log_out",
+        "n_units": 3,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 4,
+          "gold_hop_ids": [
+            "h8"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h8"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_73",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 4,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_73",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 11,
+        "gold_n_calls": 4,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h2",
+            "h3",
+            "h4",
+            "h5"
+          ],
+          "n_gold_hops": 4,
+          "n_intra_turn_antichain_pairs": 5,
+          "intra_turn_antichain_pairs": [
+            [
+              "h2",
+              "h3"
+            ],
+            [
+              "h2",
+              "h4"
+            ],
+            [
+              "h2",
+              "h5"
+            ],
+            [
+              "h3",
+              "h4"
+            ],
+            [
+              "h3",
+              "h5"
+            ]
+          ],
+          "turn_width": 3,
+          "turn_layers": [
+            [
+              "h2",
+              "h3",
+              "h4"
+            ],
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_73",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 5,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h6"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_74",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 3,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ],
+            [
+              "h2"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_74",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: getACSpeed, getBatteryVoltage, getEngineStatus, getFanSpeed, stopEngine",
+        "n_units": 10,
+        "gold_n_calls": 4,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h3",
+            "h4",
+            "h5",
+            "h6"
+          ],
+          "n_gold_hops": 4,
+          "n_intra_turn_antichain_pairs": 3,
+          "intra_turn_antichain_pairs": [
+            [
+              "h3",
+              "h4"
+            ],
+            [
+              "h3",
+              "h5"
+            ],
+            [
+              "h3",
+              "h6"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h3",
+              "h4"
+            ],
+            [
+              "h5"
+            ],
+            [
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_76",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 2,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h1",
+              "h3"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h3"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_76",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 6,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h4"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_77",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 7,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h3"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_77",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "missing <END_PLAN>",
+        "n_units": 7,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h4"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_77",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "missing <END_PLAN>",
+        "n_units": 4,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h5"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_79",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 6,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_79",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: checkBatteryVoltage, checkBrakePedalForce, checkBrakePedalStatus, checkBrakeTemperature, checkEngineStatus, checkFuelLevel, checkHeadlightStatus, checkNavigation, checkParkingBrakeForce, checkParkingBrakeStatus, checkTireTemperature",
+        "n_units": 24,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h2",
+            "h3",
+            "h4"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 2,
+          "intra_turn_antichain_pairs": [
+            [
+              "h2",
+              "h3"
+            ],
+            [
+              "h2",
+              "h4"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h2",
+              "h3"
+            ],
+            [
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_79",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 5,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h5"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_80",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 3,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h3"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_80",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: calculate_fuel_consum, compare_fuel_consumption_to_mileage, get_car_fuel_efficiency, get_car_mileage",
+        "n_units": 6,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h4"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_80",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: book_fuel_station, calculate_fuel_needed, check_drive_feasibility_updated, check_fuel_level, check_fuel_station_availability, fill_fuel_station, find_fuel_station",
+        "n_units": 8,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h5"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_80",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "missing <END_PLAN>",
+        "n_units": 5,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h6",
+            "h7",
+            "h8"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 2,
+          "intra_turn_antichain_pairs": [
+            [
+              "h6",
+              "h7"
+            ],
+            [
+              "h6",
+              "h8"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h6",
+              "h7"
+            ],
+            [
+              "h8"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_80",
+        "turn_index": 4,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: calculateFuelEfficiency; missing <END_PLAN>",
+        "n_units": 5,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 4,
+          "gold_hop_ids": [
+            "h9"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h9"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_81",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: get_fuel_level",
+        "n_units": 3,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ],
+            [
+              "h2"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_81",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: getDashboardStatus",
+        "n_units": 4,
+        "gold_n_calls": 4,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h3",
+            "h4",
+            "h5",
+            "h6"
+          ],
+          "n_gold_hops": 4,
+          "n_intra_turn_antichain_pairs": 3,
+          "intra_turn_antichain_pairs": [
+            [
+              "h3",
+              "h4"
+            ],
+            [
+              "h3",
+              "h5"
+            ],
+            [
+              "h3",
+              "h6"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h3",
+              "h4"
+            ],
+            [
+              "h5"
+            ],
+            [
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_81",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: checkTirePressure",
+        "n_units": 3,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h7"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h7"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_81",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: average_tire_pressure",
+        "n_units": 4,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h8"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h8"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_82",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 19,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ],
+            [
+              "h2"
+            ],
+            [
+              "h3"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_82",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 4,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h4",
+            "h5"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h4"
+            ],
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_82",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 4,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h6",
+            "h7",
+            "h8"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h6",
+              "h7"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h6",
+              "h7"
+            ],
+            [
+              "h8"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_83",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ],
+            [
+              "h2"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_83",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: checkEngineStatus, checkHeadlightsStatus",
+        "n_units": 9,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h3",
+            "h4",
+            "h5"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 2,
+          "intra_turn_antichain_pairs": [
+            [
+              "h3",
+              "h4"
+            ],
+            [
+              "h3",
+              "h5"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h3",
+              "h4"
+            ],
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_83",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 5,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h6"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_84",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 11,
+        "gold_n_calls": 5,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5"
+          ],
+          "n_gold_hops": 5,
+          "n_intra_turn_antichain_pairs": 6,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h1",
+              "h3"
+            ],
+            [
+              "h1",
+              "h4"
+            ],
+            [
+              "h2",
+              "h3"
+            ],
+            [
+              "h2",
+              "h4"
+            ],
+            [
+              "h3",
+              "h4"
+            ]
+          ],
+          "turn_width": 4,
+          "turn_layers": [
+            [
+              "h1",
+              "h2",
+              "h3",
+              "h4"
+            ],
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_84",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 4,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h6",
+            "h7"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h6"
+            ],
+            [
+              "h7"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_85",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 3,
+        "gold_n_calls": 4,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3",
+            "h4"
+          ],
+          "n_gold_hops": 4,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h3"
+            ],
+            [
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_85",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 5,
+        "gold_n_calls": 4,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h5",
+            "h6",
+            "h7",
+            "h8"
+          ],
+          "n_gold_hops": 4,
+          "n_intra_turn_antichain_pairs": 5,
+          "intra_turn_antichain_pairs": [
+            [
+              "h5",
+              "h6"
+            ],
+            [
+              "h5",
+              "h7"
+            ],
+            [
+              "h5",
+              "h8"
+            ],
+            [
+              "h6",
+              "h7"
+            ],
+            [
+              "h6",
+              "h8"
+            ]
+          ],
+          "turn_width": 3,
+          "turn_layers": [
+            [
+              "h5",
+              "h6",
+              "h7"
+            ],
+            [
+              "h8"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_86",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 17,
+        "gold_n_calls": 5,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5"
+          ],
+          "n_gold_hops": 5,
+          "n_intra_turn_antichain_pairs": 5,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h1",
+              "h3"
+            ],
+            [
+              "h1",
+              "h4"
+            ],
+            [
+              "h2",
+              "h3"
+            ],
+            [
+              "h2",
+              "h4"
+            ]
+          ],
+          "turn_width": 3,
+          "turn_layers": [
+            [
+              "h1",
+              "h2",
+              "h3"
+            ],
+            [
+              "h4"
+            ],
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_86",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 5,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h6",
+            "h7"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h6"
+            ],
+            [
+              "h7"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_86",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: send_tweet",
+        "n_units": 3,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h8"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h8"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_87",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 1,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_87",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 13,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h2"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h2"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_87",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 3,
+        "gold_n_calls": 4,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h3",
+            "h4",
+            "h5",
+            "h6"
+          ],
+          "n_gold_hops": 4,
+          "n_intra_turn_antichain_pairs": 5,
+          "intra_turn_antichain_pairs": [
+            [
+              "h3",
+              "h4"
+            ],
+            [
+              "h3",
+              "h5"
+            ],
+            [
+              "h3",
+              "h6"
+            ],
+            [
+              "h4",
+              "h5"
+            ],
+            [
+              "h4",
+              "h6"
+            ]
+          ],
+          "turn_width": 3,
+          "turn_layers": [
+            [
+              "h3",
+              "h4",
+              "h5"
+            ],
+            [
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_87",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 4,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h7",
+            "h8"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h7"
+            ],
+            [
+              "h8"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_88",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "action ids are not unique",
+        "n_units": 4,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_88",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 3,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h2",
+            "h3",
+            "h4"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 3,
+          "intra_turn_antichain_pairs": [
+            [
+              "h2",
+              "h3"
+            ],
+            [
+              "h2",
+              "h4"
+            ],
+            [
+              "h3",
+              "h4"
+            ]
+          ],
+          "turn_width": 3,
+          "turn_layers": [
+            [
+              "h2",
+              "h3",
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_88",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: checkFuelLevel",
+        "n_units": 5,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h5",
+            "h6",
+            "h7"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 2,
+          "intra_turn_antichain_pairs": [
+            [
+              "h5",
+              "h7"
+            ],
+            [
+              "h6",
+              "h7"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h5",
+              "h7"
+            ],
+            [
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_89",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 3,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h3"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_89",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 7,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h4"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_89",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 9,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h5"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_89",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: check_battery_level, check_brake_status, check_fuel_level, check_headlight_status, check_nav_status, check_radio_status, check_wiper_status",
+        "n_units": 9,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h6",
+            "h7",
+            "h8"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h6",
+              "h7"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h6",
+              "h7"
+            ],
+            [
+              "h8"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_90",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "missing <END_PLAN>",
+        "n_units": 3,
+        "gold_n_calls": 5,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5"
+          ],
+          "n_gold_hops": 5,
+          "n_intra_turn_antichain_pairs": 6,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h3"
+            ],
+            [
+              "h1",
+              "h4"
+            ],
+            [
+              "h2",
+              "h3"
+            ],
+            [
+              "h2",
+              "h4"
+            ],
+            [
+              "h3",
+              "h4"
+            ],
+            [
+              "h3",
+              "h5"
+            ]
+          ],
+          "turn_width": 3,
+          "turn_layers": [
+            [
+              "h1",
+              "h3",
+              "h4"
+            ],
+            [
+              "h2"
+            ],
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_90",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 5,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h6",
+            "h7",
+            "h8"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h6",
+              "h7"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h6",
+              "h7"
+            ],
+            [
+              "h8"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_90",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 5,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h9"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h9"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_90",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 3,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h10"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h10"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_91",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 15,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_91",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: get_messages",
+        "n_units": 5,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h3"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h3"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_92",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 5,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_92",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: check_car_mileage, check_fuel_level, evaluate_car_mileage, evaluate_fuel_level, get_car_mileage, get_fuel_level",
+        "n_units": 14,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h2"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h2"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_92",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 11,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h3"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h3"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_92",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: checkBatteryVoltage, checkBrakeStatus, checkEngineStatus, checkFuelLevel, checkHeadlightStatus, checkTirePressure, checkWindshieldStatus",
+        "n_units": 15,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h4",
+            "h5",
+            "h6"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 2,
+          "intra_turn_antichain_pairs": [
+            [
+              "h4",
+              "h5"
+            ],
+            [
+              "h4",
+              "h6"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h4",
+              "h5"
+            ],
+            [
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_92",
+        "turn_index": 4,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 5,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 4,
+          "gold_hop_ids": [
+            "h7",
+            "h8",
+            "h9"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h7"
+            ],
+            [
+              "h8"
+            ],
+            [
+              "h9"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_93",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: getFuelLevel",
+        "n_units": 11,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_93",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: checkTirePressure",
+        "n_units": 3,
+        "gold_n_calls": 5,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6"
+          ],
+          "n_gold_hops": 5,
+          "n_intra_turn_antichain_pairs": 5,
+          "intra_turn_antichain_pairs": [
+            [
+              "h2",
+              "h3"
+            ],
+            [
+              "h2",
+              "h4"
+            ],
+            [
+              "h3",
+              "h4"
+            ],
+            [
+              "h3",
+              "h5"
+            ],
+            [
+              "h3",
+              "h6"
+            ]
+          ],
+          "turn_width": 3,
+          "turn_layers": [
+            [
+              "h2",
+              "h3",
+              "h4"
+            ],
+            [
+              "h5"
+            ],
+            [
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_93",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 5,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h7",
+            "h8"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h7"
+            ],
+            [
+              "h8"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_96",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 4,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 2,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h1",
+              "h3"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h3"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_96",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: estimate_travel_time",
+        "n_units": 3,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h4",
+            "h5",
+            "h6"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h4",
+              "h5"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h4",
+              "h5"
+            ],
+            [
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_97",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 3,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h3"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_97",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 7,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h4"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_97",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 7,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h5"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_97",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 3,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h6",
+            "h7",
+            "h8"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 2,
+          "intra_turn_antichain_pairs": [
+            [
+              "h6",
+              "h7"
+            ],
+            [
+              "h6",
+              "h8"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h6",
+              "h7"
+            ],
+            [
+              "h8"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_97",
+        "turn_index": 4,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: stopEngine",
+        "n_units": 7,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 4,
+          "gold_hop_ids": [
+            "h9"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h9"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_97",
+        "turn_index": 5,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 5,
+          "gold_hop_ids": [
+            "h10"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h10"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_98",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 4,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_98",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 8,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h3",
+            "h4"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h3"
+            ],
+            [
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_98",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: calculate_distance",
+        "n_units": 4,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h5",
+            "h6",
+            "h7"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h5",
+              "h6"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h5",
+              "h6"
+            ],
+            [
+              "h7"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_105",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_105",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: add_stock_to_watchlist",
+        "n_units": 2,
+        "gold_n_calls": 4,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h2",
+            "h3",
+            "h4",
+            "h5"
+          ],
+          "n_gold_hops": 4,
+          "n_intra_turn_antichain_pairs": 3,
+          "intra_turn_antichain_pairs": [
+            [
+              "h3",
+              "h4"
+            ],
+            [
+              "h3",
+              "h5"
+            ],
+            [
+              "h4",
+              "h5"
+            ]
+          ],
+          "turn_width": 3,
+          "turn_layers": [
+            [
+              "h2"
+            ],
+            [
+              "h3",
+              "h4",
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_113",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 3,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_113",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "action ids are not increasing; action ids are not unique",
+        "n_units": 7,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h2",
+            "h3",
+            "h4"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h3",
+              "h4"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h2"
+            ],
+            [
+              "h3",
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_123",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "action 3 references non-preceding dependency $200; action 4 references non-preceding dependency $300",
+        "n_units": 5,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h3"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_123",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "missing <END_PLAN>",
+        "n_units": 2,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h4"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_123",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h5"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_123",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 1,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h6"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_128",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_128",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 4,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h3",
+            "h4"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h3"
+            ],
+            [
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_128",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 3,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h5"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_128",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: notify_user, update_order_status",
+        "n_units": 4,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h6"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_132",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 8,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ],
+            [
+              "h2"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_132",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: add_stock_to_watchlist",
+        "n_units": 2,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h3",
+            "h4"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h3",
+              "h4"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h3",
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_132",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 3,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h5"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_134",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: add_watchlist, get_market_performance_metrics, get_stock_price, get_trade_volume",
+        "n_units": 6,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_134",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: withdraw_order",
+        "n_units": 2,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h3",
+            "h4"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h3"
+            ],
+            [
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_134",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 1,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h5"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_135",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ],
+            [
+              "h2"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_135",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h3",
+            "h4"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h3",
+              "h4"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h3",
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_135",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 3,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h5"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_135",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 3,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h6"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_143",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "action ids are not increasing; action ids are not unique; missing <END_PLAN>",
+        "n_units": 3,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_143",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "action ids are not unique",
+        "n_units": 2,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h2"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h2"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_143",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 3,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h3"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h3"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_143",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "action 3 references non-preceding dependency $10000; invalid tool names: send_notification",
+        "n_units": 3,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h4",
+            "h5",
+            "h6"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h4",
+              "h5"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h4",
+              "h5"
+            ],
+            [
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_151",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 3,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h2",
+              "h3"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1"
+            ],
+            [
+              "h2",
+              "h3"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_151",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h4"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_151",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: authenticate_twitter_for_access_token",
+        "n_units": 2,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h5",
+            "h6"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ],
+            [
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_155",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 4,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_155",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 3,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h3"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h3"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_171",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 3,
+        "gold_n_calls": 4,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3",
+            "h4"
+          ],
+          "n_gold_hops": 4,
+          "n_intra_turn_antichain_pairs": 2,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h3"
+            ],
+            [
+              "h2",
+              "h3"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h3"
+            ],
+            [
+              "h2"
+            ],
+            [
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_171",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 3,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h5",
+            "h6"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h5",
+              "h6"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h5",
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_171",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: retrieve_messages",
+        "n_units": 2,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h7",
+            "h8",
+            "h9"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h7"
+            ],
+            [
+              "h8"
+            ],
+            [
+              "h9"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_173",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: display_cost_info",
+        "n_units": 3,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_173",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 6,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h2",
+            "h3"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h2",
+              "h3"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h2",
+              "h3"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_173",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h4"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_173",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h5"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_174",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 5,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h2",
+              "h3"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1"
+            ],
+            [
+              "h2",
+              "h3"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_174",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 3,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h4"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_174",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: generate_invoice",
+        "n_units": 2,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h5"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_174",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: authenticate_twitter_user",
+        "n_units": 3,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h6",
+            "h7"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h6"
+            ],
+            [
+              "h7"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_174",
+        "turn_index": 4,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: delete_tweet, update_tweet",
+        "n_units": 3,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 4,
+          "gold_hop_ids": [
+            "h8"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h8"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_175",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 3,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 2,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h1",
+              "h3"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h3"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_175",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: authenticate_twitter_account, compose_tweet, like_tweet, retweet_tweet",
+        "n_units": 4,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h4",
+            "h5",
+            "h6"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h4"
+            ],
+            [
+              "h5"
+            ],
+            [
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_183",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 5,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_183",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 5,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h2",
+            "h3"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h2",
+              "h3"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h2",
+              "h3"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_183",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: review_invoice_details",
+        "n_units": 2,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h4"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_183",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 1,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h5"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_183",
+        "turn_index": 4,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: refund_charge",
+        "n_units": 3,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 4,
+          "gold_hop_ids": [
+            "h6"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_183",
+        "turn_index": 5,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: create_tweet",
+        "n_units": 3,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 5,
+          "gold_hop_ids": [
+            "h7",
+            "h8"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h7"
+            ],
+            [
+              "h8"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_185",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 5,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 2,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h3"
+            ],
+            [
+              "h2",
+              "h3"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h3"
+            ],
+            [
+              "h2"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_185",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h4"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_185",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 1,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h5"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_192",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 6,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_192",
+        "turn_index": 1,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 1,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h3"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h3"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_192",
+        "turn_index": 2,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 1,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h4"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h4"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_192",
+        "turn_index": 3,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h5"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_192",
+        "turn_index": 4,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 4,
+          "gold_hop_ids": [
+            "h6"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h6"
+            ]
+          ]
+        }
+      },
+      {
+        "question_id": "multi_turn_base_198",
+        "turn_index": 0,
+        "mode": "llmcompiler_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 5,
+        "gold_n_calls": 5,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5"
+          ],
+          "n_gold_hops": 5,
+          "n_intra_turn_antichain_pairs": 8,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h1",
+              "h3"
+            ],
+            [
+              "h1",
+              "h4"
+            ],
+            [
+              "h1",
+              "h5"
+            ],
+            [
+              "h2",
+              "h4"
+            ],
+            [
+              "h2",
+              "h5"
+            ],
+            [
+              "h3",
+              "h4"
+            ],
+            [
+              "h3",
+              "h5"
+            ]
+          ],
+          "turn_width": 3,
+          "turn_layers": [
+            [
+              "h1",
+              "h2",
+              "h4"
+            ],
+            [
+              "h3",
+              "h5"
+            ]
+          ]
+        }
+      }
+    ]
+  }
+}

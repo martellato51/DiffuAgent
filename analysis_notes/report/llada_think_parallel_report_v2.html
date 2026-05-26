@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LLaDA think_parallel v1-v2 분석 보고서</title>
+<style>
+  :root {
+    --fg: #111; --muted: #6b6b6b; --light: #a8a179;
+    --yellow: #FBD45B; --card: #F5F4EF; --card-alt: #EEECE4;
+    --border: #C0BDAD; --border-light: #E6E0CB; --shadow: #C0BDAD;
+    --red: #c0392b; --green: #1a7a3a; --blue: #1a4a8a; --purple: #6a3d9a;
+    --teal: #0F6E56; --coral: #993C1D;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: #fff; color: var(--fg);
+    max-width: 900px; margin: 0 auto;
+    padding: 48px 24px 80px; line-height: 1.7; font-size: 14px;
+  }
+  h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.8rem; font-weight: 400; line-height: 1.3;
+    margin-bottom: 8px; letter-spacing: -0.5px;
+  }
+  h2 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.25rem; font-weight: 400;
+    margin: 48px 0 16px; padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-light);
+  }
+  h3 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.05rem; font-weight: 400;
+    margin: 28px 0 10px;
+  }
+  h4 {
+    font-family: 'SF Mono', 'Fira Mono', Consolas, monospace;
+    font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.5px; color: var(--red); margin: 20px 0 8px;
+  }
+  h4.h4-green  { color: var(--green); }
+  h4.h4-blue   { color: var(--blue); }
+  h4.h4-purple { color: var(--purple); }
+  h4.h4-teal   { color: var(--teal); }
+  p { margin: 8px 0; }
+  .sub {
+    font-family: 'SF Mono', 'Fira Mono', Consolas, monospace;
+    font-size: 0.78rem; color: var(--light); margin-bottom: 36px;
+  }
+  pre {
+    font-family: 'SF Mono', 'Fira Mono', Consolas, monospace;
+    font-size: 0.82em; background: var(--card);
+    padding: 12px 16px; border-radius: 2px;
+    border: 1px solid var(--border-light);
+    margin: 12px 0; overflow-x: auto; line-height: 1.6;
+    white-space: pre;
+  }
+  code {
+    font-family: 'SF Mono', 'Fira Mono', Consolas, monospace;
+    font-size: 0.82em; background: var(--card);
+    padding: 1px 5px; border-radius: 2px; border: 1px solid var(--border-light);
+  }
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    box-shadow: 3px 3px 0px var(--shadow); padding: 20px; margin: 16px 0;
+  }
+  .card-title { font-weight: 600; margin-bottom: 8px; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.82rem; }
+  th { text-align: left; padding: 8px 10px; border-bottom: 2px solid var(--fg); font-weight: 600; }
+  td { padding: 8px 10px; border-bottom: 1px solid var(--border-light); }
+  td:not(:first-child) { text-align: right; }
+  th:not(:first-child) { text-align: right; }
+  hr { border: none; border-top: 1px solid var(--border-light); margin: 40px 0; }
+  .callout {
+    background: var(--card); border: 1px solid var(--border);
+    padding: 14px 18px; margin: 16px 0; font-size: 0.85rem;
+    border-left: 3px solid var(--yellow);
+  }
+  .callout-teal {
+    background: #f0faf7; border: 1px solid #b2d8cd;
+    padding: 14px 18px; margin: 16px 0; font-size: 0.85rem;
+    border-left: 3px solid var(--teal);
+  }
+  .callout-red {
+    background: #fef5f5; border: 1px solid #e8c4c4;
+    padding: 14px 18px; margin: 16px 0; font-size: 0.85rem;
+    border-left: 3px solid var(--red);
+  }
+  .callout-blue {
+    background: #f0f4fb; border: 1px solid #b2c4e0;
+    padding: 14px 18px; margin: 16px 0; font-size: 0.85rem;
+    border-left: 3px solid var(--blue);
+  }
+  .callout-purple {
+    background: #f9f5ff; border: 1px solid #d0b8f0;
+    padding: 14px 18px; margin: 16px 0; font-size: 0.85rem;
+    border-left: 3px solid var(--purple);
+  }
+  .tag {
+    display: inline-block; padding: 2px 8px; border-radius: 3px;
+    font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .tag-green  { background: #e8f5e9; color: var(--green); }
+  .tag-yellow { background: #fff8e1; color: #b8860b; }
+  .tag-red    { background: #fce4ec; color: var(--red); }
+  .tag-purple { background: #f3e5f5; color: var(--purple); }
+  .tag-blue   { background: #e3f2fd; color: var(--blue); }
+  .tag-teal   { background: #e0f2f1; color: var(--teal); }
+  .muted { color: var(--muted); }
+  .rq-box {
+    background: #f9f5ff; border: 2px solid var(--purple);
+    padding: 20px 24px; margin: 24px 0; line-height: 1.8; font-size: 0.95rem;
+  }
+  ul { padding-left: 20px; margin: 8px 0; }
+  ul li { margin: 4px 0; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+  @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+  .highlight { background: #fff8e1; padding: 1px 4px; }
+  .fig-caption { font-size: 0.82rem; font-weight: 600; margin-bottom: 4px; }
+  .condition-badge {
+    display: inline-block; padding: 2px 8px;
+    font-family: 'SF Mono', 'Fira Mono', Consolas, monospace;
+    font-size: 0.72rem; font-weight: 700;
+    background: var(--card); border: 1px solid var(--border);
+  }
+  .explicit { border-color: var(--blue); color: var(--blue); background: #f0f4fb; }
+  .flat     { border-color: var(--teal); color: var(--teal); background: #f0faf7; }
+  .step-row {
+    display: flex; gap: 8px; align-items: flex-start; margin: 6px 0; font-size: 0.85rem;
+  }
+  .step-num {
+    background: var(--fg); color: #fff;
+    font-family: 'SF Mono', 'Fira Mono', Consolas, monospace;
+    font-size: 0.72rem; font-weight: 700;
+    padding: 1px 6px; border-radius: 2px; flex-shrink: 0; margin-top: 2px;
+  }
+</style>
+</head>
+<body>
+
+<h1>LLaDA think_parallel v1-v2 분석 보고서</h1>
+<p style="font-size:0.95rem;color:#111;">DLM의 BFCL multi-turn tool-use plan 생성 능력 진단 — 선행 v1 실험과 structured state-view v2 비교</p>
+<div class="sub">Il-ju Hahn · 2026-05-18 · Working Note</div>
+
+<hr>
+
+<div class="card" style="box-shadow:none;">
+<p><b>목차</b></p>
+<p><a href="#s1">1. v1 선행 실험</a></p>
+<p><a href="#s2">2. v2 실험 목적</a></p>
+<p><a href="#s3">3. v2 실험 설계</a></p>
+<p><a href="#s4">4. Matcher와 평가 방식</a></p>
+<p><a href="#s5">5. v2 프롬프트: explicit vs flat</a></p>
+<p><a href="#s6">6. v2 실험 결과</a></p>
+<p><a href="#s7">7. Confidence Trace 분석</a></p>
+<p><a href="#s8">8. Notable Cases</a></p>
+<p><a href="#s9">9. 결론</a></p>
+<p><a href="#appendix">Appendix. 분석 방식 예시</a></p>
+</div>
+
+
+<!-- ================================================================ -->
+<h2 id="s1">1. v1 선행 실험</h2>
+
+<p>v1은 v2 이전에 수행한 선행 진단 실험이다. LLaDA가 BFCL function schema를 보고 gold trajectory의 hop-level action intent를 얼마나 복구할 수 있는지 확인하는 것이 목적이었다. BFCL v3 <code>multi_turn_base</code> 50개 sample의 모든 user turn을 이어 붙여 하나의 full goal로 만들고, 모델은 전체 multi-turn goal을 한 번에 본다 (offline full-trajectory planning).</p>
+
+<p>예를 들어 multi-turn sample에 세 개 user turn이 있으면 v1 prompt의 goal은 다음처럼 구성된다. 모델은 이 전체 goal을 한 번에 보고 <code>[A1]</code>, <code>[A2]</code>, ... 형태의 full trajectory action plan을 생성한다.</p>
+
+<div class="card">
+<p>[turn 1] Move log.txt into the archive folder.</p>
+<p>[turn 2] Search the archived log for lines containing "Error".</p>
+<p>[turn 3] Show me the last 20 lines of the archived log.</p>
+</div>
+
+<div class="card">
+<div class="card-title">v1 실험 설정</div>
+<table>
+<tr><th>항목</th><th style="text-align:left;">설정</th></tr>
+<tr><td>data</td><td style="text-align:left;">BFCL v3 <code>multi_turn_base</code> 50 samples</td></tr>
+<tr><td>입력</td><td style="text-align:left;">모든 user turn을 이어 붙인 full goal (offline full-trajectory planning)</td></tr>
+<tr><td>출력 형식</td><td style="text-align:left;"><code>[A#] Use &lt;function_name&gt;: ... Inputs: ...</code></td></tr>
+<tr><td>핵심 질문</td><td style="text-align:left;">function-name anchored action intent recovery</td></tr>
+<tr><td>dependency</td><td style="text-align:left;">직접 예측하지 않음</td></tr>
+</table>
+</div>
+
+<h3>1.1 v1 프롬프트 설계</h3>
+
+<p>v1의 <code>exact_name_a</code> mode는 다음과 같은 action-only format을 요구했다.</p>
+
+<pre>[A1] Use &lt;exact_function_name&gt;: &lt;intended action&gt;. Inputs: &lt;entities, arguments, or result-dependent inputs&gt;.
+[A2] Use &lt;exact_function_name&gt;: &lt;intended action&gt;. Inputs: &lt;entities, arguments, or result-dependent inputs&gt;.</pre>
+
+<p>중요한 prompt rule은 다음이다.</p>
+
+<pre>- Use the exact function name from the available function schema.
+- Each [A] must describe exactly one intended function/tool action.
+- Do not output executable BFCL function-call syntax.
+- Do not output JSON as the final answer format.
+- Do not write thoughts, observations, or final summaries.
+- Include known file names, ids, dates, locations, entities, and literal values when stated.
+- If an input depends on an earlier result, describe that input naturally instead of guessing the concrete value.
+- Use only the available functions.
+- Include only actions needed to satisfy the user request.</pre>
+
+<p><code>Inputs:</code>는 executable JSON argument를 요구하는 필드가 아니다. 목적은 known literal과 prior-result-dependent input을 judge가 구분할 수 있게 하는 것이다. 예를 들어 order id가 이전 <code>place_order</code> 결과에서 나와야 한다면, <code>{"order_id": 1}</code>처럼 concrete value를 invent하지 말고 <code>order_id from previous result</code>처럼 unresolved input으로 남기도록 했다.</p>
+
+<p>이 설계는 v2의 <code>$id</code> reference 또는 flat placeholder 설계로 이어진다. v1에서는 unresolved dependency를 자연어로 남겼고, v2에서는 이를 더 구조화된 output syntax 안에서 보려고 했다.</p>
+
+<h3>1.2 v1 결과</h3>
+
+<h4>결과 요약</h4>
+<table>
+<tr><th>지표</th><th>값</th><th style="text-align:left;">해석</th></tr>
+<tr><td>samples</td><td>50</td><td style="text-align:left;">평가 완료</td></tr>
+<tr><td>gold hops</td><td>293</td><td style="text-align:left;">회수해야 할 reference trajectory hop 수</td></tr>
+<tr><td>generated actions</td><td>172</td><td style="text-align:left;">모델이 만든 action 수</td></tr>
+<tr><td>generated / gold ratio</td><td><span class="tag tag-red">58.7%</span></td><td style="text-align:left;">필요 hop보다 훨씬 적게 생성</td></tr>
+<tr><td>format parse rate</td><td><span class="tag tag-green">100%</span></td><td style="text-align:left;">출력 형식 안정</td></tr>
+<tr><td>strict single-action recall</td><td><span class="tag tag-red">21.8%</span></td><td style="text-align:left;">exact behavior + compatible input 기준</td></tr>
+<tr><td>partial-or-better recall</td><td><span class="tag tag-yellow">33.4%</span></td><td style="text-align:left;">느슨하게 봐도 gold hop 약 1/3 회수</td></tr>
+<tr><td>function-name validity</td><td><span class="tag tag-yellow">86.6%</span></td><td style="text-align:left;">대부분 schema function name 사용</td></tr>
+<tr><td>hallucinated argument rate</td><td><span class="tag tag-red">19.8%</span></td><td style="text-align:left;">prior result 값을 임의 생성</td></tr>
+</table>
+
+<div class="callout-red">
+  <b>핵심 병목 — Under-generation:</b> 50개 sample 중 44개에서 generated action 수가 gold hop 수보다 적었다. 낮은 recall의 주원인은 judge candidate 문제가 아니라, 필요한 hop을 충분히 생성하지 못한 데 있다. 또한 일부 action에서 <code>tweet</code>, <code>checkTirePressure</code>처럼 schema 밖 tool name을 생성했고, prior result가 필요한 값을 임의 concrete value로 채우는 hallucinated argument 문제도 확인됐다.
+</div>
+
+<h3>1.3 v1 Confidence Trace</h3>
+
+<p>v1도 LLaDA denoising trace를 저장했다. confidence는 mask token을 특정 token으로 commit할 때의 selected-token probability다. action correctness probability가 아니라, generation surface에 대한 모델 내부 확신도에 가깝다.</p>
+
+<div class="card">
+<p>confidence = softmax(logits)[selected_token]</p>
+</div>
+
+<h4>Span-level Confidence</h4>
+<table>
+<tr><th>span</th><th>token 수</th><th>mean</th><th>median</th><th>p10</th><th>p90</th></tr>
+<tr><td>all tokens</td><td>6,400</td><td>0.907</td><td>0.965</td><td>0.692</td><td>0.999</td></tr>
+<tr><td>generated action span</td><td>5,659</td><td>0.900</td><td>0.960</td><td>0.673</td><td>0.999</td></tr>
+<tr style="color:var(--green);font-weight:700;"><td>label span</td><td>516</td><td>0.969</td><td>0.984</td><td>0.932</td><td>1.000</td></tr>
+<tr><td>function/tool name span</td><td>482</td><td>0.879</td><td>0.949</td><td>0.651</td><td>0.999</td></tr>
+<tr><td>intent span</td><td>1,920</td><td>0.869</td><td>0.935</td><td>0.609</td><td>0.999</td></tr>
+<tr><td>known input span</td><td>2,421</td><td>0.918</td><td>0.971</td><td>0.729</td><td>0.999</td></tr>
+</table>
+<p style="font-size:0.82rem;color:var(--muted);"><code>[A1]</code>과 같은 label span의 confidence가 가장 높고 function name·intent span은 상대적으로 낮다. 모델은 출력 format 자체에는 강하게 확신하지만, 어떤 function name과 action intent를 써야 하는지는 더 불안정하다.</p>
+
+<h4>Judge Match Strength별 Confidence</h4>
+<table>
+<tr><th>match strength</th><th>unit 수</th><th>action-span</th><th>function-name</th><th>intent</th><th>known-input</th></tr>
+<tr style="color:var(--green);font-weight:700;"><td>exact</td><td>68</td><td>0.920</td><td>0.899</td><td>0.884</td><td>0.928</td></tr>
+<tr><td>semantic</td><td>10</td><td>0.865</td><td>0.803</td><td>0.856</td><td>0.894</td></tr>
+<tr><td>partial</td><td>38</td><td>0.890</td><td>0.795</td><td>0.874</td><td>0.900</td></tr>
+<tr><td>wrong</td><td>56</td><td>0.874</td><td>0.792</td><td>0.820</td><td>0.903</td></tr>
+</table>
+<p style="font-size:0.82rem;color:var(--muted);">exact match의 confidence가 wrong보다 높기는 하지만 차이가 충분히 크지 않다. 특히 known-input confidence는 wrong에서도 0.903으로 높다. v1 confidence는 error detector보다 span별 generation certainty를 보는 보조 진단 신호로 해석하는 것이 적절하다.</p>
+
+<h3>1.4 v1에서 v2로 넘어간 이유</h3>
+
+<p>v1의 결과는 LLaDA가 BFCL function schema를 보고 tool-use action surface를 만들 수 있음을 보여줬다. 하지만 그 출력만으로는 실패 원인을 충분히 분해하기 어려웠다. Natural-language <code>[A]</code> unit은 action intent judge에는 적합했지만, executable schema, current-turn dependency, state visibility, denoising trace를 정밀하게 분석하기에는 부족했다.</p>
+
+<table>
+<tr><th style="text-align:left;">v1에서 남은 문제</th><th style="text-align:left;">v2 대응</th></tr>
+<tr><td style="text-align:left;">full-trajectory planning — turn별 current planning 불가</td><td style="text-align:left;">episode 유지, current turn마다 별도 generation</td></tr>
+<tr><td style="text-align:left;"><code>[A]</code> 자연어 unit — schema validity 직접 확인 어려움</td><td style="text-align:left;">numbered <code>tool_name(param=value)</code> plan grammar</td></tr>
+<tr><td style="text-align:left;">prior-result input을 자연어로만 표현</td><td style="text-align:left;">explicit <code>$id</code> reference 또는 flat placeholder</td></tr>
+<tr><td style="text-align:left;">hidden path/id — static matching 불공정</td><td style="text-align:left;">deterministic <code>state_view=tree</code> 제공</td></tr>
+<tr><td style="text-align:left;">all-pairs LLM judge 의존도 높음</td><td style="text-align:left;">P0 deterministic matcher + P1 selective judge</td></tr>
+<tr><td style="text-align:left;">dependency/parallelism을 output에서 직접 보기 어려움</td><td style="text-align:left;">explicit DAG condition과 flat condition 비교</td></tr>
+<tr><td style="text-align:left;">confidence가 dependency 구조와 연결 약함</td><td style="text-align:left;">response span, <code>$id</code> dependency, commit step 함께 분석</td></tr>
+</table>
+
+<p>또 다른 중요한 동기는 prompt 구조 자체에 있었다. v1의 자연어 <code>[A]</code> plan에서는 어떤 action이 다른 action의 결과를 필요로 하는지 reference를 안정적으로 찾기 어려웠다. 후처리로 gold DAG와 연결하려 해도, generated plan 내부의 dependency 후보가 명시적으로 남지 않는다.</p>
+
+<div class="card">
+<p>Goal이 user query를 단순히 concat한 점, 최종적으로 보고자 하는 denoising dynamics와 subtask들의 denoising 패턴간의 관계를 보지 못하는 점, 실험설계에 레퍼런스를 찾기 힘들다는 점을 바탕으로 v2 실험을 진행하였다.</p>
+</div>
+
+
+<!-- ================================================================ -->
+<h2 id="s2">2. v2 실험 목적</h2>
+
+<p><code>think_parallel_v2</code>는 BFCL v3 <code>multi_turn_base</code>에서 DLM/LLaDA가 현재 user turn에 필요한 tool-use plan을 LLMCompiler-style grammar로 생성하면서, 병렬 가능한 action과 이전 action 결과가 필요한 action을 구분할 수 있는지를 보기 위한 실험이다.</p>
+
+<div class="rq-box">
+<p><b>Q1.</b> LLaDA가 exact BFCL answer wrapper 없이도 current turn에 필요한 tool action node를 복구할 수 있는가?</p>
+<p style="margin-top:8px;"><b>Q2.</b> 생성된 numbered plan과 denoising trace 안에서 gold DAG의 병렬/순차 구조와 연결될 수 있는 signal이 보이는가?</p>
+</div>
+
+<p>v1은 <code>[A1] Use ...</code> 형태의 natural-language action unit을 만들고 post-hoc judge로 gold hop과 맞췄다. v2는 한 단계 더 직접적으로 LLMCompiler-style plan grammar를 사용한다.</p>
+
+<div class="two-col">
+  <div>
+    <h4>v1 출력 형식</h4>
+    <pre style="font-size:0.80rem;">[A1] Use tool_name: natural-language action.
+     Inputs: known literal or unresolved input.</pre>
+    <p style="font-size:0.82rem;color:var(--muted);">자연어 unit. dependency는 "prior result"처럼 서술.</p>
+  </div>
+  <div>
+    <h4>v2 출력 형식</h4>
+    <pre style="font-size:0.80rem;">Thought: &lt;optional one-line strategy&gt;
+1. tool_name(param=value)
+2. tool_name(param=$1.field)
+&lt;END_PLAN&gt;</pre>
+    <p style="font-size:0.82rem;color:var(--muted);">LLMCompiler-style numbered plan. dependency는 <code>$id</code>로 명시.</p>
+  </div>
+</div>
+
+<p>v2의 explicit condition은 LLMCompiler가 실행 전에 plan DAG를 먼저 만드는 방식에서 아이디어를 가져왔다. 다만 여기서는 일반 LLM agent가 아니라 DLM/LLaDA가 numbered plan을 생성하게 하고, 그 안에서 <code>$id</code> reference를 통해 "이 action은 앞 action 결과가 필요하다"는 구조를 직접 남기도록 했다. 즉 v2의 explicit condition은 LLMCompiler-style 사전 DAG planning 단계를 DLM generation에 적용한 진단 설정이다.</p>
+
+<p>따라서 v2는 v1보다 높은 점수를 만들기 위한 실험이라기보다, v1에서 하나로 뭉쳐 보이던 실패를 tool validity, schema validity, action recovery, dependency recovery, denoising signal로 나누어 보기 위한 후속 실험이다.</p>
+
+<p>이번 state-view rerun에서 비교한 조건은 두 가지다.</p>
+
+<table>
+<tr><th style="text-align:left;">condition</th><th style="text-align:left;">mode</th><th style="text-align:left;">역할</th></tr>
+<tr>
+  <td style="text-align:left;"><span class="condition-badge explicit">smoke_explicit_state_tree</span></td>
+  <td style="text-align:left;"><code>llmcompiler_explicit_dag</code></td>
+  <td style="text-align:left;">deterministic state view 위에서 current-plan 결과가 필요한 argument를 <code>$id</code> 또는 <code>$id.field</code>로 표현하는 explicit DAG condition.</td>
+</tr>
+<tr>
+  <td style="text-align:left;"><span class="condition-badge flat">smoke_flat_state_tree</span></td>
+  <td style="text-align:left;"><code>llmcompiler_flat_plan</code></td>
+  <td style="text-align:left;">deterministic state view 위에서 numbered action reference를 argument 안에 쓰지 않는 flat plan condition. result-dependent argument는 angle-bracket placeholder로 둔다.</td>
+</tr>
+</table>
+
+<p>두 조건의 비교 의도는 단순하다. 같은 state view 위에서 <code>$id</code> reference를 직접 허용할 때와 금지할 때, action recovery와 dependency/denoising signal이 어떻게 달라지는지를 본다.</p>
+
+
+<!-- ================================================================ -->
+<h2 id="s3">3. v2 실험 설계</h2>
+
+<h3>3.1 Episode 유지 + turn별 생성</h3>
+
+<p>BFCL <code>multi_turn_base</code> record는 여러 user turn을 포함한다. v2는 turn을 독립 sample로 완전히 떼어내지 않고 full episode를 유지한다. 다만 모델 호출은 current turn마다 한 번씩 수행한다.</p>
+
+<pre>selected episode:
+  turn 1 → one model generation
+  turn 2 → one model generation with turn 1 previous context
+  turn 3 → one model generation with turn 1-2 previous context</pre>
+
+<p>즉 episode 하나를 한 번의 model call로 처리하는 것이 아니라, episode 안의 각 user turn마다 별도의 generation을 수행한다. 20 episodes가 70 turns를 포함하면 condition 하나당 70번의 model generation이 발생한다.</p>
+
+<h3>3.2 Previous context는 oracle context다</h3>
+
+<p>현재 turn 이전의 user request, gold call, gold observation은 prompt에 포함된다. 현재 turn의 gold call은 포함되지 않는다. 이전 turn context는 model-generated previous plan이 아니라 <b>gold previous plan</b>이다.</p>
+
+<h4>Prompt 구조 (Previous Context)</h4>
+<pre>Completed Previous Turns (read-only context):
+Their Observations may be used as concrete input values.
+Do not output Observation lines in the Current Plan.
+
+Turn 1 User: ...
+Previous Plan:
+1. previous_gold_call(...)
+Observation: ...
+&lt;END_PLAN&gt;
+
+Current Environment State:
+...
+
+Current Turn User: ...
+
+Current Plan:</pre>
+
+<div class="callout-blue">
+  <b>이 설계의 목적:</b> previous-turn error accumulation을 제거하고, current-turn plan 생성 능력을 분리해서 보기 위한 것이다. 모델이 이전 turn을 잘못 생성했을 때 그 오류가 다음 turn 평가에 누적되는 confound를 없앤다. oracle context 덕분에 current turn의 state-dependent input은 gold observation에서 concrete value로 가져올 수 있다.
+</div>
+
+<h3>3.3 Smoke Episode Selection</h3>
+
+<div class="card">
+<div class="card-title">Episode 필터 기준</div>
+<pre>episode_filter = intra_turn_parallel:
+  has graph annotation
+  turn_bound_max_width >= 2       ← 같은 turn 안에 병렬 가능 action 존재
+  n_intra_turn_antichain_pairs > 0
+
+overlap set = v1 50-sample ∩ v2 intra-turn-parallel 73-episode
+→ smoke 기본 set: 20 episodes · 70 turns · 142 gold hops</pre>
+<p style="font-size:0.82rem;color:var(--muted);margin-top:8px;">전체 BFCL 대표 표본이 아니라 v1-v2 비교 가능성과 intra-turn parallel structure를 동시에 만족하는 diagnostic comparison set이다.</p>
+</div>
+
+<h3>3.4 Current Environment State View</h3>
+
+<p>user query만 보고는 숨겨진 파일 경로나 내부 id를 알 수 없는 case가 있다. 이를 해결하기 위해 current turn 직전의 environment state를 deterministic text로 prompt에 제공한다.</p>
+
+<div class="two-col">
+  <div>
+    <h4>State View 생성 방식</h4>
+    <ul style="font-size:0.85rem;margin-top:4px;">
+      <li>BFCL <code>initial_config</code>에서 시작</li>
+      <li>이전 turn의 gold call만 replay</li>
+      <li>rule-based renderer로 text 생성</li>
+      <li>current turn gold call은 사용하지 않음</li>
+      <li>LLM summary 아님 — 완전히 deterministic</li>
+    </ul>
+  </div>
+  <div>
+    <h4>State View 설정</h4>
+    <pre style="font-size:0.78rem;">include_file_content: false
+max_depth: 6
+max_entries: 200
+max_chars: 6000
+실제 최대 길이: 2,872 chars</pre>
+  </div>
+</div>
+
+<div class="callout">
+  <b>진단 설정임에 유의:</b> <code>state_view=tree</code>는 official BFCL interactive inference와 다르다. 실행 전에 현재 상태를 text로 보여주고 plan을 한 번에 생성하게 한다. API domain에서는 <code>access_token</code>, <code>card_number</code> 같은 synthetic key가 prompt에 포함될 수 있다. 결과는 "모델이 실제 BFCL에서 이렇게 행동한다"가 아니라, "현재 상태가 보이는 조건에서도 plan recovery가 되는가"로 해석해야 한다.
+</div>
+
+<h3>3.5 Generation 설정</h3>
+
+<table>
+<tr><th>파라미터</th><th style="text-align:left;">값</th><th style="text-align:left;">이유</th></tr>
+<tr><td><code>gen_length</code></td><td style="text-align:left;">128</td><td style="text-align:left;">numbered plan이 대부분 128 token 이내에 수렴</td></tr>
+<tr><td><code>steps</code></td><td style="text-align:left;">128</td><td style="text-align:left;">충분한 denoising iteration</td></tr>
+<tr><td><code>block_length</code></td><td style="text-align:left;">128</td><td style="text-align:left;">output 전체를 단일 block에서 denoising — block boundary confound 제거</td></tr>
+</table>
+
+<div class="callout-blue">
+  <b><code>block_length=128</code>을 선택한 이유:</b> <code>block_length=32</code>처럼 output을 여러 block으로 나누면 앞 block action이 먼저 확정되고 뒤 block이 맞춰지는 형태가 된다. 그러면 <code>$id</code> reference나 commit pattern이 모델의 dependency planning 때문인지 block-wise generation artifact 때문인지 해석이 어려워진다. 하나의 block에서 전체를 denoise하면 action들이 더 동시에 조정될 수 있어, dependency/commit-step 분석에서 confound가 줄어든다.
+</div>
+
+<h3>3.6 Confidence Trace 구조</h3>
+
+<p>v2는 v1의 traceable LLaDA backend를 재사용한다. generated output 영역을 mask token으로 채운 뒤 block 단위로 denoising하고, token이 commit될 때 trace row를 남긴다.</p>
+
+<table>
+<tr><th style="text-align:left;">field</th><th style="text-align:left;">의미</th></tr>
+<tr><td style="text-align:left;"><code>block</code></td><td style="text-align:left;">generated output을 block_length 단위로 나눈 block index</td></tr>
+<tr><td style="text-align:left;"><code>commit_step</code></td><td style="text-align:left;">전체 denoising loop 기준 token이 확정된 step</td></tr>
+<tr><td style="text-align:left;"><code>step_in_block</code></td><td style="text-align:left;">해당 block 내부 step</td></tr>
+<tr><td style="text-align:left;"><code>position</code></td><td style="text-align:left;">generated output token position</td></tr>
+<tr><td style="text-align:left;"><code>token_text</code></td><td style="text-align:left;">확정된 token의 decoded text</td></tr>
+<tr><td style="text-align:left;"><code>confidence</code></td><td style="text-align:left;"><code>softmax(logits)[selected_token]</code> — commit 순간 선택 확률</td></tr>
+<tr><td style="text-align:left;"><code>char_start, char_end</code></td><td style="text-align:left;">decoded response 안 character span</td></tr>
+</table>
+<p style="font-size:0.82rem;color:var(--muted);">저장되는 것은 committed token row만이다. same position의 per-step history, commit 전 top-k 후보 변화, uncommitted masked position의 confidence는 직접 관측하지 않는다.</p>
+
+
+<!-- ================================================================ -->
+<h2 id="s4">4. Matcher와 평가 방식</h2>
+
+<h3>4.1 P0 Deterministic Matcher</h3>
+
+<p>generated numbered action unit을 current-turn gold hop에 연결한다. 목적은 generated action이 어떤 gold hop에 붙는지 확인하고, generated <code>$id</code> edge가 gold DAG edge 또는 gold antichain 구조와 어떻게 맞는지 보는 것이다.</p>
+
+<h4>P0 Matching Rule</h4>
+<div class="card" style="box-shadow:none;">
+<div class="step-row"><span class="step-num">1</span><span>current-turn <code>graph_stats.gold_hop_ids</code>만 candidate로 사용</span></div>
+<div class="step-row"><span class="step-num">2</span><span>exact normalized tool name match를 강한 anchor로 사용</span></div>
+<div class="step-row"><span class="step-num">3</span><span>argument token / parameter overlap은 tie-breaker와 보조 score로 활용</span></div>
+<div class="step-row"><span class="step-num">4</span><span><code>$1.result</code>, <code>&lt;placeholder&gt;</code>는 unresolved input으로 기록하고, literal mismatch만으로 즉시 실패시키지 않음</span></div>
+<div class="step-row"><span class="step-num">5</span><span>score threshold 미만 unit은 unmatched로 남김</span></div>
+</div>
+<p style="font-size:0.82rem;color:var(--muted);margin-top:8px;">P0는 final correctness judge가 아니다. schema는 틀렸지만 의미가 맞는 action, boolean 값이 반대인 action, semantic synonym, decomposition mismatch 같은 경우는 deterministic rule만으로 안정적으로 판정하기 어렵다.</p>
+
+<h3>4.2 P1 Selective LLM-as-Judge</h3>
+
+<p>P0가 판단하기 어려운 high-impact pair만 LLM-as-judge에 보낸다. 모든 pair를 judge하지 않는다.</p>
+
+<h4>P1 대상 조건</h4>
+<ul style="font-size:0.85rem;">
+  <li>P0 <code>match_strength=wrong</code>이지만 <code>best_candidate_score</code>가 높은 pair</li>
+  <li>P0 <code>partial</code>이지만 schema-invalid인 pair</li>
+  <li>P0 <code>exact/partial</code>이지만 boolean, mode, numeric argument conflict가 의심되는 pair</li>
+  <li>invalid/synonym tool이지만 semantic candidate가 있는 pair</li>
+  <li>generated dependency edge endpoint가 unmatched인데 semantic match 가능성이 있는 pair</li>
+  <li>current turn의 Q2 dependency 분석에 직접 영향을 주는 pair</li>
+</ul>
+
+<h3>4.3 Hybrid Resolver</h3>
+
+<p>P0 결과를 기본값으로 두고, P1 judge 결과가 있는 pair만 보정한다.</p>
+
+<table>
+<tr><th style="text-align:left;">보정 유형</th><th style="text-align:left;">설명</th></tr>
+<tr><td style="text-align:left;">semantic rescue</td><td style="text-align:left;">P0 wrong → judge semantic/partial/exact</td></tr>
+<tr><td style="text-align:left;">conflict downgrade</td><td style="text-align:left;">P0 exact/partial → judge wrong (input conflict)</td></tr>
+<tr><td style="text-align:left;">schema rescue</td><td style="text-align:left;">schema-invalid이지만 judge가 action/input compatible 판정</td></tr>
+<tr><td style="text-align:left;">duplicate clarification</td><td style="text-align:left;">repeated unit vs distinct coverage 구분</td></tr>
+</table>
+<p style="font-size:0.82rem;color:var(--muted);">같은 gold hop에 여러 generated unit이 붙으면 가장 좋은 unit만 recall numerator에 세고 나머지는 duplicate로 표시. duplicate row는 over-generation/repeated action failure 분석에 사용한다.</p>
+
+<h3>4.4 평가 지표 해석</h3>
+
+<table>
+<tr><th>층</th><th style="text-align:left;">보는 것</th></tr>
+<tr><td>format</td><td style="text-align:left;">numbered plan으로 parse되는가</td></tr>
+<tr><td>tool/schema</td><td style="text-align:left;">제공된 tool을 쓰고, parameter schema를 지키는가</td></tr>
+<tr><td>action matching</td><td style="text-align:left;">generated action이 current-turn gold hop과 맞는가</td></tr>
+<tr><td>dependency</td><td style="text-align:left;">generated dependency edge가 gold DAG dependency와 맞는가</td></tr>
+</table>
+
+<div class="callout-purple">
+  <b>분리해야 할 세 가지:</b><br>
+  valid tool name은 정답 action이라는 뜻이 아니다.<br>
+  schema-valid action도 gold와 맞는다는 뜻은 아니다.<br>
+  confidence는 정답 확률이 아니다.
+</div>
+
+<h4>Denominator 차이</h4>
+<table>
+<tr><th style="text-align:left;">metric</th><th style="text-align:left;">denominator</th><th style="text-align:left;">의미</th></tr>
+<tr><td style="text-align:left;"><code>hybrid_matched_gold_hop_recall</code></td><td style="text-align:left;">current-turn gold hops</td><td style="text-align:left;">duplicate 제거 후 exact/semantic/partial로 cover된 gold hop 비율</td></tr>
+<tr><td style="text-align:left;"><code>hybrid_strict_single_action_recall</code></td><td style="text-align:left;">current-turn gold hops</td><td style="text-align:left;">exact behavior + compatible input + single-hop match 모두 만족한 gold hop 비율</td></tr>
+<tr><td style="text-align:left;"><code>hybrid_matched_unit_rate</code></td><td style="text-align:left;">generated units</td><td style="text-align:left;">generated unit 중 어떤 gold hop에 붙은 비율 (precision-like)</td></tr>
+</table>
+
+
+<!-- ================================================================ -->
+<h2 id="s5">5. v2 프롬프트: explicit vs flat</h2>
+
+<h4>공통 생성 contract</h4>
+<pre>Given the current user turn, create the minimal sufficient tool-use plan.
+1. 먼저 current turn 해결에 필요한 최소 action set 선택
+2. 그 안에서 병렬성 최대화 (불필요한 helper action 추가 금지)
+
+공통 rule:
+- Output only Thought, numbered actions, and &lt;END_PLAN&gt;
+- Each action must use exact schema parameter names
+- IDs start at 1 and strictly increase within the Current Plan
+- Do not repeat previous-turn actions unless explicitly asked
+- Do not add helper actions unless their outputs are needed
+- Do not call join()</pre>
+
+<div class="two-col">
+  <div>
+    <h4 class="h4-blue">smoke_explicit_state_tree</h4>
+    <p style="font-size:0.83rem;"><code>state_view=tree</code> + <code>llmcompiler_explicit_dag</code>. 현재 plan 안에서 이전 action 결과가 필요하면 <code>$id</code> 또는 <code>$id.field</code>를 사용. previous turn plan id를 참조하면 안 된다. previous turn 필요 값은 Observation text에서 concrete value로 가져온다.</p>
+    <pre style="font-size:0.80rem;">Thought: &lt;optional&gt;
+1. get_zipcode(city="San Francisco")
+2. get_zipcode(city="Rivermist")
+3. estimate_distance(
+     cityA=$1.zipcode,
+     cityB=$2.zipcode)
+&lt;END_PLAN&gt;</pre>
+    <p style="font-size:0.82rem;color:var(--muted);">1, 2는 독립 → 병렬 가능. 3은 1, 2 결과가 필요 → <code>$id</code> 참조.</p>
+  </div>
+  <div>
+    <h4 class="h4-green">smoke_flat_state_tree</h4>
+    <p style="font-size:0.83rem;"><code>state_view=tree</code> + <code>llmcompiler_flat_plan</code>. argument 안에 numbered reference 금지. result-dependent argument는 angle-bracket placeholder. <code>$1</code> 등이 나오면 <code>flat_reference_violation_count</code>에 기록.</p>
+    <pre style="font-size:0.80rem;">Thought: &lt;optional&gt;
+1. get_zipcode(city="San Francisco")
+2. get_zipcode(city="Rivermist")
+3. estimate_distance(
+     cityA="&lt;zipcode for SF&gt;",
+     cityB="&lt;zipcode for Rivermist&gt;")
+&lt;END_PLAN&gt;</pre>
+    <p style="font-size:0.82rem;color:var(--muted);"><code>$id</code> 없이 token confidence/commit-step만으로 dependency signal 포착 가능한지 확인.</p>
+  </div>
+</div>
+
+<p style="font-size:0.85rem;">두 조건의 비교 의도: 같은 state view 위에서 <code>$id</code> reference를 허용할 때와 금지할 때, action recovery와 dependency/denoising signal이 어떻게 달라지는지를 본다.</p>
+
+
+<!-- ================================================================ -->
+<h2 id="s6">6. v2 실험 결과</h2>
+
+<h3>6.1 Run Coverage</h3>
+<p style="font-size:0.84rem;color:var(--muted);">이 표는 두 condition이 같은 평가 범위에서 실행됐는지 확인하는 run-level sanity다. <code>episodes</code>는 포함된 BFCL episode 수, <code>turn gen.</code>은 current turn별 generation 횟수, <code>parsed</code>는 parser가 numbered plan으로 구조화한 generation 수, <code>total units</code>는 생성된 action unit 총수, <code>P1 judged</code>는 selective LLM-as-judge가 실제 판정한 candidate pair 수다.</p>
+<table>
+<tr><th>condition</th><th>episodes</th><th>turn gen.</th><th>parsed</th><th>total units</th><th>P1 judged</th></tr>
+<tr>
+  <td><span class="condition-badge explicit">explicit</span></td>
+  <td>20</td><td>70</td><td>70</td><td>149</td><td>61</td>
+</tr>
+<tr>
+  <td><span class="condition-badge flat">flat</span></td>
+  <td>20</td><td>70</td><td>70</td><td>130</td><td>52</td>
+</tr>
+</table>
+<p style="font-size:0.82rem;color:var(--muted);">두 condition 모두 <code>format_parse_rate=1.0</code>, P1 judge error 0. explicit이 flat보다 19개 더 많은 unit 생성 및 over-generation 더 많음.</p>
+
+<h3>6.2 Format Sanity</h3>
+<p style="font-size:0.84rem;color:var(--muted);">Format sanity는 plan이 정답인지가 아니라, 모델 출력이 약속한 LLMCompiler-style surface로 읽히는지를 본다. <code>parse rate</code>는 generation 중 parser가 action line을 구조화한 비율이고, <code>parse errors</code>는 invalid tool name, 잘못된 reference, malformed line 같은 형식 문제다. <code>zero-unit turns</code>는 parser가 action을 하나도 찾지 못한 turn, <code>duplicate actions</code>는 같은 raw action이 반복된 경우다.</p>
+<table>
+<tr><th>condition</th><th>parse rate</th><th>missing END_PLAN</th><th>parse errors</th><th>zero-unit turns</th><th>duplicate actions</th></tr>
+<tr>
+  <td><span class="condition-badge explicit">explicit</span></td>
+  <td>1.000</td><td>0</td><td>17</td><td>3</td><td>10 turns / 13 dup.</td>
+</tr>
+<tr>
+  <td><span class="condition-badge flat">flat</span></td>
+  <td>1.000</td><td>0</td><td>24</td><td>7</td><td>2 turns / 3 dup.</td>
+</tr>
+</table>
+<p style="font-size:0.82rem;color:var(--muted);">parse error 대부분은 invalid tool name. explicit은 invalid tool-name 16건 + non-preceding <code>$1</code> reference 1건. flat은 invalid tool-name 23건 + <code>$10000</code>를 reference로 읽은 1건.</p>
+
+<h3>6.3 Tool/Action Coverage</h3>
+<p style="font-size:0.84rem;color:var(--muted);">Tool/action coverage는 correctness 이전의 surface-level 지표다. <code>valid tool rate</code>는 generated action의 tool name이 prompt에 제공된 function list 안에 있는 비율이고, gold와 맞는다는 뜻은 아니다. <code>over-gen</code>, <code>under-gen</code>, <code>equal</code>은 turn별 generated action 수를 current-turn gold action 수와 비교한 count다.</p>
+<table>
+<tr><th>condition</th><th>valid tool rate</th><th>over-gen turns</th><th>under-gen turns</th><th>equal turns</th></tr>
+<tr>
+  <td><span class="condition-badge explicit">explicit</span></td>
+  <td><span class="tag tag-yellow">84.6%</span> (126/149)</td>
+  <td>27 / 70</td><td>21 / 70</td><td>22 / 70</td>
+</tr>
+<tr>
+  <td><span class="condition-badge flat">flat</span></td>
+  <td><span class="tag tag-yellow">76.2%</span> (99/130)</td>
+  <td>20 / 70</td><td>25 / 70</td><td>25 / 70</td>
+</tr>
+</table>
+<p style="font-size:0.82rem;color:var(--muted);">flat이 compact하다는 사실과 action recovery가 좋다는 사실은 분리해서 봐야 한다.</p>
+
+<h3>6.4 Schema Validity</h3>
+<p style="font-size:0.84rem;color:var(--muted);">Schema validity는 generated action이 제공된 tool의 parameter schema를 지켰는지 보는 지표다. <code>schema-valid</code>는 required parameter가 있고 unknown parameter가 없는 action 비율이며, gold action과 의미가 맞는지는 별도 matching에서 판단한다. 따라서 schema-valid action도 wrong일 수 있고, schema-invalid action도 P1에서 intent만 partial로 rescue될 수 있다.</p>
+<table>
+<tr><th>condition</th><th>schema-valid rate</th><th>schema-invalid</th><th>주요 오류</th></tr>
+<tr>
+  <td><span class="condition-badge explicit">explicit</span></td>
+  <td><span class="tag tag-yellow">54.4%</span> (81/149)</td>
+  <td>68/149</td>
+  <td style="text-align:left;"><code>param=</code> wrapper, wrong param name, missing required field</td>
+</tr>
+<tr>
+  <td><span class="condition-badge flat">flat</span></td>
+  <td><span class="tag tag-yellow">51.5%</span> (67/130)</td>
+  <td>63/130</td>
+  <td style="text-align:left;"><code>arg=</code> wrapper, JSON-like malformed call, wrong param name</td>
+</tr>
+</table>
+
+<div class="callout-red">
+  두 condition 모두 <b>schema-valid rate 50% 내외</b>. <code>lockDoors(param={...})</code>, <code>get_zipcode(arg={...})</code> 같은 wrapper 오류가 반복된다. P1은 schema surface error 중 일부를 partial로 rescue할 수 있지만 executable correctness로 간주해선 안 된다.
+</div>
+
+<h3>6.5 P0 / P1 Action Matching</h3>
+<p style="font-size:0.84rem;color:var(--muted);">Action matching은 generated unit을 current-turn gold hop에 붙이는 단계다. <code>gold recall</code> 계열은 gold hop을 denominator로 하며, duplicate를 제거한 뒤 얼마나 많은 gold hop이 covered 됐는지 본다. <code>unit rate</code>는 generated unit을 denominator로 하며, 생성된 action 중 몇 개가 어떤 gold hop에 붙었는지 보는 precision-like 지표다.</p>
+
+<h4>P0 Deterministic Matcher</h4>
+<p style="font-size:0.82rem;color:var(--muted);">P0는 exact tool name, argument overlap, schema diagnostics를 이용한 deterministic matcher다. 빠른 1차 anchor를 제공하지만 final correctness judge는 아니다.</p>
+<table>
+<tr><th>condition</th><th>gold recall</th><th>strict single recall</th><th>unit rate</th><th>exact</th><th>partial</th><th>wrong</th></tr>
+<tr>
+  <td><span class="condition-badge explicit">explicit</span></td>
+  <td>0.401</td><td>0.211</td><td>0.383</td><td>30</td><td>27</td><td>92</td>
+</tr>
+<tr>
+  <td><span class="condition-badge flat">flat</span></td>
+  <td>0.373</td><td>0.254</td><td>0.408</td><td>36</td><td>17</td><td>77</td>
+</tr>
+</table>
+
+<h4 class="h4-green">P1 Hybrid Matcher (최종)</h4>
+<p style="font-size:0.82rem;color:var(--muted);">P1 hybrid는 P0 결과를 기본값으로 두고, ambiguous/high-impact pair만 LLM-as-judge로 보정한 최종 action recovery 지표다. <code>hybrid strict single</code>은 exact behavior, compatible 또는 unresolved-ok input, single-hop match를 모두 만족한 가장 보수적인 recall이다.</p>
+<table>
+<tr><th>condition</th><th>hybrid gold recall</th><th>hybrid strict single</th><th>hybrid unit rate</th><th>exact</th><th>semantic</th><th>partial</th></tr>
+<tr>
+  <td><span class="condition-badge explicit">explicit</span></td>
+  <td>0.366</td>
+  <td><span class="tag tag-red">0.169</span></td>
+  <td>0.396</td>
+  <td>26</td><td>3</td><td>30</td>
+</tr>
+<tr>
+  <td><span class="condition-badge flat">flat</span></td>
+  <td>0.359</td>
+  <td><span class="tag tag-yellow">0.197</span></td>
+  <td>0.415</td>
+  <td>28</td><td>9</td><td>17</td>
+</tr>
+</table>
+
+<p style="font-size:0.84rem;color:var(--muted);">
+  이 표에서 <code>hybrid gold recall</code>과 <code>hybrid strict single</code>의 denominator는 142개 current-turn gold hop이고,
+  <code>hybrid unit rate</code>의 denominator는 generated action unit 수다. 따라서 explicit은
+  <code>hybrid gold recall 0.366 ≈ 52/142</code>,
+  <code>hybrid strict single 0.169 ≈ 24/142</code>,
+  <code>hybrid unit rate 0.396 = (26 exact + 3 semantic + 30 partial) / 149</code>로 읽는다.
+  flat은 <code>hybrid gold recall 0.359 ≈ 51/142</code>,
+  <code>hybrid strict single 0.197 ≈ 28/142</code>,
+  <code>hybrid unit rate 0.415 = (28 exact + 9 semantic + 17 partial) / 130</code>이다.
+</p>
+
+<div class="callout">
+  <b>핵심:</b> hybrid matched gold recall이 거의 같다 (explicit 0.366 vs flat 0.359, 차이 0.007). <code>$id</code> grammar를 허용한 explicit이 action recovery에서 flat을 뚜렷이 이겼다고 말하기 어렵다. 오히려 <b>strict single recall은 flat이 더 높다 (0.197 vs 0.169)</b>.
+</div>
+
+<h4>P1 개입 패턴</h4>
+<p style="font-size:0.82rem;color:var(--muted);">P1 개입 패턴은 LLM judge가 P0를 어떻게 보정했는지 보여준다. <code>semantic rescue</code>는 P0가 wrong으로 본 pair를 judge가 semantic/partial/exact로 살린 비율이고, <code>conflict downgrade</code>는 P0 matched pair를 judge가 argument conflict 등으로 wrong 처리한 비율이다. <code>schema surface error</code>는 schema 표면은 틀렸지만 intent는 맞을 수 있는 경우를 뜻한다.</p>
+<table>
+<tr><th>condition</th><th>judged pairs</th><th>semantic rescue</th><th>conflict downgrade</th><th>schema surface error</th></tr>
+<tr>
+  <td><span class="condition-badge explicit">explicit</span></td>
+  <td>61</td><td>19.7%</td><td>16.4%</td><td>34.4%</td>
+</tr>
+<tr>
+  <td><span class="condition-badge flat">flat</span></td>
+  <td>52</td><td>21.2%</td><td>19.2%</td><td>28.8%</td>
+</tr>
+</table>
+<p style="font-size:0.82rem;color:var(--muted);">P1은 score 향상 단계가 아니다. 두 condition 모두 P0 false positive를 downgrade했다.</p>
+
+<h3>6.6 Dependency / Reference Behavior</h3>
+<p style="font-size:0.84rem;color:var(--muted);">Dependency/reference 지표는 generated plan 안의 <code>$id</code> reference를 parser가 dependency edge로 잡은 뒤, 그 edge를 hybrid-matched gold hop으로 lift해서 gold DAG와 비교한 것이다. 여기서 <code>dep. edges</code>는 generated <code>$id</code> 기반 edge 수이고, gold dependency action 수가 아니다. <code>unmatched endpoint</code>가 많으면 edge의 source/target action이 gold hop에 안정적으로 붙지 않아 DAG 비교 자체가 어렵다는 뜻이다.</p>
+<table>
+<tr><th>condition</th><th>dep. edges</th><th>false serial.</th><th>missing dep.</th><th>unmatched endpoint</th><th>flat violations</th></tr>
+<tr>
+  <td><span class="condition-badge explicit">explicit</span></td>
+  <td>8</td><td>0</td><td>1</td><td>58</td><td>N/A</td>
+</tr>
+<tr>
+  <td><span class="condition-badge flat">flat</span></td>
+  <td>1</td><td>0</td><td>6</td><td>53</td><td>1</td>
+</tr>
+</table>
+
+<p>explicit은 <code>$id</code> reference를 8개 생성했지만 gold dependency로 안정적으로 align된 edge는 없다.</p>
+
+<pre>explicit generated edge alignment:
+  unmatched_both_endpoints = 3
+  unmatched_source         = 1
+  unmatched_target         = 3
+  same_gold_hop            = 1</pre>
+
+<div class="callout-red">
+  gold dependency check 59개 중 대부분은 generated endpoint가 gold hop에 매칭되지 않아 구조 비교 자체가 불가능했다. <b>현재 결과만으로는 LLaDA가 gold DAG dependency를 복구한다고 말할 수 없다.</b>
+</div>
+
+
+<!-- ================================================================ -->
+<h2 id="s7">7. Confidence Trace 분석</h2>
+
+<h3>7.1 Surface Quality 신호</h3>
+<p>두 condition 모두 valid tool name / schema-valid action의 confidence가 invalid surface보다 일관되게 높다.</p>
+
+<table>
+<tr><th>condition</th><th>valid tool (action)</th><th>invalid tool (action)</th><th>schema-valid</th><th>schema-invalid</th></tr>
+<tr>
+  <td><span class="condition-badge explicit">explicit</span></td>
+  <td>0.889</td><td>0.808</td><td>0.896</td><td>0.854</td>
+</tr>
+<tr>
+  <td><span class="condition-badge flat">flat</span></td>
+  <td>0.906</td><td>0.832</td><td>0.918</td><td>0.858</td>
+</tr>
+</table>
+
+<h3>7.2 Function-name Confidence</h3>
+<table>
+<tr><th>condition</th><th>valid tool (fn-name)</th><th>invalid tool (fn-name)</th><th>schema-valid</th><th>schema-invalid</th></tr>
+<tr>
+  <td><span class="condition-badge explicit">explicit</span></td>
+  <td>0.907</td><td>0.721</td><td>0.915</td><td>0.835</td>
+</tr>
+<tr>
+  <td><span class="condition-badge flat">flat</span></td>
+  <td>0.916</td><td>0.771</td><td>0.921</td><td>0.839</td>
+</tr>
+</table>
+<p style="font-size:0.82rem;color:var(--muted);">function-name span은 action span보다 valid/invalid 차이가 더 명확하다. invalid tool의 function-name confidence는 0.72~0.77로 낮다.</p>
+
+<div class="callout">
+  <b>그러나 correctness predictor로는 약하다.</b> covered/wrong action confidence 차이: explicit 0.883 vs 0.873, flat 0.889 vs 0.888. 차이가 너무 작아 confidence로 correctness를 직접 예측하기 어렵다.
+</div>
+
+<h3>7.3 Dependency Action의 commit-step 차이 (explicit)</h3>
+
+<table>
+<tr><th>action 유형</th><th>action confidence</th><th>mean commit_step</th></tr>
+<tr><td>root actions</td><td>0.884</td><td>29.8</td></tr>
+<tr style="color:var(--purple);font-weight:700;"><td>dependency actions</td><td>0.756</td><td>45.5</td></tr>
+<tr><td style="color:var(--muted);">flat: only 1 dependency action</td><td colspan="2" style="text-align:left;color:var(--muted);">통계 분석 불가</td></tr>
+</table>
+
+<p style="font-size:0.82rem;color:var(--muted);">
+  여기서 dependency action은 generated action의 <code>dependencies</code> list가 비어 있지 않은 action이다.
+  즉 action argument 안의 <code>$id</code> 또는 <code>${id}</code> reference에서 parser가 추출한 generated dependency 기준이며,
+  gold DAG dependency action이라는 뜻은 아니다.
+</p>
+
+<h4>Function-name span만 따로 본 경우</h4>
+<table>
+<tr><th>group</th><th>n units</th><th>function confidence</th><th>function mean commit_step</th></tr>
+<tr><td>root actions</td><td>141</td><td>0.881</td><td>30.8</td></tr>
+<tr style="color:var(--purple);font-weight:700;"><td>dependency actions</td><td>8</td><td>0.828</td><td>46.0</td></tr>
+</table>
+
+<p style="font-size:0.82rem;color:var(--muted);">
+  계산은 <code>plan_units.jsonl</code>의 <code>response_spans.function_name</code>과
+  <code>token_confidence.jsonl</code>의 token character span을 overlap시켜 수행했다.
+  각 action unit마다 function-name token들의 confidence와 commit_step 평균을 먼저 구하고,
+  그 unit-level 값을 root/dependency group별로 다시 평균했다. 따라서 긴 function name이 토큰 수 때문에 과도하게 가중되지 않는다.
+</p>
+
+<div class="callout-blue">
+  <b>Trace-level signal 존재:</b> explicit condition에서 dependency action은 root action보다 action span 기준 평균 <b>~15.7 step 늦게 commit</b>되고, action confidence도 0.128 낮다. function-name span만 따로 봐도 dependency action은 root action보다 평균 <b>~15.2 step 늦게 commit</b>된다. LLaDA가 dependency-looking action을 더 늦고 더 불확실하게 확정한다는 점을 보여준다.
+  <br><br>
+  단, 이것은 "gold dependency를 맞췄다"는 correctness 증거가 아니라, denoising 과정에서 dependency-looking syntax가 root action과 다르게 다뤄진다는 diagnostic signal이다. generated dependency edge 대부분은 endpoint action이 gold hop에 안정적으로 매칭되지 않거나 schema-invalid surface를 포함한다.
+</div>
+
+
+<!-- ================================================================ -->
+<h2 id="s8">8. Notable Cases</h2>
+
+<h4>multi_turn_base_35 turn 0 — state view 진단 가치</h4>
+<div class="two-col">
+  <div>
+    <pre style="font-size:0.80rem;">Current user:
+Find a file named 'config.py'
+somewhere deep in the file system
+and display the last line.</pre>
+    <pre style="font-size:0.80rem;">Gold:
+cd(folder='projects')
+cd(folder='deep_folder')
+tail(file_name='config.py', lines=1)</pre>
+  </div>
+  <div>
+    <pre style="font-size:0.80rem;">State view (tree):
+GorillaFileSystem:
+cwd: /alex
+tree:
+- alex/
+  - projects/
+    - deep_folder/
+      - config.py
+      - real_config.py</pre>
+    <p style="font-size:0.82rem;margin-top:8px;color:var(--muted);">state view는 들어갔다. 실패 원인은 hidden path 부재가 아니라 <b>tool/schema grounding</b> 문제다. flat은 JSON-like object만 내거나 malformed function surface를 생성했다.</p>
+  </div>
+</div>
+
+<h4>multi_turn_base_3 turn 2 — gold parallel pair와 tool-choice mismatch</h4>
+<div class="card">
+<pre style="font-size:0.80rem;margin-bottom:8px;">Gold:  cd → cd → cp(test_image1.jpg) || cp(test_document.txt)
+       ↑ intra_turn_antichain_pairs: [h4, h5]  (두 cp는 병렬 가능)
+
+Explicit generated:
+  mv(test_image1.jpg → ...) || mv(test_document.txt → ...)
+  mkdir(path=...) → mv(backup → backup/backup)
+  → tool set 불일치: cp → mv, schema invalid (mkdir: path vs dir_name)</pre>
+<p style="font-size:0.82rem;"><b>교훈:</b> action count가 gold와 같더라도 tool set / schema / DAG alignment가 다를 수 있다. <code>generated_gold_call_delta=0</code>이 성공을 의미하지 않는다.</p>
+</div>
+
+<table>
+<tr><th style="text-align:left;">case</th><th style="text-align:left;">관찰</th></tr>
+<tr>
+  <td style="text-align:left;"><code>multi_turn_base_39</code> turn 1</td>
+  <td style="text-align:left;">explicit은 content-writing intent는 회복하지만 setup action(cd, touch)을 collapse. flat은 file-creation trajectory를 더 많이 회복해 episode-level gold recall 7/10 달성.</td>
+</tr>
+<tr>
+  <td style="text-align:left;"><code>multi_turn_base_50</code> turn 0</td>
+  <td style="text-align:left;"><code>lockDoors(arg={...})</code>, <code>setHeadlights(arg={...})</code> — intent는 보이지만 schema-invalid. P1은 intent를 일부 rescue하지만 executable schema는 여전히 틀렸다.</td>
+</tr>
+<tr>
+  <td style="text-align:left;"><code>multi_turn_base_62</code> (both)</td>
+  <td style="text-align:left;">필요한 multi-hop API composition 대신 그럴듯한 helper API를 invent하는 경향. navigation/formatting helper tool 생성.</td>
+</tr>
+<tr>
+  <td style="text-align:left;"><code>multi_turn_base_151</code></td>
+  <td style="text-align:left;">두 condition 모두 gold 6개 중 4개 회복 — 최고 성능 episode family. prompt/observation에 값이 명시된 Travel/Twitter task는 hidden composition task보다 쉽다.</td>
+</tr>
+<tr>
+  <td style="text-align:left;"><code>multi_turn_base_70</code></td>
+  <td style="text-align:left;">explicit 1/9, flat 0/9 hybrid recall — 최하위. Vehicle multi-step conditional control은 action 수도 부족하고 dependency도 놓친다.</td>
+</tr>
+</table>
+
+
+<!-- ================================================================ -->
+<h2 id="s9">9. 결론</h2>
+
+<p>v1은 LLaDA가 BFCL function schema를 보고 action intent를 형식적으로 생성할 수 있음을 보여줬다. 하지만 세 가지 문제가 남았다. 첫째, under-generation: 50개 sample 중 44개에서 generated action이 gold hop보다 적었다. 둘째, state-dependent input hallucination: prior result가 필요한 값을 임의 concrete value로 채웠다. 셋째, dependency visibility 부족: natural-language <code>[A]</code> unit만으로는 어떤 action이 다른 action의 결과를 필요로 하는지 추적하기 어려웠다.</p>
+
+<p>v2는 이 문제를 구조화된 numbered plan, deterministic state view, hybrid matcher로 다시 분석했다. 그 결과 state가 보이고 dependency syntax가 있어도 action recovery와 gold DAG recovery는 여전히 제한적이었다.</p>
+
+<p>state-view rerun은 중요한 혼동을 줄였다. <code>multi_turn_base_35</code>처럼 user query만으로는 hidden path를 알기 어려운 case에서도, current state가 prompt에 들어간 상태로 모델을 평가할 수 있다. 그럼에도 action recovery는 제한적이었다. explicit <code>$id</code> 문법은 더 많은 dependency-looking structure를 만들었지만, gold DAG dependency와 안정적으로 맞지는 않았다. flat은 더 단순한 형식으로도 비슷한 action recall을 냈고, strict single-hop recall은 조금 더 높았다.</p>
+
+<p>Confidence trace는 별도의 긍정 신호를 남겼다. v2에서 valid tool/schema-valid action은 invalid surface보다 높은 confidence를 보였고, explicit condition의 dependency action은 root action보다 낮은 confidence와 늦은 commit step을 보였다. 이는 DLM denoising 과정 안에 surface validity와 dependency-looking syntax에 대한 신호가 있음을 보여준다. 다만 covered action과 wrong action의 confidence 차이는 작고, generated dependency edge가 gold DAG와 안정적으로 align되지 않기 때문에 confidence를 correctness나 dependency recovery의 직접 증거로 해석할 수는 없다.</p>
+
+<div class="rq-box">
+<p style="margin-bottom:12px;"><b>state가 보여도, dependency 문법이 있어도, recovery는 여전히 제한적이었다.</b></p>
+<p>
+  <b style="color:var(--purple);">①</b> 두 condition 모두 70개 turn 전체에서 parse 가능한 plan을 만들었다 (format_parse_rate=1.0).<br>
+  <b style="color:var(--purple);">②</b> explicit은 더 많은 action, valid tool name, <code>$id</code> edge를 만들었다.<br>
+  <b style="color:var(--purple);">③</b> flat은 action 수·duplicate가 적고, strict single-hop hybrid recall은 약간 더 높았다.<br>
+  <b style="color:var(--purple);">④</b> hybrid matched gold-hop recall은 거의 같다: explicit 0.366 vs flat 0.359.<br>
+  <b style="color:var(--purple);">⑤</b> 두 condition 모두 gold dependency structure를 안정적으로 복구하지 못했다.<br>
+  <b style="color:var(--purple);">⑥</b> token confidence는 valid/invalid surface는 가르지만, correctness를 강하게 가르지는 못했다.<br>
+  <b style="color:var(--purple);">⑦</b> explicit의 <code>$id</code> dependency action은 root action보다 낮은 confidence + 늦은 commit step: trace-level signal 존재.<br>
+  <b style="color:var(--purple);">⑧</b> 그러나 그 signal이 gold DAG edge와 clean하게 align되지 않아 dependency recovery 증거로 보기 어렵다.
+</p>
+</div>
+
+<div class="callout-teal">
+  <b>v2의 진단적 가치:</b> 성공률 향상보다 실패 원인을 분해해서 보는 데 있다. state를 보여주는 것만으로 planning 문제가 해결되지는 않는다. dependency 문법을 주는 것만으로 dependency recovery가 생기지는 않는다. 하지만 이제 tool validity, schema validity, action recovery, dependency recovery, denoising signal을 분리해서 볼 수 있는 프레임이 갖춰졌다.
+</div>
+
+
+
+
+<p style="font-size:0.78rem;color:var(--light);text-align:center;margin-top:60px;padding-top:16px;border-top:1px solid var(--border-light);">
+  LLaDA think_parallel v1-v2 State-Tree Analysis · Working Note · Il-ju Hahn · 2026-05-18
+</p>
+
+</body>
+</html>

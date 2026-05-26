@@ -1,0 +1,21 @@
+{
+  "run": {
+    "total_generations": 50,
+    "parsed_generations": 50,
+    "total_units": 148,
+    "total_gold_hops": 293,
+    "timestamp": "2026-05-15T16:19:24"
+  },
+  "metrics": {
+    "format_parse_rate": 1.0,
+    "candidate_gold_coverage": 0.6757679180887372,
+    "strict_single_action_recall": 0.18430034129692832,
+    "semantic_single_action_recall": 0.2150170648464164,
+    "partial_or_better_recall": 0.25597269624573377,
+    "recall_including_compound": 0.31399317406143346,
+    "compound_action_rate": 0.08783783783783784,
+    "hallucinated_argument_rate": 0.1891891891891892,
+    "unmatched_action_rate": 0.3918918918918919,
+    "duplicate_action_rate": 0.013513513513513514
+  }
+}

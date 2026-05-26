@@ -1,0 +1,45 @@
+{
+  "run": {
+    "output_dir": "/home/ilju/research/DiffuAgent/think_parallel_v2/outputs/smoke_flat_state_tree_260517_121856",
+    "score_threshold": 100,
+    "n_turn_generations": 70,
+    "total_units": 130,
+    "total_gold_hops": 142,
+    "timestamp": "2026-05-18T01:20:20",
+    "note": "Deterministic v2 matcher; LLM-as-judge is not run in this MVP."
+  },
+  "action_matching": {
+    "candidate_gold_coverage": 0.8802816901408451,
+    "matched_gold_hop_recall": 0.3732394366197183,
+    "strict_single_action_recall": 0.2535211267605634,
+    "partial_or_better_recall": 0.3732394366197183,
+    "matched_unit_rate": 0.4076923076923077,
+    "unmatched_action_rate": 0.5923076923076923,
+    "duplicate_primary_match_rate": 0.0,
+    "compound_action_rate": 0.09230769230769231,
+    "match_strength_counts": {
+      "wrong": 77,
+      "exact": 36,
+      "partial": 17
+    }
+  },
+  "dependency_alignment": {
+    "generated_dependency_edges": 1,
+    "gold_dependency_checks": 59,
+    "alignment_counts": {
+      "missing_dependency_unmatched_endpoint": 54,
+      "missing_dependency": 5,
+      "unmatched_both_endpoints": 1
+    },
+    "generated_edge_alignment_counts": {
+      "unmatched_both_endpoints": 1
+    },
+    "gold_missing_dependency_counts": {
+      "missing_dependency_unmatched_endpoint": 54,
+      "missing_dependency": 5
+    },
+    "false_serialization_count": 0,
+    "missing_dependency_count": 5,
+    "missing_dependency_unmatched_endpoint_count": 54
+  }
+}

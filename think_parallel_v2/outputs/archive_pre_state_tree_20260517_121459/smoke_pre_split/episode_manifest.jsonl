@@ -1,0 +1,9 @@
+{"question_id": "multi_turn_base_3", "category": "multi_turn_base", "n_turns": 2, "n_gold_calls": 5, "has_graph": true, "prepared_prompt_source": true}
+{"question_id": "multi_turn_base_15", "category": "multi_turn_base", "n_turns": 5, "n_gold_calls": 7, "has_graph": true, "prepared_prompt_source": true}
+{"question_id": "multi_turn_base_53", "category": "multi_turn_base", "n_turns": 4, "n_gold_calls": 6, "has_graph": true, "prepared_prompt_source": true}
+{"question_id": "multi_turn_base_68", "category": "multi_turn_base", "n_turns": 5, "n_gold_calls": 8, "has_graph": true, "prepared_prompt_source": true}
+{"question_id": "multi_turn_base_69", "category": "multi_turn_base", "n_turns": 2, "n_gold_calls": 9, "has_graph": true, "prepared_prompt_source": true}
+{"question_id": "multi_turn_base_97", "category": "multi_turn_base", "n_turns": 6, "n_gold_calls": 10, "has_graph": true, "prepared_prompt_source": true}
+{"question_id": "multi_turn_base_128", "category": "multi_turn_base", "n_turns": 4, "n_gold_calls": 6, "has_graph": true, "prepared_prompt_source": true}
+{"question_id": "multi_turn_base_151", "category": "multi_turn_base", "n_turns": 3, "n_gold_calls": 6, "has_graph": true, "prepared_prompt_source": true}
+{"question_id": "multi_turn_base_175", "category": "multi_turn_base", "n_turns": 2, "n_gold_calls": 6, "has_graph": true, "prepared_prompt_source": true}

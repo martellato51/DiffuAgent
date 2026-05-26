@@ -25,6 +25,7 @@ logger/
 
 # Environment
 .env
+env.local.sh
 .venv
 venv/
 ENV/
@@ -32,6 +33,10 @@ ENV/
 # Results and outputs
 result/
 score/
+think_parallel_v0/logs/
+think_parallel_v0/outputs/
+**/.codex_judge_cache/
+**/.codex_judge_cache_v2/
 
 # Temporary files
 *.backup

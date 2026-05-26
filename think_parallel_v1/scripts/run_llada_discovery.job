@@ -1,0 +1,101 @@
+#!/bin/bash
+#SBATCH --job-name=bfcl_think_parallel
+#SBATCH --partition=jobs
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8
+#SBATCH --gres=gpu:2
+#SBATCH --mem=64G
+#SBATCH --time=24:00:00
+#SBATCH --output=think_parallel_v1/logs/bfcl_think_parallel.%j.log
+#SBATCH --error=think_parallel_v1/logs/bfcl_think_parallel.%j.log
+
+set -euo pipefail
+
+if [[ -n "${SLURM_SUBMIT_DIR:-}" && -f "${SLURM_SUBMIT_DIR}/env.sh" ]]; then
+  DIFFUAGENT_ROOT="$(cd "${SLURM_SUBMIT_DIR}" && pwd)"
+  EXPERIMENT_ROOT="${DIFFUAGENT_ROOT}/think_parallel_v1"
+else
+  EXPERIMENT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+  DIFFUAGENT_ROOT="$(cd "${EXPERIMENT_ROOT}/.." && pwd)"
+fi
+RESEARCH_ROOT="${RESEARCH_ROOT:-$(cd "${DIFFUAGENT_ROOT}/.." && pwd)}"
+BFCL_ROOT="${BFCL_ROOT:-${DIFFUAGENT_ROOT}/unified_envs/gorilla_bfcl_v3/berkeley-function-call-leaderboard}"
+
+source "${DIFFUAGENT_ROOT}/env.sh"
+export BFCL_ROOT
+export BFCL_PROJECT_ROOT="$BFCL_ROOT"
+export PYTHONPATH="${BFCL_ROOT}:${EXPERIMENT_ROOT}:${PYTHONPATH:-}"
+
+source "$CONDA_SH"
+conda activate "$LLADA_ENV_NAME"
+hash -r
+PYTHON="${PYTHON:-${LLADA_PYTHON}}"
+
+if [[ -n "${GPUS:-}" ]]; then
+  export CUDA_VISIBLE_DEVICES="$GPUS"
+fi
+
+export TOKENIZERS_PARALLELISM=false
+export PYTHONUNBUFFERED=1
+export PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:True}"
+export LLADA_TEMPERATURE="${LLADA_TEMPERATURE:-0.0}"
+export LLADA_GEN_LENGTH="${LLADA_GEN_LENGTH:-128}"
+export LLADA_STEPS="${LLADA_STEPS:-128}"
+export LLADA_BLOCK_LENGTH="${LLADA_BLOCK_LENGTH:-32}"
+export LLADA_OOM_GEN_LENGTH="${LLADA_OOM_GEN_LENGTH:-128}"
+export LLADA_OOM_STEPS="${LLADA_OOM_STEPS:-64}"
+export LLADA_OOM_BLOCK_LENGTH="${LLADA_OOM_BLOCK_LENGTH:-32}"
+export LLADA_CONTEXT_LENGTH="${LLADA_CONTEXT_LENGTH:-4000}"
+export LLADA_ENFORCE_CONTEXT="${LLADA_ENFORCE_CONTEXT:-0}"
+export LLADA_TRUNCATE_INPUT="${LLADA_TRUNCATE_INPUT:-0}"
+export BFCL_FUNCTION_DOC_SERIALIZATION="${BFCL_FUNCTION_DOC_SERIALIZATION:-json}"
+
+IDS="${IDS-}"
+IDS_FILE="${IDS_FILE-${BFCL_ROOT}/test_case_ids_to_generate_v3.json}"
+MODE="${MODE:-exact_name_a}"
+CATEGORY="${CATEGORY:-multi_turn_base}"
+RUN_NAME="${RUN_NAME:-llada_think_parallel_${SLURM_JOB_ID:-$(date +%Y%m%d_%H%M%S)}}"
+OUTPUT_DIR="${OUTPUT_DIR:-${EXPERIMENT_ROOT}/outputs/${RUN_NAME}}"
+
+echo "Start: $(date)"
+echo "BFCL_ROOT: $BFCL_ROOT"
+echo "EXPERIMENT_ROOT: $EXPERIMENT_ROOT"
+echo "BFCL_FUNCTION_DOC_SERIALIZATION: $BFCL_FUNCTION_DOC_SERIALIZATION"
+echo "LLADA_MODEL_PATH: $LLADA_MODEL_PATH"
+echo "FAST_DLLM_LLADA_PATH: $FAST_DLLM_LLADA_PATH"
+echo "LLADA_GEN_LENGTH: $LLADA_GEN_LENGTH"
+echo "LLADA_STEPS: $LLADA_STEPS"
+echo "LLADA_BLOCK_LENGTH: $LLADA_BLOCK_LENGTH"
+echo "LLADA_OOM_GEN_LENGTH: $LLADA_OOM_GEN_LENGTH"
+echo "LLADA_OOM_STEPS: $LLADA_OOM_STEPS"
+echo "LLADA_CONTEXT_LENGTH: $LLADA_CONTEXT_LENGTH"
+echo "LLADA_ENFORCE_CONTEXT: $LLADA_ENFORCE_CONTEXT"
+echo "LLADA_TRUNCATE_INPUT: $LLADA_TRUNCATE_INPUT"
+echo "LLADA_MAX_MEMORY: ${LLADA_MAX_MEMORY:-<unset>}"
+echo "CATEGORY: $CATEGORY"
+echo "IDS: ${IDS:-<from IDS_FILE>}"
+echo "IDS_FILE: ${IDS_FILE:-<none; full category>}"
+echo "MODE: $MODE"
+echo "OUTPUT_DIR: $OUTPUT_DIR"
+echo "CUDA_VISIBLE_DEVICES: ${CUDA_VISIBLE_DEVICES:-<unset>}"
+
+cd "$BFCL_ROOT"
+
+ID_ARGS=()
+if [[ -n "$IDS" ]]; then
+  ID_ARGS+=(--ids "$IDS")
+elif [[ -n "$IDS_FILE" ]]; then
+  ID_ARGS+=(--ids-file "$IDS_FILE")
+fi
+
+"$PYTHON" "$EXPERIMENT_ROOT/src/run_discovery.py" \
+  --bfcl-root "$BFCL_ROOT" \
+  --category "$CATEGORY" \
+  "${ID_ARGS[@]}" \
+  --mode "$MODE" \
+  --output-dir "$OUTPUT_DIR"
+
+echo "Done: $(date)"
+echo "Output directory: $OUTPUT_DIR"
+echo "Summary: $OUTPUT_DIR/summary.md"
