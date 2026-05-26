@@ -1,0 +1,51 @@
+{
+  "run": {
+    "output_dir": "/home/ilju/research/DiffuAgent/think_parallel_v2/outputs/smoke_explicit",
+    "score_threshold": 100,
+    "n_turn_generations": 70,
+    "total_units": 154,
+    "total_gold_hops": 142,
+    "timestamp": "2026-05-17T11:50:08",
+    "note": "Deterministic v2 matcher; LLM-as-judge is not run in this MVP."
+  },
+  "action_matching": {
+    "candidate_gold_coverage": 0.9859154929577465,
+    "matched_gold_hop_recall": 0.44366197183098594,
+    "strict_single_action_recall": 0.22535211267605634,
+    "partial_or_better_recall": 0.44366197183098594,
+    "matched_unit_rate": 0.4090909090909091,
+    "unmatched_action_rate": 0.5909090909090909,
+    "duplicate_primary_match_rate": 0.0,
+    "compound_action_rate": 0.07792207792207792,
+    "match_strength_counts": {
+      "wrong": 91,
+      "exact": 32,
+      "partial": 31
+    }
+  },
+  "dependency_alignment": {
+    "generated_dependency_edges": 13,
+    "gold_dependency_checks": 59,
+    "alignment_counts": {
+      "unmatched_both_endpoints": 7,
+      "missing_dependency_unmatched_endpoint": 51,
+      "missing_dependency": 8,
+      "false_serialization": 1,
+      "unmatched_target": 4,
+      "unmatched_source": 1
+    },
+    "generated_edge_alignment_counts": {
+      "unmatched_both_endpoints": 7,
+      "false_serialization": 1,
+      "unmatched_target": 4,
+      "unmatched_source": 1
+    },
+    "gold_missing_dependency_counts": {
+      "missing_dependency_unmatched_endpoint": 51,
+      "missing_dependency": 8
+    },
+    "false_serialization_count": 1,
+    "missing_dependency_count": 8,
+    "missing_dependency_unmatched_endpoint_count": 51
+  }
+}

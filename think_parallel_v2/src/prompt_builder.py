@@ -58,19 +58,30 @@ def _render_previous_turns(episode: dict[str, Any], current_turn_index: int) -> 
 def _planner_user_content(
     episode: dict[str, Any],
     turn: dict[str, Any],
+    state_view: str = "",
 ) -> str:
     previous = _render_previous_turns(episode, turn["turn_index"])
     current_user = turn.get("user_text") or ""
-    return "\n".join(
+    parts = [
+        previous,
+        "",
+    ]
+    if state_view.strip():
+        parts.extend(
+            [
+                state_view.strip(),
+                "",
+            ]
+        )
+    parts.extend(
         [
-            previous,
-            "",
             "Current Turn User:",
             current_user,
             "",
             "Current Plan:",
         ]
     )
+    return "\n".join(parts)
 
 
 def _local_function_doc_preprocessing(
@@ -177,6 +188,7 @@ def build_prompt(
     turn: dict[str, Any],
     mode: str,
     category: str,
+    state_view: str = "",
 ) -> tuple[list[dict[str, str]], list[dict[str, Any]], str]:
     mode = normalize_mode(mode)
 
@@ -197,7 +209,7 @@ def build_prompt(
         },
         {
             "role": "user",
-            "content": _planner_user_content(episode, turn),
+            "content": _planner_user_content(episode, turn, state_view=state_view),
         },
     ]
     return messages, functions, turn.get("user_text") or ""

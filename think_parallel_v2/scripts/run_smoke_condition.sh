@@ -10,23 +10,25 @@ fi
 
 PYTHON_BIN="${PYTHON_BIN:-${LLADA_PYTHON:-/home/ilju/miniconda3/envs/llada8b/bin/python}}"
 CONDITION="${CONDITION:-explicit}"
-SMOKE_IDS="${SMOKE_IDS:-multi_turn_base_3,multi_turn_base_15,multi_turn_base_53,multi_turn_base_68,multi_turn_base_69,multi_turn_base_97,multi_turn_base_128,multi_turn_base_151,multi_turn_base_175}"
+SMOKE_IDS="${SMOKE_IDS:-multi_turn_base_35,multi_turn_base_39,multi_turn_base_50,multi_turn_base_55,multi_turn_base_56,multi_turn_base_57,multi_turn_base_59,multi_turn_base_62,multi_turn_base_67,multi_turn_base_70,multi_turn_base_71,multi_turn_base_86,multi_turn_base_87,multi_turn_base_88,multi_turn_base_91,multi_turn_base_97,multi_turn_base_143,multi_turn_base_151,multi_turn_base_173,multi_turn_base_185}"
+RUN_STAMP="${RUN_STAMP:-$(date +%y%m%d_%H%M%S)}"
+STATE_VIEW="${STATE_VIEW:-tree}"
 
 case "$CONDITION" in
   pre_split)
     MODE="llmcompiler_plan"
-    PREPARED_PROMPTS="${PREPARED_PROMPTS:-$ROOT/prepared/multi_turn_base_intra_turn_parallel_prompts.jsonl}"
-    DEFAULT_OUT="$ROOT/outputs/smoke_pre_split"
+    PREPARED_PROMPTS="${PREPARED_PROMPTS:-$ROOT/prepared/multi_turn_base_intra_turn_parallel_explicit_state_${STATE_VIEW}_prompts.jsonl}"
+    DEFAULT_OUT="$ROOT/outputs/smoke_pre_split_state_${STATE_VIEW}_$RUN_STAMP"
     ;;
   explicit)
     MODE="llmcompiler_explicit_dag"
-    PREPARED_PROMPTS="${PREPARED_PROMPTS:-$ROOT/prepared/multi_turn_base_intra_turn_parallel_explicit_prompts.jsonl}"
-    DEFAULT_OUT="$ROOT/outputs/smoke_explicit"
+    PREPARED_PROMPTS="${PREPARED_PROMPTS:-$ROOT/prepared/multi_turn_base_intra_turn_parallel_explicit_state_${STATE_VIEW}_prompts.jsonl}"
+    DEFAULT_OUT="$ROOT/outputs/smoke_explicit_state_${STATE_VIEW}_$RUN_STAMP"
     ;;
   flat)
     MODE="llmcompiler_flat_plan"
-    PREPARED_PROMPTS="${PREPARED_PROMPTS:-$ROOT/prepared/multi_turn_base_intra_turn_parallel_flat_prompts.jsonl}"
-    DEFAULT_OUT="$ROOT/outputs/smoke_flat"
+    PREPARED_PROMPTS="${PREPARED_PROMPTS:-$ROOT/prepared/multi_turn_base_intra_turn_parallel_flat_state_${STATE_VIEW}_prompts.jsonl}"
+    DEFAULT_OUT="$ROOT/outputs/smoke_flat_state_${STATE_VIEW}_$RUN_STAMP"
     ;;
   *)
     echo "Unsupported CONDITION: $CONDITION" >&2
@@ -59,8 +61,10 @@ echo "ENV_FILE: $ENV_FILE"
 echo "PYTHON_BIN: $PYTHON_BIN"
 echo "CONDITION: $CONDITION"
 echo "MODE: $MODE"
+echo "STATE_VIEW: $STATE_VIEW"
 echo "PREPARED_PROMPTS: $PREPARED_PROMPTS"
 echo "SMOKE_IDS: $SMOKE_IDS"
+echo "RUN_STAMP: $RUN_STAMP"
 echo "OUT: $OUT"
 echo "LLADA_MODEL_PATH: ${LLADA_MODEL_PATH:-<unset>}"
 echo "FAST_DLLM_LLADA_PATH: ${FAST_DLLM_LLADA_PATH:-<unset>}"

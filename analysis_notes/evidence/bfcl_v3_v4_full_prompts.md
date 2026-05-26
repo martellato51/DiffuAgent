@@ -2,7 +2,7 @@
 
 Generated from BFCL preprocessing functions, using the same function-doc preprocessing and system-prompt construction used by each checkout.
 
-Raw JSONL with the same content: `/home/ilju/research/analysis_notes/bfcl_v3_v4_full_prompts.jsonl`.
+Raw JSONL with the same content: `/home/ilju/research/DiffuAgent/analysis_notes/evidence/bfcl_v3_v4_full_prompts.jsonl`.
 
 ## simple_3 <-> simple_python_3
 

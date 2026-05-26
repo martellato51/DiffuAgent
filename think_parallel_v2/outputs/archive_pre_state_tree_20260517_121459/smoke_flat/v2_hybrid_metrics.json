@@ -1,0 +1,116 @@
+{
+  "run": {
+    "output_dir": "/home/ilju/research/DiffuAgent/think_parallel_v2/outputs/smoke_flat",
+    "n_turn_generations": 70,
+    "total_units": 139,
+    "total_gold_hops": 142,
+    "selected_judge_cases": 57,
+    "judged_pairs": 57,
+    "judge_errors": 0,
+    "judge_confidence_threshold": 0.65,
+    "q2_confidence_threshold": 0.75,
+    "timestamp": "2026-05-17T11:53:09",
+    "note": "Hybrid v2 matcher: deterministic P0 plus selective LLM-as-judge overrides."
+  },
+  "p0_reference": {
+    "run": {
+      "output_dir": "/home/ilju/research/DiffuAgent/think_parallel_v2/outputs/smoke_flat",
+      "score_threshold": 100,
+      "n_turn_generations": 70,
+      "total_units": 139,
+      "total_gold_hops": 142,
+      "timestamp": "2026-05-17T11:49:42",
+      "note": "Deterministic v2 matcher; LLM-as-judge is not run in this MVP."
+    },
+    "action_matching": {
+      "candidate_gold_coverage": 0.9014084507042254,
+      "matched_gold_hop_recall": 0.4295774647887324,
+      "strict_single_action_recall": 0.2676056338028169,
+      "partial_or_better_recall": 0.4295774647887324,
+      "matched_unit_rate": 0.43884892086330934,
+      "unmatched_action_rate": 0.5611510791366906,
+      "duplicate_primary_match_rate": 0.0,
+      "compound_action_rate": 0.10071942446043165,
+      "match_strength_counts": {
+        "wrong": 78,
+        "partial": 23,
+        "exact": 38
+      }
+    },
+    "dependency_alignment": {
+      "generated_dependency_edges": 1,
+      "gold_dependency_checks": 59,
+      "alignment_counts": {
+        "missing_dependency_unmatched_endpoint": 49,
+        "missing_dependency": 10,
+        "unmatched_both_endpoints": 1
+      },
+      "generated_edge_alignment_counts": {
+        "unmatched_both_endpoints": 1
+      },
+      "gold_missing_dependency_counts": {
+        "missing_dependency_unmatched_endpoint": 49,
+        "missing_dependency": 10
+      },
+      "false_serialization_count": 0,
+      "missing_dependency_count": 10,
+      "missing_dependency_unmatched_endpoint_count": 49
+    }
+  },
+  "hybrid_action_matching": {
+    "hybrid_matched_gold_hop_recall": 0.3591549295774648,
+    "hybrid_strict_single_action_recall": 0.19014084507042253,
+    "hybrid_partial_or_better_recall": 0.3591549295774648,
+    "hybrid_matched_unit_rate": 0.39568345323741005,
+    "hybrid_unmatched_action_rate": 0.60431654676259,
+    "hybrid_duplicate_primary_match_rate": 0.02877697841726619,
+    "hybrid_compound_action_rate": 0.06474820143884892,
+    "hybrid_match_strength_counts": {
+      "wrong": 84,
+      "partial": 19,
+      "exact": 29,
+      "semantic": 7
+    },
+    "q2_strict_matched_gold_hop_recall": 0.176056338028169,
+    "semantic_rescue_rate": 0.22807017543859648,
+    "conflict_downgrade_rate": 0.3333333333333333,
+    "schema_surface_error_rate": 0.2631578947368421
+  },
+  "hybrid_dependency_alignment": {
+    "generated_dependency_edges": 1,
+    "gold_dependency_checks": 59,
+    "alignment_counts": {
+      "missing_dependency_unmatched_endpoint": 53,
+      "missing_dependency": 6,
+      "unmatched_source": 1
+    },
+    "generated_edge_alignment_counts": {
+      "unmatched_source": 1
+    },
+    "gold_missing_dependency_counts": {
+      "missing_dependency_unmatched_endpoint": 53,
+      "missing_dependency": 6
+    },
+    "false_serialization_count": 0,
+    "missing_dependency_count": 6,
+    "missing_dependency_unmatched_endpoint_count": 53,
+    "hybrid_false_serialization_count": 0,
+    "hybrid_missing_dependency_count": 6
+  },
+  "judge_selection": {
+    "selected_by_category": {
+      "dependency_endpoint_unmatched": 1,
+      "semantic_tool_synonym_or_decomposition": 15,
+      "high_score_unmatched": 7,
+      "argument_value_conflict": 15,
+      "schema_invalid_partial": 23
+    },
+    "judged_by_category": {
+      "dependency_endpoint_unmatched": 1,
+      "semantic_tool_synonym_or_decomposition": 15,
+      "high_score_unmatched": 7,
+      "schema_invalid_partial": 23,
+      "argument_value_conflict": 15
+    }
+  }
+}

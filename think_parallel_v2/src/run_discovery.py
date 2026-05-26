@@ -22,6 +22,11 @@ if __package__ is None or __package__ == "":
     from src.llada_backend import load_traceable_llada_backend
     from src.parse_plan import parse_llmcompiler_plan
     from src.prompt_builder import SUPPORTED_MODES, build_prompt, normalize_mode
+    from src.state_view import (
+        StateViewConfig,
+        build_turn_state_views,
+        normalize_state_view_mode,
+    )
 else:
     from .bfcl_data import (
         load_ids_from_file,
@@ -31,6 +36,11 @@ else:
     from .llada_backend import load_traceable_llada_backend
     from .parse_plan import parse_llmcompiler_plan
     from .prompt_builder import SUPPORTED_MODES, build_prompt, normalize_mode
+    from .state_view import (
+        StateViewConfig,
+        build_turn_state_views,
+        normalize_state_view_mode,
+    )
 
 
 DEFAULT_BFCL_ROOT = (
@@ -349,6 +359,21 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--dtype", default=os.getenv("LLADA_DTYPE", "bfloat16"))
     parser.add_argument("--dry-run", action="store_true", help="Build prompts and gold context without loading LLaDA")
     parser.add_argument(
+        "--state-view",
+        default=os.getenv("THINK_PARALLEL_STATE_VIEW", "tree"),
+        choices=["none", "tree", "raw"],
+        help="Deterministic current-environment state view inserted before the current turn",
+    )
+    parser.add_argument(
+        "--state-view-include-file-content",
+        action="store_true",
+        help="Include truncated file content in the deterministic state view",
+    )
+    parser.add_argument("--state-view-max-depth", type=int, default=6)
+    parser.add_argument("--state-view-max-entries", type=int, default=200)
+    parser.add_argument("--state-view-max-chars", type=int, default=6000)
+    parser.add_argument("--state-view-max-file-chars", type=int, default=300)
+    parser.add_argument(
         "--allow-gold-replay-errors",
         action="store_true",
         help="Write replay-error observations instead of failing when BFCL gold tool replay raises",
@@ -379,6 +404,15 @@ def _manifest_from_prompt_rows(rows: list[dict[str, Any]], category: str) -> lis
 
 def _prepare_prompt_rows(args: argparse.Namespace, bfcl_root: Path) -> tuple[list[dict[str, Any]], list[dict[str, Any]], Path | None, Path | None]:
     mode = normalize_mode(args.mode)
+    state_view_mode = normalize_state_view_mode(getattr(args, "state_view", "tree"))
+    state_view_config = StateViewConfig(
+        mode=state_view_mode,
+        include_file_content=bool(getattr(args, "state_view_include_file_content", False)),
+        max_depth=int(getattr(args, "state_view_max_depth", 6)),
+        max_entries=int(getattr(args, "state_view_max_entries", 200)),
+        max_chars=int(getattr(args, "state_view_max_chars", 6000)),
+        max_file_chars=int(getattr(args, "state_view_max_file_chars", 300)),
+    )
     selected_ids, ids_file = _selected_ids(args)
 
     graphs_path = Path(args.graphs_path).resolve() if args.graphs_path else None
@@ -403,6 +437,13 @@ def _prepare_prompt_rows(args: argparse.Namespace, bfcl_root: Path) -> tuple[lis
             run_label=run_label,
             strict=not args.allow_gold_replay_errors,
         )
+        state_views = build_turn_state_views(
+            bfcl_root,
+            episode,
+            run_label=run_label,
+            config=state_view_config,
+            strict=not args.allow_gold_replay_errors,
+        )
         graph = episode.get("graph")
         manifests.append(
             {
@@ -425,9 +466,14 @@ def _prepare_prompt_rows(args: argparse.Namespace, bfcl_root: Path) -> tuple[lis
                 else None,
             }
         )
-        for turn in episode["turns"]:
+        for turn, state_view in zip(episode["turns"], state_views, strict=True):
             messages, functions, current_goal = build_prompt(
-                bfcl_root, episode, turn, mode, args.category
+                bfcl_root,
+                episode,
+                turn,
+                mode,
+                args.category,
+                state_view=state_view,
             )
             rows.append(
                 {
@@ -436,6 +482,17 @@ def _prepare_prompt_rows(args: argparse.Namespace, bfcl_root: Path) -> tuple[lis
                     "mode": mode,
                     "current_goal": current_goal,
                     "prompt": messages,
+                    "state_view_mode": state_view_mode,
+                    "state_view": state_view,
+                    "state_view_config": {
+                        "include_file_content": state_view_config.include_file_content,
+                        "max_depth": state_view_config.max_depth,
+                        "max_entries": state_view_config.max_entries,
+                        "max_chars": state_view_config.max_chars,
+                        "max_file_chars": state_view_config.max_file_chars,
+                    },
+                    "state_view_replay_turn_index": turn["turn_index"],
+                    "state_view_replay_uses_gold_previous_turns": True,
                     "n_functions": len(functions),
                     "function_names": [
                         func.get("name") for func in functions if func.get("name")
@@ -567,6 +624,9 @@ def main() -> None:
             "mode": mode,
             "timestamp": datetime.now().isoformat(timespec="seconds"),
             "current_goal": current_goal,
+            "state_view_mode": prompt_record.get("state_view_mode", "unknown"),
+            "state_view": prompt_record.get("state_view", ""),
+            "state_view_config": prompt_record.get("state_view_config"),
             "gold_calls": prompt_record.get("gold_calls", []),
             "gold_observations": prompt_record.get("gold_observations", []),
             "graph_stats": prompt_record.get("graph_stats"),
@@ -637,6 +697,12 @@ def main() -> None:
             "output_dir": str(output_dir),
             "dry_run": args.dry_run,
             "allow_gold_replay_errors": args.allow_gold_replay_errors,
+            "state_view_modes": sorted(
+                {
+                    str(row.get("state_view_mode", "missing"))
+                    for row in prompt_rows
+                }
+            ),
             "n_episodes": n_episodes,
             "n_turn_generations": len(parse_records),
             "note": "Gold graph hops are not used during generation. Graph data is for post-hoc analysis.",

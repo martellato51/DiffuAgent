@@ -1,0 +1,116 @@
+{
+  "run": {
+    "output_dir": "/home/ilju/research/DiffuAgent/think_parallel_v2/outputs/smoke_flat_state_tree_260517_121856",
+    "n_turn_generations": 70,
+    "total_units": 130,
+    "total_gold_hops": 142,
+    "selected_judge_cases": 52,
+    "judged_pairs": 52,
+    "judge_errors": 0,
+    "judge_confidence_threshold": 0.65,
+    "q2_confidence_threshold": 0.75,
+    "timestamp": "2026-05-18T01:24:00",
+    "note": "Hybrid v2 matcher: deterministic P0 plus selective LLM-as-judge overrides."
+  },
+  "p0_reference": {
+    "run": {
+      "output_dir": "/home/ilju/research/DiffuAgent/think_parallel_v2/outputs/smoke_flat_state_tree_260517_121856",
+      "score_threshold": 100,
+      "n_turn_generations": 70,
+      "total_units": 130,
+      "total_gold_hops": 142,
+      "timestamp": "2026-05-18T01:20:20",
+      "note": "Deterministic v2 matcher; LLM-as-judge is not run in this MVP."
+    },
+    "action_matching": {
+      "candidate_gold_coverage": 0.8802816901408451,
+      "matched_gold_hop_recall": 0.3732394366197183,
+      "strict_single_action_recall": 0.2535211267605634,
+      "partial_or_better_recall": 0.3732394366197183,
+      "matched_unit_rate": 0.4076923076923077,
+      "unmatched_action_rate": 0.5923076923076923,
+      "duplicate_primary_match_rate": 0.0,
+      "compound_action_rate": 0.09230769230769231,
+      "match_strength_counts": {
+        "wrong": 77,
+        "exact": 36,
+        "partial": 17
+      }
+    },
+    "dependency_alignment": {
+      "generated_dependency_edges": 1,
+      "gold_dependency_checks": 59,
+      "alignment_counts": {
+        "missing_dependency_unmatched_endpoint": 54,
+        "missing_dependency": 5,
+        "unmatched_both_endpoints": 1
+      },
+      "generated_edge_alignment_counts": {
+        "unmatched_both_endpoints": 1
+      },
+      "gold_missing_dependency_counts": {
+        "missing_dependency_unmatched_endpoint": 54,
+        "missing_dependency": 5
+      },
+      "false_serialization_count": 0,
+      "missing_dependency_count": 5,
+      "missing_dependency_unmatched_endpoint_count": 54
+    }
+  },
+  "hybrid_action_matching": {
+    "hybrid_matched_gold_hop_recall": 0.3591549295774648,
+    "hybrid_strict_single_action_recall": 0.19718309859154928,
+    "hybrid_partial_or_better_recall": 0.3591549295774648,
+    "hybrid_matched_unit_rate": 0.4153846153846154,
+    "hybrid_unmatched_action_rate": 0.5846153846153846,
+    "hybrid_duplicate_primary_match_rate": 0.023076923076923078,
+    "hybrid_compound_action_rate": 0.07692307692307693,
+    "hybrid_match_strength_counts": {
+      "wrong": 76,
+      "exact": 28,
+      "partial": 17,
+      "semantic": 9
+    },
+    "q2_strict_matched_gold_hop_recall": 0.176056338028169,
+    "semantic_rescue_rate": 0.21153846153846154,
+    "conflict_downgrade_rate": 0.19230769230769232,
+    "schema_surface_error_rate": 0.28846153846153844
+  },
+  "hybrid_dependency_alignment": {
+    "generated_dependency_edges": 1,
+    "gold_dependency_checks": 59,
+    "alignment_counts": {
+      "missing_dependency_unmatched_endpoint": 53,
+      "missing_dependency": 6,
+      "unmatched_source": 1
+    },
+    "generated_edge_alignment_counts": {
+      "unmatched_source": 1
+    },
+    "gold_missing_dependency_counts": {
+      "missing_dependency_unmatched_endpoint": 53,
+      "missing_dependency": 6
+    },
+    "false_serialization_count": 0,
+    "missing_dependency_count": 6,
+    "missing_dependency_unmatched_endpoint_count": 53,
+    "hybrid_false_serialization_count": 0,
+    "hybrid_missing_dependency_count": 6
+  },
+  "judge_selection": {
+    "selected_by_category": {
+      "semantic_tool_synonym_or_decomposition": 22,
+      "argument_value_conflict": 10,
+      "dependency_endpoint_unmatched": 1,
+      "high_score_unmatched": 4,
+      "schema_invalid_partial": 17
+    },
+    "judged_by_category": {
+      "argument_value_conflict": 10,
+      "semantic_tool_synonym_or_decomposition": 22,
+      "schema_invalid_partial": 17,
+      "high_score_unmatched": 4,
+      "dependency_endpoint_unmatched": 1
+    }
+  }
+}

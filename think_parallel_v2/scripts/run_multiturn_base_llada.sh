@@ -9,15 +9,17 @@ fi
 
 PYTHON_BIN="${PYTHON_BIN:-${LLADA_PYTHON:-/home/ilju/miniconda3/envs/llada8b/bin/python}}"
 MODE="${MODE:-llmcompiler_explicit_dag}"
+RUN_STAMP="${RUN_STAMP:-$(date +%y%m%d_%H%M%S)}"
+STATE_VIEW="${STATE_VIEW:-tree}"
 
 case "$MODE" in
   llmcompiler_plan|llmcompiler_explicit_dag)
-    DEFAULT_PREPARED_PROMPTS="$ROOT/prepared/multi_turn_base_intra_turn_parallel_explicit_prompts.jsonl"
-    DEFAULT_OUT="$ROOT/outputs/llada_multiturn_base_explicit"
+    DEFAULT_PREPARED_PROMPTS="$ROOT/prepared/multi_turn_base_intra_turn_parallel_explicit_state_${STATE_VIEW}_prompts.jsonl"
+    DEFAULT_OUT="$ROOT/outputs/llada_multiturn_base_explicit_state_${STATE_VIEW}_$RUN_STAMP"
     ;;
   llmcompiler_flat_plan)
-    DEFAULT_PREPARED_PROMPTS="$ROOT/prepared/multi_turn_base_intra_turn_parallel_flat_prompts.jsonl"
-    DEFAULT_OUT="$ROOT/outputs/llada_multiturn_base_flat"
+    DEFAULT_PREPARED_PROMPTS="$ROOT/prepared/multi_turn_base_intra_turn_parallel_flat_state_${STATE_VIEW}_prompts.jsonl"
+    DEFAULT_OUT="$ROOT/outputs/llada_multiturn_base_flat_state_${STATE_VIEW}_$RUN_STAMP"
     ;;
   *)
     echo "Unsupported MODE: $MODE" >&2
