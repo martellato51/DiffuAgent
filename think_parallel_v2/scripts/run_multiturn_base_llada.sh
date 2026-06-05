@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT="/home/ilju/research/DiffuAgent/think_parallel_v2"
-ENV_FILE="${ENV_FILE:-/home/ilju/research/DiffuAgent/env.sh}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="${ROOT:-$(cd "$SCRIPT_DIR/.." && pwd)}"
+DIFFUAGENT_ROOT="${DIFFUAGENT_ROOT:-$(cd "$ROOT/.." && pwd)}"
+ENV_FILE="${ENV_FILE:-$DIFFUAGENT_ROOT/env.local.sh}"
 if [[ -f "$ENV_FILE" ]]; then
   source "$ENV_FILE"
 fi
 
-PYTHON_BIN="${PYTHON_BIN:-${LLADA_PYTHON:-/home/ilju/miniconda3/envs/llada8b/bin/python}}"
+PYTHON_BIN="${PYTHON_BIN:-${LLADA_PYTHON:-python}}"
 MODE="${MODE:-llmcompiler_explicit_dag}"
 RUN_STAMP="${RUN_STAMP:-$(date +%y%m%d_%H%M%S)}"
 STATE_VIEW="${STATE_VIEW:-tree}"

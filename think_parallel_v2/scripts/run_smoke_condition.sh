@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT="${ROOT:-/home/ilju/research/DiffuAgent/think_parallel_v2}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="${ROOT:-$(cd "$SCRIPT_DIR/.." && pwd)}"
 DIFFUAGENT_ROOT="${DIFFUAGENT_ROOT:-$(cd "$ROOT/.." && pwd)}"
-ENV_FILE="${ENV_FILE:-$DIFFUAGENT_ROOT/env.sh}"
+ENV_FILE="${ENV_FILE:-$DIFFUAGENT_ROOT/env.local.sh}"
 if [[ -f "$ENV_FILE" ]]; then
   source "$ENV_FILE"
 fi
 
-PYTHON_BIN="${PYTHON_BIN:-${LLADA_PYTHON:-/home/ilju/miniconda3/envs/llada8b/bin/python}}"
+PYTHON_BIN="${PYTHON_BIN:-${LLADA_PYTHON:-python}}"
 CONDITION="${CONDITION:-explicit}"
 SMOKE_IDS="${SMOKE_IDS:-multi_turn_base_35,multi_turn_base_39,multi_turn_base_50,multi_turn_base_55,multi_turn_base_56,multi_turn_base_57,multi_turn_base_59,multi_turn_base_62,multi_turn_base_67,multi_turn_base_70,multi_turn_base_71,multi_turn_base_86,multi_turn_base_87,multi_turn_base_88,multi_turn_base_91,multi_turn_base_97,multi_turn_base_143,multi_turn_base_151,multi_turn_base_173,multi_turn_base_185}"
 RUN_STAMP="${RUN_STAMP:-$(date +%y%m%d_%H%M%S)}"

@@ -7,12 +7,30 @@
 #SBATCH --gres=gpu:2
 #SBATCH --mem=64G
 #SBATCH --time=08:00:00
-#SBATCH --output=think_parallel_v2/logs/tpv2_smoke_flat.%j.log
-#SBATCH --error=think_parallel_v2/logs/tpv2_smoke_flat.%j.log
+#SBATCH --output=/tmp/tpv2_smoke_flat.%j.log
+#SBATCH --error=/tmp/tpv2_smoke_flat.%j.log
 
 set -euo pipefail
 
-ROOT="${ROOT:-/home/ilju/research/DiffuAgent/think_parallel_v2}"
+SUBMIT_DIR="${SLURM_SUBMIT_DIR:-$(pwd)}"
+if [[ -d "$SUBMIT_DIR/think_parallel_v2/scripts" ]]; then
+  DIFFUAGENT_ROOT="${DIFFUAGENT_ROOT:-$SUBMIT_DIR}"
+elif [[ -d "$SUBMIT_DIR/DiffuAgent/think_parallel_v2/scripts" ]]; then
+  DIFFUAGENT_ROOT="${DIFFUAGENT_ROOT:-$SUBMIT_DIR/DiffuAgent}"
+elif [[ -d "$SUBMIT_DIR/research/DiffuAgent/think_parallel_v2/scripts" ]]; then
+  DIFFUAGENT_ROOT="${DIFFUAGENT_ROOT:-$SUBMIT_DIR/research/DiffuAgent}"
+else
+  echo "Cannot infer DIFFUAGENT_ROOT from SLURM_SUBMIT_DIR: $SUBMIT_DIR" >&2
+  echo "Submit from DiffuAgent or research, or pass DIFFUAGENT_ROOT=/path/to/DiffuAgent." >&2
+  exit 1
+fi
+ROOT="${ROOT:-$DIFFUAGENT_ROOT/think_parallel_v2}"
+DIFFUAGENT_ROOT="${DIFFUAGENT_ROOT:-$(cd "$ROOT/.." && pwd)}"
+ENV_FILE="${ENV_FILE:-$DIFFUAGENT_ROOT/env.local.sh}"
+if [[ -f "$ENV_FILE" ]]; then
+  source "$ENV_FILE"
+fi
 mkdir -p "$ROOT/logs"
+exec > "$ROOT/logs/tpv2_smoke_flat.${SLURM_JOB_ID:-manual}.log" 2>&1
 
 CONDITION=flat "$ROOT/scripts/run_smoke_condition.sh"

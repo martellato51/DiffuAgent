@@ -1,0 +1,2165 @@
+{
+  "run": {
+    "category": "multi_turn_base",
+    "mode": "llmcompiler_flat_plan",
+    "ids": [
+      "multi_turn_base_128",
+      "multi_turn_base_15",
+      "multi_turn_base_151",
+      "multi_turn_base_175",
+      "multi_turn_base_3",
+      "multi_turn_base_53",
+      "multi_turn_base_68",
+      "multi_turn_base_69",
+      "multi_turn_base_97"
+    ],
+    "prepared_prompts_path": "/data/home/martellato41/research/DiffuAgent/think_parallel_v2/prepared/multi_turn_base_intra_turn_parallel_flat_prompts.jsonl",
+    "ids_file": null,
+    "graphs_path": null,
+    "episode_filter": "prepared",
+    "bfcl_root": "/home/ilju/research/DiffuAgent/unified_envs/gorilla_bfcl_v3/berkeley-function-call-leaderboard",
+    "output_dir": "/data/home/martellato41/research/DiffuAgent/think_parallel_v2/outputs/smoke_flat",
+    "dry_run": false,
+    "allow_gold_replay_errors": false,
+    "n_episodes": 9,
+    "n_turn_generations": 33,
+    "note": "Gold graph hops are not used during generation. Graph data is for post-hoc analysis."
+  },
+  "parse": {
+    "total_generations": 33,
+    "parsed_generations": 33,
+    "format_parse_rate": 1.0,
+    "total_units": 70,
+    "mean_units_per_generation": 2.121212121212121,
+    "records": [
+      {
+        "question_id": "multi_turn_base_3",
+        "turn_index": 0,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 0,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 0,
+          "invalid_tool_name_units": 0,
+          "invalid_tool_names": [],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": -1,
+          "is_over_generated_vs_gold": false,
+          "gold_tool_names": [
+            "find"
+          ],
+          "generated_tool_names": [],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 0,
+          "schema_invalid_units": 0,
+          "schema_errors": [],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_3",
+        "turn_index": 1,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 4,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h2",
+            "h3",
+            "h4",
+            "h5"
+          ],
+          "n_gold_hops": 4,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h4",
+              "h5"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h2"
+            ],
+            [
+              "h3"
+            ],
+            [
+              "h4",
+              "h5"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 2,
+          "invalid_tool_name_units": 0,
+          "invalid_tool_names": [],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": -2,
+          "is_over_generated_vs_gold": false,
+          "gold_tool_names": [
+            "cd",
+            "cd",
+            "cp",
+            "cp"
+          ],
+          "generated_tool_names": [
+            "mv",
+            "mv"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 2,
+          "schema_invalid_units": 0,
+          "schema_errors": [],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_15",
+        "turn_index": 0,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: close, open, read_file_content, write",
+        "n_units": 6,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 1,
+          "invalid_tool_name_units": 5,
+          "invalid_tool_names": [
+            "close",
+            "open",
+            "read_file_content",
+            "write"
+          ],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": 5,
+          "is_over_generated_vs_gold": true,
+          "gold_tool_names": [
+            "touch"
+          ],
+          "generated_tool_names": [
+            "touch",
+            "open",
+            "write",
+            "close",
+            "open",
+            "read_file_content"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 0,
+          "schema_invalid_units": 6,
+          "schema_errors": [
+            {
+              "unit_id": "u1",
+              "tool_name": "touch",
+              "error": "positional_args_not_schema_checked; missing_required: file_name"
+            },
+            {
+              "unit_id": "u2",
+              "tool_name": "open",
+              "error": "missing_tool_schema"
+            },
+            {
+              "unit_id": "u3",
+              "tool_name": "write",
+              "error": "missing_tool_schema"
+            },
+            {
+              "unit_id": "u4",
+              "tool_name": "close",
+              "error": "missing_tool_schema"
+            },
+            {
+              "unit_id": "u5",
+              "tool_name": "open",
+              "error": "missing_tool_schema"
+            },
+            {
+              "unit_id": "u6",
+              "tool_name": "read_file_content",
+              "error": "missing_tool_schema"
+            }
+          ],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_15",
+        "turn_index": 1,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 3,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h2"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h2"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 3,
+          "invalid_tool_name_units": 0,
+          "invalid_tool_names": [],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": 2,
+          "is_over_generated_vs_gold": true,
+          "gold_tool_names": [
+            "echo"
+          ],
+          "generated_tool_names": [
+            "cat",
+            "cat",
+            "cat"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 1,
+          "schema_invalid_units": 2,
+          "schema_errors": [
+            {
+              "unit_id": "u2",
+              "tool_name": "cat",
+              "error": "unknown_parameters: content"
+            },
+            {
+              "unit_id": "u3",
+              "tool_name": "cat",
+              "error": "unknown_parameters: content"
+            }
+          ],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_15",
+        "turn_index": 2,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 1,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h3"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h3"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 1,
+          "invalid_tool_name_units": 0,
+          "invalid_tool_names": [],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": 0,
+          "is_over_generated_vs_gold": false,
+          "gold_tool_names": [
+            "tail"
+          ],
+          "generated_tool_names": [
+            "tail"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 1,
+          "schema_invalid_units": 0,
+          "schema_errors": [],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_15",
+        "turn_index": 3,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: head",
+        "n_units": 2,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h4",
+            "h5",
+            "h6"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 3,
+          "intra_turn_antichain_pairs": [
+            [
+              "h4",
+              "h5"
+            ],
+            [
+              "h4",
+              "h6"
+            ],
+            [
+              "h5",
+              "h6"
+            ]
+          ],
+          "turn_width": 3,
+          "turn_layers": [
+            [
+              "h4",
+              "h5",
+              "h6"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 1,
+          "invalid_tool_name_units": 1,
+          "invalid_tool_names": [
+            "head"
+          ],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": -1,
+          "is_over_generated_vs_gold": false,
+          "gold_tool_names": [
+            "wc",
+            "wc",
+            "wc"
+          ],
+          "generated_tool_names": [
+            "wc",
+            "head"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 1,
+          "schema_invalid_units": 1,
+          "schema_errors": [
+            {
+              "unit_id": "u2",
+              "tool_name": "head",
+              "error": "missing_tool_schema"
+            }
+          ],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_15",
+        "turn_index": 4,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 3,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 4,
+          "gold_hop_ids": [
+            "h7"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h7"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 3,
+          "invalid_tool_name_units": 0,
+          "invalid_tool_names": [],
+          "duplicate_action_count": 1,
+          "has_duplicate_actions": true,
+          "generated_gold_call_delta": 2,
+          "is_over_generated_vs_gold": true,
+          "gold_tool_names": [
+            "mean"
+          ],
+          "generated_tool_names": [
+            "tail",
+            "tail",
+            "mean"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 3,
+          "schema_invalid_units": 0,
+          "schema_errors": [],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_53",
+        "turn_index": 0,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 3,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 3,
+          "invalid_tool_name_units": 0,
+          "invalid_tool_names": [],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": 2,
+          "is_over_generated_vs_gold": true,
+          "gold_tool_names": [
+            "gallon_to_liter"
+          ],
+          "generated_tool_names": [
+            "gallon_to_liter",
+            "liter_to_gallon",
+            "gallon_to_liter"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 3,
+          "schema_invalid_units": 0,
+          "schema_errors": [],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_53",
+        "turn_index": 1,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 1,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h2",
+            "h3",
+            "h4"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 2,
+          "intra_turn_antichain_pairs": [
+            [
+              "h2",
+              "h3"
+            ],
+            [
+              "h2",
+              "h4"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h2",
+              "h3"
+            ],
+            [
+              "h4"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 1,
+          "invalid_tool_name_units": 0,
+          "invalid_tool_names": [],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": -2,
+          "is_over_generated_vs_gold": false,
+          "gold_tool_names": [
+            "lockDoors",
+            "pressBrakePedal",
+            "startEngine"
+          ],
+          "generated_tool_names": [
+            "startEngine"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 1,
+          "schema_invalid_units": 0,
+          "schema_errors": [],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_53",
+        "turn_index": 2,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: get_tire_pressure",
+        "n_units": 2,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h5"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 0,
+          "invalid_tool_name_units": 2,
+          "invalid_tool_names": [
+            "get_tire_pressure"
+          ],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": 1,
+          "is_over_generated_vs_gold": true,
+          "gold_tool_names": [
+            "check_tire_pressure"
+          ],
+          "generated_tool_names": [
+            "get_tire_pressure",
+            "get_tire_pressure"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 0,
+          "schema_invalid_units": 2,
+          "schema_errors": [
+            {
+              "unit_id": "u1",
+              "tool_name": "get_tire_pressure",
+              "error": "missing_tool_schema"
+            },
+            {
+              "unit_id": "u2",
+              "tool_name": "get_tire_pressure",
+              "error": "missing_tool_schema"
+            }
+          ],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_53",
+        "turn_index": 3,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h6"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h6"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 2,
+          "invalid_tool_name_units": 0,
+          "invalid_tool_names": [],
+          "duplicate_action_count": 1,
+          "has_duplicate_actions": true,
+          "generated_gold_call_delta": 1,
+          "is_over_generated_vs_gold": true,
+          "gold_tool_names": [
+            "post_tweet"
+          ],
+          "generated_tool_names": [
+            "post_tweet",
+            "post_tweet"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 0,
+          "schema_invalid_units": 2,
+          "schema_errors": [
+            {
+              "unit_id": "u1",
+              "tool_name": "post_tweet",
+              "error": "missing_required: content; unknown_parameters: hashtags, message"
+            },
+            {
+              "unit_id": "u2",
+              "tool_name": "post_tweet",
+              "error": "missing_required: content; unknown_parameters: hashtags, message"
+            }
+          ],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_68",
+        "turn_index": 0,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 0,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h1"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 0,
+          "invalid_tool_name_units": 0,
+          "invalid_tool_names": [],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": -1,
+          "is_over_generated_vs_gold": false,
+          "gold_tool_names": [
+            "fillFuelTank"
+          ],
+          "generated_tool_names": [],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 0,
+          "schema_invalid_units": 0,
+          "schema_errors": [],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_68",
+        "turn_index": 1,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h2",
+            "h3",
+            "h4"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 2,
+          "intra_turn_antichain_pairs": [
+            [
+              "h2",
+              "h3"
+            ],
+            [
+              "h2",
+              "h4"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h2",
+              "h3"
+            ],
+            [
+              "h4"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 2,
+          "invalid_tool_name_units": 0,
+          "invalid_tool_names": [],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": -1,
+          "is_over_generated_vs_gold": false,
+          "gold_tool_names": [
+            "lockDoors",
+            "pressBrakePedal",
+            "startEngine"
+          ],
+          "generated_tool_names": [
+            "startEngine",
+            "fillFuelTank"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 2,
+          "schema_invalid_units": 0,
+          "schema_errors": [],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_68",
+        "turn_index": 2,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: checkTirePressure",
+        "n_units": 3,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h5",
+            "h6"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ],
+            [
+              "h6"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 1,
+          "invalid_tool_name_units": 2,
+          "invalid_tool_names": [
+            "checkTirePressure"
+          ],
+          "duplicate_action_count": 1,
+          "has_duplicate_actions": true,
+          "generated_gold_call_delta": 1,
+          "is_over_generated_vs_gold": true,
+          "gold_tool_names": [
+            "check_tire_pressure",
+            "find_nearest_tire_shop"
+          ],
+          "generated_tool_names": [
+            "checkTirePressure",
+            "checkTirePressure",
+            "set_navigation"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 0,
+          "schema_invalid_units": 3,
+          "schema_errors": [
+            {
+              "unit_id": "u1",
+              "tool_name": "checkTirePressure",
+              "error": "missing_tool_schema"
+            },
+            {
+              "unit_id": "u2",
+              "tool_name": "checkTirePressure",
+              "error": "missing_tool_schema"
+            },
+            {
+              "unit_id": "u3",
+              "tool_name": "set_navigation",
+              "error": "syntax_error: invalid syntax; missing_required: destination"
+            }
+          ],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_68",
+        "turn_index": 3,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 1,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h7"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h7"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 1,
+          "invalid_tool_name_units": 0,
+          "invalid_tool_names": [],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": 0,
+          "is_over_generated_vs_gold": false,
+          "gold_tool_names": [
+            "set_navigation"
+          ],
+          "generated_tool_names": [
+            "set_navigation"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 1,
+          "schema_invalid_units": 0,
+          "schema_errors": [],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_68",
+        "turn_index": 4,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: create_tweet",
+        "n_units": 2,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 4,
+          "gold_hop_ids": [
+            "h8"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h8"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 1,
+          "invalid_tool_name_units": 1,
+          "invalid_tool_names": [
+            "create_tweet"
+          ],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": 1,
+          "is_over_generated_vs_gold": true,
+          "gold_tool_names": [
+            "post_tweet"
+          ],
+          "generated_tool_names": [
+            "create_tweet",
+            "post_tweet"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 0,
+          "schema_invalid_units": 2,
+          "schema_errors": [
+            {
+              "unit_id": "u1",
+              "tool_name": "create_tweet",
+              "error": "missing_tool_schema"
+            },
+            {
+              "unit_id": "u2",
+              "tool_name": "post_tweet",
+              "error": "missing_required: content; unknown_parameters: tweet"
+            }
+          ],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_69",
+        "turn_index": 0,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 5,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5"
+          ],
+          "n_gold_hops": 5,
+          "n_intra_turn_antichain_pairs": 7,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h1",
+              "h4"
+            ],
+            [
+              "h1",
+              "h5"
+            ],
+            [
+              "h2",
+              "h4"
+            ],
+            [
+              "h2",
+              "h5"
+            ],
+            [
+              "h3",
+              "h4"
+            ],
+            [
+              "h3",
+              "h5"
+            ]
+          ],
+          "turn_width": 3,
+          "turn_layers": [
+            [
+              "h1",
+              "h2",
+              "h4"
+            ],
+            [
+              "h3",
+              "h5"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 2,
+          "invalid_tool_name_units": 0,
+          "invalid_tool_names": [],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": -3,
+          "is_over_generated_vs_gold": false,
+          "gold_tool_names": [
+            "get_zipcode_based_on_city",
+            "get_zipcode_based_on_city",
+            "estimate_distance",
+            "liter_to_gallon",
+            "fillFuelTank"
+          ],
+          "generated_tool_names": [
+            "set_navigation",
+            "fillFuelTank"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 1,
+          "schema_invalid_units": 1,
+          "schema_errors": [
+            {
+              "unit_id": "u2",
+              "tool_name": "fillFuelTank",
+              "error": "missing_required: fuelAmount; unknown_parameters: level"
+            }
+          ],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_69",
+        "turn_index": 1,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: create_tweet",
+        "n_units": 3,
+        "gold_n_calls": 4,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h6",
+            "h7",
+            "h8",
+            "h9"
+          ],
+          "n_gold_hops": 4,
+          "n_intra_turn_antichain_pairs": 5,
+          "intra_turn_antichain_pairs": [
+            [
+              "h6",
+              "h7"
+            ],
+            [
+              "h6",
+              "h8"
+            ],
+            [
+              "h6",
+              "h9"
+            ],
+            [
+              "h7",
+              "h9"
+            ],
+            [
+              "h8",
+              "h9"
+            ]
+          ],
+          "turn_width": 3,
+          "turn_layers": [
+            [
+              "h6",
+              "h7",
+              "h9"
+            ],
+            [
+              "h8"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 2,
+          "invalid_tool_name_units": 1,
+          "invalid_tool_names": [
+            "create_tweet"
+          ],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": -1,
+          "is_over_generated_vs_gold": false,
+          "gold_tool_names": [
+            "lockDoors",
+            "pressBrakePedal",
+            "startEngine",
+            "post_tweet"
+          ],
+          "generated_tool_names": [
+            "startEngine",
+            "create_tweet",
+            "post_tweet"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 1,
+          "schema_invalid_units": 2,
+          "schema_errors": [
+            {
+              "unit_id": "u2",
+              "tool_name": "create_tweet",
+              "error": "missing_tool_schema"
+            },
+            {
+              "unit_id": "u3",
+              "tool_name": "post_tweet",
+              "error": "missing_required: content; unknown_parameters: tweet, username"
+            }
+          ],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_97",
+        "turn_index": 0,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: calculate_distance_between_cities",
+        "n_units": 3,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h3"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 2,
+          "invalid_tool_name_units": 1,
+          "invalid_tool_names": [
+            "calculate_distance_between_cities"
+          ],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": 0,
+          "is_over_generated_vs_gold": false,
+          "gold_tool_names": [
+            "get_zipcode_based_on_city",
+            "get_zipcode_based_on_city",
+            "estimate_distance"
+          ],
+          "generated_tool_names": [
+            "get_zipcode_based_on_city",
+            "get_zipcode_based_on_city",
+            "calculate_distance_between_cities"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 2,
+          "schema_invalid_units": 1,
+          "schema_errors": [
+            {
+              "unit_id": "u3",
+              "tool_name": "calculate_distance_between_cities",
+              "error": "missing_tool_schema"
+            }
+          ],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_97",
+        "turn_index": 1,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: calculate_fuel_capacity, get_fuel_efficiency, get_fuel_level",
+        "n_units": 3,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h4"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h4"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 0,
+          "invalid_tool_name_units": 3,
+          "invalid_tool_names": [
+            "calculate_fuel_capacity",
+            "get_fuel_efficiency",
+            "get_fuel_level"
+          ],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": 2,
+          "is_over_generated_vs_gold": true,
+          "gold_tool_names": [
+            "estimate_drive_feasibility_by_mileage"
+          ],
+          "generated_tool_names": [
+            "get_fuel_level",
+            "get_fuel_efficiency",
+            "calculate_fuel_capacity"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 0,
+          "schema_invalid_units": 3,
+          "schema_errors": [
+            {
+              "unit_id": "u1",
+              "tool_name": "get_fuel_level",
+              "error": "missing_tool_schema"
+            },
+            {
+              "unit_id": "u2",
+              "tool_name": "get_fuel_efficiency",
+              "error": "missing_tool_schema"
+            },
+            {
+              "unit_id": "u3",
+              "tool_name": "calculate_fuel_capacity",
+              "error": "missing_tool_schema"
+            }
+          ],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_97",
+        "turn_index": 2,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: checkFuelLevel, fill_fuel_tank, getFuelLevel, getFuelStatus",
+        "n_units": 4,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h5"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 0,
+          "invalid_tool_name_units": 4,
+          "invalid_tool_names": [
+            "checkFuelLevel",
+            "fill_fuel_tank",
+            "getFuelLevel",
+            "getFuelStatus"
+          ],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": 3,
+          "is_over_generated_vs_gold": true,
+          "gold_tool_names": [
+            "fillFuelTank"
+          ],
+          "generated_tool_names": [
+            "getFuelStatus",
+            "getFuelLevel",
+            "checkFuelLevel",
+            "fill_fuel_tank"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 0,
+          "schema_invalid_units": 4,
+          "schema_errors": [
+            {
+              "unit_id": "u1",
+              "tool_name": "getFuelStatus",
+              "error": "missing_tool_schema"
+            },
+            {
+              "unit_id": "u2",
+              "tool_name": "getFuelLevel",
+              "error": "missing_tool_schema"
+            },
+            {
+              "unit_id": "u3",
+              "tool_name": "checkFuelLevel",
+              "error": "missing_tool_schema"
+            },
+            {
+              "unit_id": "u4",
+              "tool_name": "fill_fuel_tank",
+              "error": "missing_tool_schema"
+            }
+          ],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_97",
+        "turn_index": 3,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 3,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h6",
+            "h7",
+            "h8"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 2,
+          "intra_turn_antichain_pairs": [
+            [
+              "h6",
+              "h7"
+            ],
+            [
+              "h6",
+              "h8"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h6",
+              "h7"
+            ],
+            [
+              "h8"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 3,
+          "invalid_tool_name_units": 0,
+          "invalid_tool_names": [],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": 0,
+          "is_over_generated_vs_gold": false,
+          "gold_tool_names": [
+            "lockDoors",
+            "pressBrakePedal",
+            "startEngine"
+          ],
+          "generated_tool_names": [
+            "startEngine",
+            "set_navigation",
+            "setHeadlights"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 3,
+          "schema_invalid_units": 0,
+          "schema_errors": [],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_97",
+        "turn_index": 4,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "missing <END_PLAN>",
+        "n_units": 3,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 4,
+          "gold_hop_ids": [
+            "h9"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h9"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 3,
+          "invalid_tool_name_units": 0,
+          "invalid_tool_names": [],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": 2,
+          "is_over_generated_vs_gold": true,
+          "gold_tool_names": [
+            "send_message"
+          ],
+          "generated_tool_names": [
+            "get_zipcode_based_on_city",
+            "get_zipcode_based_on_city",
+            "estimate_distance"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 3,
+          "schema_invalid_units": 0,
+          "schema_errors": [],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_97",
+        "turn_index": 5,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: display_messages",
+        "n_units": 1,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 5,
+          "gold_hop_ids": [
+            "h10"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h10"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 0,
+          "invalid_tool_name_units": 1,
+          "invalid_tool_names": [
+            "display_messages"
+          ],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": 0,
+          "is_over_generated_vs_gold": false,
+          "gold_tool_names": [
+            "view_messages_sent"
+          ],
+          "generated_tool_names": [
+            "display_messages"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 0,
+          "schema_invalid_units": 1,
+          "schema_errors": [
+            {
+              "unit_id": "u1",
+              "tool_name": "display_messages",
+              "error": "missing_tool_schema"
+            }
+          ],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_128",
+        "turn_index": 0,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 2,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 2,
+          "invalid_tool_name_units": 0,
+          "invalid_tool_names": [],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": 0,
+          "is_over_generated_vs_gold": false,
+          "gold_tool_names": [
+            "get_current_time",
+            "get_available_stocks"
+          ],
+          "generated_tool_names": [
+            "get_current_time",
+            "get_available_stocks"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 1,
+          "schema_invalid_units": 1,
+          "schema_errors": [
+            {
+              "unit_id": "u2",
+              "tool_name": "get_available_stocks",
+              "error": "missing_required: sector; unknown_parameters: arg"
+            }
+          ],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_128",
+        "turn_index": 1,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 1,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h3",
+            "h4"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h3"
+            ],
+            [
+              "h4"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 1,
+          "invalid_tool_name_units": 0,
+          "invalid_tool_names": [],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": -1,
+          "is_over_generated_vs_gold": false,
+          "gold_tool_names": [
+            "get_stock_info",
+            "place_order"
+          ],
+          "generated_tool_names": [
+            "place_order"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 0,
+          "schema_invalid_units": 1,
+          "schema_errors": [
+            {
+              "unit_id": "u1",
+              "tool_name": "place_order",
+              "error": "positional_args_not_schema_checked; missing_required: amount, order_type, price, symbol"
+            }
+          ],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_128",
+        "turn_index": 2,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 1,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h5"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 1,
+          "invalid_tool_name_units": 0,
+          "invalid_tool_names": [],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": 0,
+          "is_over_generated_vs_gold": false,
+          "gold_tool_names": [
+            "get_order_details"
+          ],
+          "generated_tool_names": [
+            "get_order_details"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 1,
+          "schema_invalid_units": 0,
+          "schema_errors": [],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_128",
+        "turn_index": 3,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 1,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 3,
+          "gold_hop_ids": [
+            "h6"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h6"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 1,
+          "invalid_tool_name_units": 0,
+          "invalid_tool_names": [],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": 0,
+          "is_over_generated_vs_gold": false,
+          "gold_tool_names": [
+            "cancel_order"
+          ],
+          "generated_tool_names": [
+            "cancel_order"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 1,
+          "schema_invalid_units": 0,
+          "schema_errors": [],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_151",
+        "turn_index": 0,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: convert_flight_cost_currency",
+        "n_units": 3,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 1,
+          "intra_turn_antichain_pairs": [
+            [
+              "h2",
+              "h3"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1"
+            ],
+            [
+              "h2",
+              "h3"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 2,
+          "invalid_tool_name_units": 1,
+          "invalid_tool_names": [
+            "convert_flight_cost_currency"
+          ],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": 0,
+          "is_over_generated_vs_gold": false,
+          "gold_tool_names": [
+            "get_flight_cost",
+            "compute_exchange_rate",
+            "book_flight"
+          ],
+          "generated_tool_names": [
+            "get_flight_cost",
+            "convert_flight_cost_currency",
+            "set_budget_limit"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 2,
+          "schema_invalid_units": 1,
+          "schema_errors": [
+            {
+              "unit_id": "u2",
+              "tool_name": "convert_flight_cost_currency",
+              "error": "missing_tool_schema"
+            }
+          ],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_151",
+        "turn_index": 1,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": null,
+        "n_units": 1,
+        "gold_n_calls": 1,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h4"
+          ],
+          "n_gold_hops": 1,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h4"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 1,
+          "invalid_tool_name_units": 0,
+          "invalid_tool_names": [],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": 0,
+          "is_over_generated_vs_gold": false,
+          "gold_tool_names": [
+            "cancel_booking"
+          ],
+          "generated_tool_names": [
+            "cancel_booking"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 0,
+          "schema_invalid_units": 1,
+          "schema_errors": [
+            {
+              "unit_id": "u1",
+              "tool_name": "cancel_booking",
+              "error": "unknown_parameters: transaction_id"
+            }
+          ],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_151",
+        "turn_index": 2,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: create_tweet",
+        "n_units": 1,
+        "gold_n_calls": 2,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 2,
+          "gold_hop_ids": [
+            "h5",
+            "h6"
+          ],
+          "n_gold_hops": 2,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h5"
+            ],
+            [
+              "h6"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 0,
+          "invalid_tool_name_units": 1,
+          "invalid_tool_names": [
+            "create_tweet"
+          ],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": -1,
+          "is_over_generated_vs_gold": false,
+          "gold_tool_names": [
+            "authenticate_twitter",
+            "post_tweet"
+          ],
+          "generated_tool_names": [
+            "create_tweet"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 0,
+          "schema_invalid_units": 1,
+          "schema_errors": [
+            {
+              "unit_id": "u1",
+              "tool_name": "create_tweet",
+              "error": "missing_tool_schema"
+            }
+          ],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_175",
+        "turn_index": 0,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "missing <END_PLAN>",
+        "n_units": 2,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 0,
+          "gold_hop_ids": [
+            "h1",
+            "h2",
+            "h3"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 2,
+          "intra_turn_antichain_pairs": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h1",
+              "h3"
+            ]
+          ],
+          "turn_width": 2,
+          "turn_layers": [
+            [
+              "h1",
+              "h2"
+            ],
+            [
+              "h3"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 2,
+          "invalid_tool_name_units": 0,
+          "invalid_tool_names": [],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": -1,
+          "is_over_generated_vs_gold": false,
+          "gold_tool_names": [
+            "get_flight_cost",
+            "book_flight",
+            "retrieve_invoice"
+          ],
+          "generated_tool_names": [
+            "verify_traveler_information",
+            "register_credit_card"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 0,
+          "schema_invalid_units": 2,
+          "schema_errors": [
+            {
+              "unit_id": "u1",
+              "tool_name": "verify_traveler_information",
+              "error": "missing_required: date_of_birth, first_name, last_name, passport_number; unknown_parameters: arg"
+            },
+            {
+              "unit_id": "u2",
+              "tool_name": "register_credit_card",
+              "error": "missing_required: access_token, card_number, card_verification_number, cardholder_name, expiration_date; unknown_parameters: arg"
+            }
+          ],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      },
+      {
+        "question_id": "multi_turn_base_175",
+        "turn_index": 1,
+        "mode": "llmcompiler_flat_plan",
+        "parse_mode": "llmcompiler_plan",
+        "parse_error": "invalid tool names: authenticate_twitter_user, compose_tweet, retweet_tweet",
+        "n_units": 3,
+        "gold_n_calls": 3,
+        "graph_stats": {
+          "has_graph": true,
+          "turn_index": 1,
+          "gold_hop_ids": [
+            "h4",
+            "h5",
+            "h6"
+          ],
+          "n_gold_hops": 3,
+          "n_intra_turn_antichain_pairs": 0,
+          "intra_turn_antichain_pairs": [],
+          "turn_width": 1,
+          "turn_layers": [
+            [
+              "h4"
+            ],
+            [
+              "h5"
+            ],
+            [
+              "h6"
+            ]
+          ]
+        },
+        "quality_metrics": {
+          "valid_tool_name_units": 0,
+          "invalid_tool_name_units": 3,
+          "invalid_tool_names": [
+            "authenticate_twitter_user",
+            "compose_tweet",
+            "retweet_tweet"
+          ],
+          "duplicate_action_count": 0,
+          "has_duplicate_actions": false,
+          "generated_gold_call_delta": 0,
+          "is_over_generated_vs_gold": false,
+          "gold_tool_names": [
+            "authenticate_twitter",
+            "post_tweet",
+            "retweet"
+          ],
+          "generated_tool_names": [
+            "authenticate_twitter_user",
+            "compose_tweet",
+            "retweet_tweet"
+          ],
+          "dependency_edge_count": 0,
+          "flat_reference_violation_count": 0,
+          "has_flat_reference_violation": false,
+          "schema_checked": true,
+          "schema_valid_units": 0,
+          "schema_invalid_units": 3,
+          "schema_errors": [
+            {
+              "unit_id": "u1",
+              "tool_name": "authenticate_twitter_user",
+              "error": "missing_tool_schema"
+            },
+            {
+              "unit_id": "u2",
+              "tool_name": "compose_tweet",
+              "error": "missing_tool_schema"
+            },
+            {
+              "unit_id": "u3",
+              "tool_name": "retweet_tweet",
+              "error": "missing_tool_schema"
+            }
+          ],
+          "note": "valid_tool_name_units only checks whether the tool name is provided; it is not gold correctness."
+        }
+      }
+    ]
+  },
+  "quality": {
+    "valid_tool_name_units": 44,
+    "invalid_tool_name_units": 26,
+    "schema_checked_generations": 33,
+    "schema_valid_units": 30,
+    "schema_invalid_units": 40,
+    "duplicate_action_generations": 3,
+    "duplicate_action_count": 3,
+    "over_generated_vs_gold_generations": 11,
+    "dependency_edge_count": 0,
+    "flat_reference_violation_generations": 0,
+    "flat_reference_violation_count": 0,
+    "note": "These are post-hoc diagnostics. Tool-name validity, schema validity, compactness, and gold/DAG alignment should be interpreted separately."
+  }
+}
